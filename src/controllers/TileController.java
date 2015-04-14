@@ -11,8 +11,8 @@ public class TileController {
 
 	public TileController() {
 		createTiles();
-		relocateTiles();
 		rotateTiles();
+		relocateTiles();
 	}
 
 	private void createTiles() {
@@ -43,12 +43,13 @@ public class TileController {
 
 	private void relocateTiles() {
 
-		double x = Dimensions.GAP_BETWEEN_BORDERS.x();
-		double y;
+		double x, y;
 		double yMidRow = Dimensions.GAP_BETWEEN_BORDERS.y()
 				+ Dimensions.TILE.y() / 2;
 		double yTopRow = Dimensions.GAP_BETWEEN_BORDERS.y();
 		double yBottomRow = yTopRow + Dimensions.TILE.y();
+
+		x = Dimensions.GAP_BETWEEN_BORDERS.x();
 
 		y = yMidRow;
 		this.tiles.get(0).relocate(x, y);

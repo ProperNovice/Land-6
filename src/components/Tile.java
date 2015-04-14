@@ -1,7 +1,5 @@
 package components;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import instances.Instances;
 import utils.ArrayList;
 import utils.ImageView;
@@ -13,7 +11,7 @@ import gui.PanelGame;
 public class Tile {
 
 	private int tileNumber = -1;
-	private ArrayList<SquareEnum> squares = new ArrayList<>();
+	private ArrayList<Square> squares = new ArrayList<>();
 	private ImageView imageView = null;
 
 	public Tile(int tileNumber, SquareEnum... squareList) {
@@ -21,17 +19,10 @@ public class Tile {
 		this.tileNumber = tileNumber;
 
 		for (int counter = 0; counter < squareList.length; counter++)
-			this.squares.add(squareList[counter]);
+			this.squares.add(new Square(squareList[counter]));
 
 		createTile();
-
-		this.imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent arg0) {
-				squares.printList();
-			}
-		});
+		createInternalAdjacencies();
 
 	}
 
@@ -46,6 +37,19 @@ public class Tile {
 
 	}
 
+	private void createInternalAdjacencies() {
+
+		this.squares.get(0).addAdjacent(this.squares.get(1));
+		this.squares.get(1).addAdjacent(this.squares.get(0));
+		this.squares.get(1).addAdjacent(this.squares.get(2));
+		this.squares.get(2).addAdjacent(this.squares.get(1));
+		this.squares.get(2).addAdjacent(this.squares.get(3));
+		this.squares.get(3).addAdjacent(this.squares.get(2));
+		this.squares.get(3).addAdjacent(this.squares.get(0));
+		this.squares.get(0).addAdjacent(this.squares.get(3));
+
+	}
+
 	public void relocate(double x, double y) {
 		this.imageView.relocate(x, y);
 	}
@@ -55,7 +59,7 @@ public class Tile {
 	}
 
 	public void setRotateRandom() {
-		
+
 		int timesToRotate = Random.getRandomNumber(0, 3);
 		setRotate(timesToRotate);
 
