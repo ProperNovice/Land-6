@@ -11,7 +11,7 @@ import utils.Logger;
 import utils.ShutDown;
 import enums.Dimensions;
 
-public class Land_6 extends Application {
+public class Land6 extends Application {
 
 	private Panel panel = null;
 
