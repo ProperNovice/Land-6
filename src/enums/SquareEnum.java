@@ -1,6 +1,6 @@
 package enums;
 
-public enum Square {
+public enum SquareEnum {
 
 	CITY, GROWING_FIELD, FOREST, SEA
 
