@@ -31,7 +31,7 @@ public class Land_6 extends Application {
 		primaryStage.setHeight(height);
 		primaryStage.setResizable(false);
 
-		primaryStage.setTitle("Land 6");
+		primaryStage.setTitle("Land6");
 
 		primaryStage
 				.setX((Screen.getPrimary().getBounds().getWidth() - width) / 2);
