@@ -1,8 +1,7 @@
-/gui/
-/controller/
-/enums/
 /components/
-/Instances/
-/instances/
 /controllers/
+/enums/
+/gui/
+/instances/
+/utils/
 /images/

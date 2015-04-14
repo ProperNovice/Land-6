@@ -5,6 +5,7 @@ import javafx.scene.input.MouseEvent;
 import instances.Instances;
 import utils.ArrayList;
 import utils.ImageView;
+import utils.Random;
 import enums.Dimensions;
 import enums.SquareEnum;
 import gui.PanelGame;
@@ -47,6 +48,26 @@ public class Tile {
 
 	public void relocate(double x, double y) {
 		this.imageView.relocate(x, y);
+	}
+
+	public void setRotateTwice() {
+		setRotate(2);
+	}
+
+	public void setRotateRandom() {
+		
+		int timesToRotate = Random.getRandomNumber(0, 3);
+		setRotate(timesToRotate);
+
+	}
+
+	private void setRotate(int timesToRotate) {
+
+		this.imageView.setRotate(90 * timesToRotate);
+
+		for (int counter = 1; counter <= timesToRotate; counter++)
+			this.squares.add(0, this.squares.remove(this.squares.size() - 1));
+
 	}
 
 }

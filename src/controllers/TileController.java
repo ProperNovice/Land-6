@@ -12,6 +12,7 @@ public class TileController {
 	public TileController() {
 		createTiles();
 		relocateTiles();
+		rotateTiles();
 	}
 
 	private void createTiles() {
@@ -71,6 +72,15 @@ public class TileController {
 		x += Dimensions.TILE.x();
 		y = yMidRow;
 		this.tiles.get(5).relocate(x, y);
+
+	}
+
+	private void rotateTiles() {
+
+		this.tiles.get(0).setRotateTwice();
+
+		for (int counter = 1; counter <= this.tiles.size() - 2; counter++)
+			this.tiles.get(counter).setRotateRandom();
 
 	}
 

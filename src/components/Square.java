@@ -20,7 +20,7 @@ public class Square {
 		this.adjacencies.add(square);
 	}
 
-	public boolean isAdjacent(Square square) {
+	public boolean isAdjacentWith(Square square) {
 
 		for (Square squareTemp : this.adjacencies)
 			if (squareTemp.equals(square))
