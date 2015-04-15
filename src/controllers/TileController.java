@@ -1,10 +1,9 @@
 package controllers;
 
 import utils.ArrayList;
-
 import components.DiceArmy;
+import components.Square;
 import components.Tile;
-
 import enums.Dimensions;
 import enums.SquareEnum;
 
@@ -16,6 +15,7 @@ public class TileController {
 		createTiles();
 		rotateTiles();
 		relocateTiles();
+		createExternalAdjacencies();
 	}
 
 	private void createTiles() {
@@ -88,8 +88,71 @@ public class TileController {
 
 	}
 
+	private void createExternalAdjacencies() {
+
+		Square squareOne, squareTwo;
+
+		squareOne = getSquare(0, 1);
+		squareTwo = getSquare(1, 3);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(0, 2);
+		squareTwo = getSquare(2, 0);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(1, 1);
+		squareTwo = getSquare(3, 0);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(1, 2);
+		squareTwo = getSquare(3, 3);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(2, 1);
+		squareTwo = getSquare(4, 0);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(2, 2);
+		squareTwo = getSquare(4, 3);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(3, 2);
+		squareTwo = getSquare(5, 0);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(4, 1);
+		squareTwo = getSquare(5, 3);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(1, 3);
+		squareTwo = getSquare(2, 0);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(1, 2);
+		squareTwo = getSquare(2, 1);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(3, 3);
+		squareTwo = getSquare(4, 0);
+		createAdjacency(squareOne, squareTwo);
+
+		squareOne = getSquare(3, 2);
+		squareTwo = getSquare(4, 1);
+		createAdjacency(squareOne, squareTwo);
+
+	}
+
+	private Square getSquare(int tile, int square) {
+		return this.tiles.get(tile).getSquareId(square);
+	}
+
+	private void createAdjacency(Square squareOne, Square squareTwo) {
+		squareOne.addAdjacent(squareTwo);
+		squareTwo.addAdjacent(squareOne);
+	}
+
 	public void addStartingDice(DiceArmy dice) {
-		this.tiles.get(5).getSquare(1).addDiceAnimateSynchronous(dice);
+		this.tiles.get(5).getSquareId(1).addDiceAnimateSynchronous(dice);
 	}
 
 }

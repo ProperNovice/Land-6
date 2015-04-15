@@ -2,6 +2,6 @@ package enums;
 
 public enum GameStateEnum {
 
-	START_GAME
+	START_GAME, CHOOSE_SQUARE_DICE
 
 }

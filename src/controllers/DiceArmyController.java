@@ -56,4 +56,8 @@ public class DiceArmyController {
 		return this.diceArmy.removeLast();
 	}
 
+	public boolean isEmpty() {
+		return this.diceArmy.isEmpty();
+	}
+
 }

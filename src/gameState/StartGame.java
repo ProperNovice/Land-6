@@ -2,8 +2,10 @@ package gameState;
 
 import utils.Lock;
 import utils.Logger;
+
 import components.DiceArmy;
-import components.Square;
+
+import enums.GameStateEnum;
 
 public class StartGame extends GameState {
 
@@ -19,12 +21,9 @@ public class StartGame extends GameState {
 		Lock.lock();
 
 		diceArmy.setSide(6);
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.CHOOSE_SQUARE_DICE);
 
-	}
-
-	@Override
-	public void handleSquarePressed(Square square) {
-		System.out.println(square.getSquareEnum());
 	}
 
 }
