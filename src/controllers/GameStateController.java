@@ -1,5 +1,6 @@
 package controllers;
 
+import utils.Logger;
 import components.Square;
 import enums.GameStateEnum;
 import gameState.ChooseSquareDice;
@@ -23,13 +24,14 @@ public class GameStateController {
 		case START_GAME:
 			this.currentGameState = this.startGame;
 			break;
-			
+
 		case CHOOSE_SQUARE_DICE:
 			this.currentGameState = this.chooseSquareDice;
 			break;
 
 		}
 
+		Logger.logNewLine("* changing gameState *");
 		this.currentGameState.handleGameStateChange();
 
 	}

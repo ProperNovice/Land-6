@@ -1,5 +1,6 @@
 package components;
 
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class DiceArmy extends Dice {
@@ -12,12 +13,15 @@ public class DiceArmy extends Dice {
 
 	@Override
 	public void handle(MouseEvent event) {
-		
+
+		if (!event.getButton().equals(MouseButton.PRIMARY))
+			return;
+
 		if (this.square == null)
 			return;
-		
+
 		this.square.handleSquarePressed();
-		
+
 	}
 
 }

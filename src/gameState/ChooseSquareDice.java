@@ -2,6 +2,8 @@ package gameState;
 
 import components.Square;
 import enums.SquareEnum;
+import enums.TextOptionEnum;
+import gui.TextOption;
 import utils.Logger;
 
 public class ChooseSquareDice extends GameState {
@@ -36,7 +38,7 @@ public class ChooseSquareDice extends GameState {
 
 	private void handleCityPressed(Square square) {
 		
-		System.out.println("yo");
+		new TextOption(TextOptionEnum.DEPLOY_THE_ARMY).relocate(50, 50);
 
 	}
 

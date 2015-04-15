@@ -5,6 +5,7 @@ import gui.PanelGame;
 import instances.Instances;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
@@ -72,7 +73,8 @@ public class Dice implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent event) {
 
-		System.out.println("hello");
+		if (!event.getButton().equals(MouseButton.PRIMARY))
+			return;
 
 	}
 
