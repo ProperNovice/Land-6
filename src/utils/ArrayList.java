@@ -1,7 +1,6 @@
 package utils;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class ArrayList<T> implements Iterable<T> {
 
@@ -12,8 +11,7 @@ public class ArrayList<T> implements Iterable<T> {
 	}
 
 	public ArrayList(T[] list) {
-		for (int counter = 0; counter < list.length; counter++)
-			this.list.add(list[counter]);
+		addAll(list);
 	}
 
 	private ArrayList(java.util.ArrayList<T> list) {
@@ -36,7 +34,7 @@ public class ArrayList<T> implements Iterable<T> {
 		return true;
 	}
 
-	public boolean addAll(List<T> list) {
+	public boolean addAll(T[] list) {
 
 		for (T t : list)
 			this.list.add(t);
