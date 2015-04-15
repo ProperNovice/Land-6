@@ -7,6 +7,7 @@ public class Square {
 
 	public SquareEnum squareEnum = null;
 	private ArrayList<Square> adjacencies = new ArrayList<>();
+	private double topLeftX, topLeftY;
 
 	public Square(SquareEnum squareEnum) {
 		this.squareEnum = squareEnum;
@@ -27,6 +28,11 @@ public class Square {
 				return true;
 
 		return false;
+	}
+
+	public void setTopLeftCoordinates(double x, double y) {
+		this.topLeftX = x;
+		this.topLeftY = y;
 	}
 
 }

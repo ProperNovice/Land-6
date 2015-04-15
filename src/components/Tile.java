@@ -51,7 +51,20 @@ public class Tile {
 	}
 
 	public void relocate(double x, double y) {
+
 		this.imageView.relocate(x, y);
+
+		this.squares.get(0).setTopLeftCoordinates(x, y);
+
+		x += Dimensions.TILE.x() / 2;
+		this.squares.get(1).setTopLeftCoordinates(x, y);
+
+		y += Dimensions.TILE.x() / 2;
+		this.squares.get(2).setTopLeftCoordinates(x, y);
+
+		x -= Dimensions.TILE.x() / 2;
+		this.squares.get(2).setTopLeftCoordinates(x, y);
+
 	}
 
 	public void setRotateTwice() {
