@@ -63,7 +63,7 @@ public class Tile {
 		this.squares.get(2).setTopLeftCoordinates(x, y);
 
 		x -= Dimensions.TILE.x() / 2;
-		this.squares.get(2).setTopLeftCoordinates(x, y);
+		this.squares.get(3).setTopLeftCoordinates(x, y);
 
 	}
 

@@ -1,7 +1,5 @@
 package gameState;
 
-import utils.Logger;
-
 import components.Square;
 
 import enums.GameStateEnum;
@@ -12,8 +10,6 @@ public class ChooseSquareDice extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
-
-		Logger.logNewLine("choose square dice");
 
 		super.controller.textIndicatorController().setVisibleTrue(
 				TextIndicatorEnum.CHOOSE_SQUARE_DIE);

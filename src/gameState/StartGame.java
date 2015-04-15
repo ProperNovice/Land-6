@@ -12,8 +12,6 @@ public class StartGame extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		Logger.logNewLine("starting game");
-
 		DiceArmy diceArmy = super.controller.diceArmyController().getDice();
 
 		super.controller.tileController().addStartingDice(diceArmy);

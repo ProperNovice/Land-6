@@ -1,9 +1,8 @@
 package components;
 
-import gui.PanelGame;
+import gui.ButtonOption;
 import instances.Instances;
 import utils.ArrayList;
-import utils.Button;
 import enums.Dimensions;
 import enums.SquareEnum;
 
@@ -11,21 +10,12 @@ public class Square {
 
 	public SquareEnum squareEnum = null;
 	private ArrayList<Square> adjacencies = new ArrayList<>();
-	private double topLeftDiceX, topLeftDiceY;
+	private double topLeftX, topLeftY;
 	private DiceArmy dice = null;
-	private Button button = null;
+	private ButtonOption buttonOption = new ButtonOption(this);
 
 	public Square(SquareEnum squareEnum) {
 		this.squareEnum = squareEnum;
-		createButton();
-	}
-
-	private void createButton() {
-
-		PanelGame panelGame = Instances.getPanelGameInstance();
-		this.button = new Button(null, panelGame);
-		this.button.setSize(Dimensions.BUTTON.x(), Dimensions.BUTTON.y());
-		this.button.setText("*");
 	}
 
 	public SquareEnum getSquareEnum() {
@@ -46,16 +36,19 @@ public class Square {
 	}
 
 	public void setTopLeftCoordinates(double topLeftX, double topLeftY) {
-		this.topLeftDiceX = topLeftX
+		
+		this.topLeftX = topLeftX
 				+ (Dimensions.SQUARE.x() - Dimensions.DICE.x()) / 2;
-		this.topLeftDiceY = topLeftY
+		this.topLeftY = topLeftY
 				+ (Dimensions.SQUARE.y() - Dimensions.DICE.y()) / 2;
-		this.button.relocate(this.topLeftDiceX, this.topLeftDiceY);
+		
+		this.buttonOption.relocate(this.topLeftX, this.topLeftY);
+		
 	}
 
 	public void addDiceAnimateSynchronous(DiceArmy dice) {
 		this.dice = dice;
-		this.dice.animateSynchronous(this.topLeftDiceX, this.topLeftDiceY);
+		this.dice.animateSynchronous(this.topLeftX, this.topLeftY);
 		this.dice.setSquare(this);
 	}
 

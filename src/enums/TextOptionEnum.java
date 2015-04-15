@@ -4,6 +4,7 @@ public enum TextOptionEnum {
 	
 	DEPLOY_AN_ARMY("Deploy an army"),
 	MOVE_AN_ARMY("Move an army"),
+	CANCEL("Cancel"),
 
 	;
 
