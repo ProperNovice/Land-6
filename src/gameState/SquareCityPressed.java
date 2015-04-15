@@ -30,6 +30,7 @@ public class SquareCityPressed extends GameState {
 			break;
 
 		case DEPLOY_AN_ARMY:
+			setGameState(GameStateEnum.DEPLOY_ARMY);
 			break;
 
 		case MOVE_AN_ARMY:
