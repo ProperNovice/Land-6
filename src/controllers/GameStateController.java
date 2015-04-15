@@ -3,6 +3,7 @@ package controllers;
 import utils.Logger;
 import components.Square;
 import enums.GameStateEnum;
+import enums.TextOptionEnum;
 import gameState.ChooseSquareDice;
 import gameState.GameState;
 import gameState.StartGame;
@@ -38,6 +39,10 @@ public class GameStateController {
 
 	public void handleSquarePressed(Square square) {
 		this.currentGameState.handleSquarePressed(square);
+	}
+
+	public void handleTextOptionPressed(TextOptionEnum textOptionEnum) {
+		this.currentGameState.handleTextOptionPressed(textOptionEnum);
 	}
 
 }

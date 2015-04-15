@@ -1,7 +1,9 @@
 package gui;
 
+import controllers.Controller;
 import instances.Instances;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import utils.Polyline;
@@ -16,6 +18,7 @@ public class TextOption implements EventHandler<MouseEvent> {
 	private TextOptionEnum textOptionEnum = null;
 	private OnMouseEntered onMouseEntered = new OnMouseEntered();
 	private OnMouseExited onMouseExited = new OnMouseExited();
+	private Controller controller = Instances.getControllerInstance();
 
 	public TextOption(TextOptionEnum textOptionEnum) {
 		this.textOptionEnum = textOptionEnum;
@@ -63,11 +66,21 @@ public class TextOption implements EventHandler<MouseEvent> {
 
 	}
 
+	public void setVisible(boolean value) {
+		this.text.setVisible(value);
+		this.border.setVisible(value);
+	}
+
 	@Override
 	public void handle(MouseEvent event) {
-		
+
+		if (!event.getButton().equals(MouseButton.PRIMARY))
+			return;
+
 		this.border.setVisible(false);
 		this.text.setVisible(false);
+		this.controller.gameStateController().handleTextOptionPressed(
+				this.textOptionEnum);
 
 	}
 
