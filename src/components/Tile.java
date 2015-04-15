@@ -87,4 +87,8 @@ public class Tile {
 
 	}
 
+	public Square getSquare(int square) {
+		return this.squares.get(square);
+	}
+
 }

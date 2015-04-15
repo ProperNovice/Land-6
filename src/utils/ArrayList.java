@@ -82,6 +82,10 @@ public class ArrayList<T> implements Iterable<T> {
 		return this.list.remove(0);
 	}
 
+	public T removeLast() {
+		return this.list.remove(this.list.size() - 1);
+	}
+
 	public T getRandom() {
 		return this.list.get(Random.getRandomNumber(0, this.list.size() - 1));
 	}

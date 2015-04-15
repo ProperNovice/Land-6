@@ -1,16 +1,21 @@
 package controllers;
 
+import utils.Executor;
+import enums.GameStateEnum;
 import gui.PanelGame;
 import instances.Instances;
 
 public class Controller {
 
 	private TileController tileController = null;
-	private ArmyDiceController armyDiceController = null;
+	private DiceArmyController diceArmyController = null;
+	private GameStateController gameStateController = null;
 
 	public Controller(PanelGame panelGame) {
 
 		createInstances();
+		Executor.runLater(() -> this.gameStateController
+				.setGameState(GameStateEnum.START_GAME));
 
 	}
 
@@ -18,7 +23,8 @@ public class Controller {
 
 		Instances.createController(this);
 		this.tileController = new TileController();
-		this.armyDiceController = new ArmyDiceController();
+		this.diceArmyController = new DiceArmyController();
+		this.gameStateController = new GameStateController();
 
 	}
 
@@ -26,8 +32,12 @@ public class Controller {
 		return this.tileController;
 	}
 
-	public ArmyDiceController armyDiceController() {
-		return this.armyDiceController;
+	public DiceArmyController diceArmyController() {
+		return this.diceArmyController;
+	}
+
+	public GameStateController gameStateController() {
+		return this.gameStateController;
 	}
 
 }

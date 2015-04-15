@@ -1,7 +1,10 @@
 package controllers;
 
 import utils.ArrayList;
+
+import components.DiceArmy;
 import components.Tile;
+
 import enums.Dimensions;
 import enums.SquareEnum;
 
@@ -83,6 +86,10 @@ public class TileController {
 		for (int counter = 1; counter <= this.tiles.size() - 2; counter++)
 			this.tiles.get(counter).setRotateRandom();
 
+	}
+
+	public void addStartingDice(DiceArmy dice) {
+		this.tiles.get(5).getSquare(1).addDiceAnimateSynchronous(dice);
 	}
 
 }

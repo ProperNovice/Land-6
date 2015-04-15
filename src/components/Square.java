@@ -1,5 +1,6 @@
 package components;
 
+import instances.Instances;
 import utils.ArrayList;
 import enums.Dimensions;
 import enums.SquareEnum;
@@ -9,7 +10,7 @@ public class Square {
 	public SquareEnum squareEnum = null;
 	private ArrayList<Square> adjacencies = new ArrayList<>();
 	private double topLeftDiceX, topLeftDiceY;
-	private Dice dice = null;
+	private DiceArmy dice = null;
 
 	public Square(SquareEnum squareEnum) {
 		this.squareEnum = squareEnum;
@@ -34,14 +35,20 @@ public class Square {
 
 	public void setTopLeftCoordinates(double topLeftX, double topLeftY) {
 		this.topLeftDiceX = topLeftX
-				+ (Dimensions.TILE.x() - Dimensions.DICE.x()) / 2;
+				+ (Dimensions.SQUARE.x() - Dimensions.DICE.x()) / 2;
 		this.topLeftDiceY = topLeftY
-				+ (Dimensions.TILE.y() - Dimensions.DICE.y()) / 2;
+				+ (Dimensions.SQUARE.y() - Dimensions.DICE.y()) / 2;
 	}
 
-	public void addDiceAnimateSynchronous(Dice dice) {
+	public void addDiceAnimateSynchronous(DiceArmy dice) {
 		this.dice = dice;
 		this.dice.animateSynchronous(this.topLeftDiceX, this.topLeftDiceY);
+		this.dice.setSquare(this);
+	}
+
+	public void handleSquarePressed() {
+		Instances.getControllerInstance().gameStateController()
+				.handleSquarePressed(this);
 	}
 
 }

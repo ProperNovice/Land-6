@@ -3,14 +3,16 @@ package components;
 import enums.Dimensions;
 import gui.PanelGame;
 import instances.Instances;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.ImageView;
 import utils.Random;
 
-public class Dice {
+public class Dice implements EventHandler<MouseEvent> {
 
 	private ImageView imageView = null;
 	private ArrayList<Image> sides = new ArrayList<>();
@@ -40,9 +42,7 @@ public class Dice {
 		PanelGame panelGame = Instances.getPanelGameInstance();
 		this.imageView = new ImageView(this.blank, panelGame);
 		this.imageView.setWidth(Dimensions.DICE.x());
-		
-		rollDice();
-		System.out.println(this.sideNumberShowing);
+		this.imageView.setOnMousePressed(this);
 
 	}
 
@@ -67,6 +67,13 @@ public class Dice {
 
 	private void setSide() {
 		this.imageView.setImage(this.sides.get(this.sideNumberShowing - 1));
+	}
+
+	@Override
+	public void handle(MouseEvent event) {
+
+		System.out.println("hello");
+
 	}
 
 }

@@ -1,22 +1,25 @@
 package controllers;
 
-import components.Dice;
-import enums.Coordinates;
-import enums.Dimensions;
 import utils.ArrayList;
 
-public class ArmyDiceController {
+import components.Dice;
+import components.DiceArmy;
 
-	private ArrayList<Dice> armyDice = new ArrayList<>();
+import enums.Coordinates;
+import enums.Dimensions;
 
-	public ArmyDiceController() {
+public class DiceArmyController {
+
+	private ArrayList<DiceArmy> diceArmy = new ArrayList<>();
+
+	public DiceArmyController() {
 		createDice();
 		relocateDice();
 	}
 
 	private void createDice() {
 		for (int counter = 1; counter <= 6; counter++)
-			this.armyDice.add(new Dice());
+			this.diceArmy.add(new DiceArmy());
 	}
 
 	private void relocateDice() {
@@ -26,7 +29,7 @@ public class ArmyDiceController {
 		double x = firstX;
 		double y = Coordinates.DICE_ARMY_TOP_LEFT.y();
 
-		for (Dice dice : this.armyDice) {
+		for (Dice dice : this.diceArmy) {
 
 			dice.relocate(x, y);
 			dicePlaced++;
@@ -47,6 +50,10 @@ public class ArmyDiceController {
 
 		}
 
+	}
+
+	public DiceArmy getDice() {
+		return this.diceArmy.removeLast();
 	}
 
 }
