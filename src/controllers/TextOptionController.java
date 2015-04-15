@@ -14,8 +14,8 @@ public class TextOptionController {
 
 	private void createTextOptions() {
 
-		ArrayList<TextOptionEnum> a = new ArrayList<>(TextOptionEnum.values());
-		a.printList();
+		for (TextOptionEnum textOptionEnum : TextOptionEnum.values())
+			this.textOptions.add(new TextOption(textOptionEnum));
 
 	}
 

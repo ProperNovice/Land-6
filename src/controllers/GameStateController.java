@@ -32,7 +32,7 @@ public class GameStateController {
 
 		}
 
-		Logger.logNewLine("* changing gameState *");
+		Logger.log("* changing gameState *");
 		this.currentGameState.handleGameStateChange();
 
 	}

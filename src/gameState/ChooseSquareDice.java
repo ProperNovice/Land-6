@@ -1,10 +1,9 @@
 package gameState;
 
+import utils.Logger;
 import components.Square;
 import enums.SquareEnum;
-import enums.TextOptionEnum;
-import gui.TextOption;
-import utils.Logger;
+import enums.TextIndicatorEnum;
 
 public class ChooseSquareDice extends GameState {
 
@@ -12,6 +11,9 @@ public class ChooseSquareDice extends GameState {
 	public void handleGameStateChange() {
 
 		Logger.logNewLine("choose square dice");
+
+		super.controller.textIndicatorController().setVisibleTrue(
+				TextIndicatorEnum.CHOOSE_SQUARE_DIE);
 
 	}
 
@@ -23,7 +25,7 @@ public class ChooseSquareDice extends GameState {
 		switch (squareEnumPressed) {
 
 		case CITY:
-			handleCityPressed(square);
+			System.out.println("city");
 			break;
 		case FOREST:
 			break;
@@ -33,12 +35,6 @@ public class ChooseSquareDice extends GameState {
 			break;
 
 		}
-
-	}
-
-	private void handleCityPressed(Square square) {
-		
-		new TextOption(TextOptionEnum.DEPLOY_THE_ARMY).relocate(50, 50);
 
 	}
 

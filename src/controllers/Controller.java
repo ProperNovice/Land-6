@@ -1,9 +1,9 @@
 package controllers;
 
-import utils.Executor;
 import enums.GameStateEnum;
 import gui.PanelGame;
 import instances.Instances;
+import utils.Executor;
 
 public class Controller {
 
@@ -11,6 +11,7 @@ public class Controller {
 	private DiceArmyController diceArmyController = null;
 	private GameStateController gameStateController = null;
 	private TextOptionController textOptionController = null;
+	private TextIndicatorController textIndicatorController = null;
 
 	public Controller(PanelGame panelGame) {
 
@@ -27,6 +28,7 @@ public class Controller {
 		this.diceArmyController = new DiceArmyController();
 		this.gameStateController = new GameStateController();
 		this.textOptionController = new TextOptionController();
+		this.textIndicatorController = new TextIndicatorController();
 
 	}
 
@@ -44,6 +46,10 @@ public class Controller {
 
 	public TextOptionController textOptionController() {
 		return this.textOptionController;
+	}
+
+	public TextIndicatorController textIndicatorController() {
+		return this.textIndicatorController;
 	}
 
 }

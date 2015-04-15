@@ -21,9 +21,12 @@ public class TextOption implements EventHandler<MouseEvent> {
 	private Controller controller = Instances.getControllerInstance();
 
 	public TextOption(TextOptionEnum textOptionEnum) {
+
 		this.textOptionEnum = textOptionEnum;
 		createText();
 		createBorder();
+
+		setVisible(false);
 	}
 
 	private void createText() {
@@ -46,7 +49,7 @@ public class TextOption implements EventHandler<MouseEvent> {
 		double textWidth = this.text.getWidth();
 
 		this.border = new Polyline(textWidth + 2
-				* Dimensions.GAP_BETWEEN_TEXT_BORDER_AND_OPTION.x(),
+				* Dimensions.GAP_BETWEEN_OPTION_TEXT_BORDER_AND_OPTION.x(),
 				Dimensions.TEXT_OPTION.y(), panelGame);
 
 		this.border.setStroke(null);
@@ -61,7 +64,7 @@ public class TextOption implements EventHandler<MouseEvent> {
 	public void relocate(double x, double y) {
 
 		this.border.relocate(x, y);
-		x += Dimensions.GAP_BETWEEN_TEXT_BORDER_AND_OPTION.x();
+		x += Dimensions.GAP_BETWEEN_OPTION_TEXT_BORDER_AND_OPTION.x();
 		this.text.relocate(x, y);
 
 	}
