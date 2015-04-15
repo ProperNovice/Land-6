@@ -2,7 +2,8 @@ package enums;
 
 public enum TextOptionEnum {
 	
-	DEPLOY_THE_ARMY("Deploy the army"),
+	DEPLOY_AN_ARMY("Deploy an army"),
+	MOVE_AN_ARMY("Move an army"),
 
 	;
 

@@ -1,5 +1,6 @@
 package components;
 
+import utils.Executor;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -20,7 +21,7 @@ public class DiceArmy extends Dice {
 		if (this.square == null)
 			return;
 
-		this.square.handleSquarePressed();
+		Executor.runLater(() -> this.square.handleSquarePressed());
 
 	}
 

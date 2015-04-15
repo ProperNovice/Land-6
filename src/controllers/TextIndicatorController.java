@@ -43,7 +43,6 @@ public class TextIndicatorController {
 						+ Dimensions.GAP_BETWEEN_TEXTS.y();
 
 			}
-
 	}
 
 	public void setVisibleTrue(TextIndicatorEnum textIndicatorEnum) {
@@ -56,7 +55,7 @@ public class TextIndicatorController {
 
 	public void setVisibleFalse() {
 
-		for (TextIndicator textIndicator : this.textIndicators)
+		for (TextIndicator textIndicator : this.textIndicatorsShowing)
 			textIndicator.setVisible(false);
 
 		this.textIndicatorsShowing.clear();

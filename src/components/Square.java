@@ -1,7 +1,9 @@
 package components;
 
+import gui.PanelGame;
 import instances.Instances;
 import utils.ArrayList;
+import utils.Button;
 import enums.Dimensions;
 import enums.SquareEnum;
 
@@ -11,9 +13,19 @@ public class Square {
 	private ArrayList<Square> adjacencies = new ArrayList<>();
 	private double topLeftDiceX, topLeftDiceY;
 	private DiceArmy dice = null;
+	private Button button = null;
 
 	public Square(SquareEnum squareEnum) {
 		this.squareEnum = squareEnum;
+		createButton();
+	}
+
+	private void createButton() {
+
+		PanelGame panelGame = Instances.getPanelGameInstance();
+		this.button = new Button(null, panelGame);
+		this.button.setSize(Dimensions.BUTTON.x(), Dimensions.BUTTON.y());
+		this.button.setText("*");
 	}
 
 	public SquareEnum getSquareEnum() {
@@ -38,6 +50,7 @@ public class Square {
 				+ (Dimensions.SQUARE.x() - Dimensions.DICE.x()) / 2;
 		this.topLeftDiceY = topLeftY
 				+ (Dimensions.SQUARE.y() - Dimensions.DICE.y()) / 2;
+		this.button.relocate(this.topLeftDiceX, this.topLeftDiceY);
 	}
 
 	public void addDiceAnimateSynchronous(DiceArmy dice) {

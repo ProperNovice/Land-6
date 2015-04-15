@@ -1,7 +1,10 @@
 package gameState;
 
 import utils.Logger;
+
 import components.Square;
+
+import enums.GameStateEnum;
 import enums.SquareEnum;
 import enums.TextIndicatorEnum;
 
@@ -20,12 +23,14 @@ public class ChooseSquareDice extends GameState {
 	@Override
 	public void handleSquarePressed(Square square) {
 
+		super.controller.textIndicatorController().setVisibleFalse();
+
 		SquareEnum squareEnumPressed = square.getSquareEnum();
 
 		switch (squareEnumPressed) {
 
 		case CITY:
-			System.out.println("city");
+			setGameState(GameStateEnum.SQUARE_CITY_PRESSED);
 			break;
 		case FOREST:
 			break;
@@ -36,6 +41,10 @@ public class ChooseSquareDice extends GameState {
 
 		}
 
+	}
+
+	private void setGameState(GameStateEnum gameStateEnum) {
+		super.controller.gameStateController().setGameState(gameStateEnum);
 	}
 
 }

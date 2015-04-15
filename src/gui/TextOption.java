@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import utils.Executor;
 import utils.Polyline;
 import utils.Text;
 import enums.Dimensions;
@@ -80,10 +81,8 @@ public class TextOption implements EventHandler<MouseEvent> {
 		if (!event.getButton().equals(MouseButton.PRIMARY))
 			return;
 
-		this.border.setVisible(false);
-		this.text.setVisible(false);
-		this.controller.gameStateController().handleTextOptionPressed(
-				this.textOptionEnum);
+		Executor.runLater(() -> this.controller.gameStateController()
+				.handleTextOptionPressed(this.textOptionEnum));
 
 	}
 
@@ -109,6 +108,10 @@ public class TextOption implements EventHandler<MouseEvent> {
 
 		}
 
+	}
+
+	public TextOptionEnum getTextOptionEnum() {
+		return this.textOptionEnum;
 	}
 
 }

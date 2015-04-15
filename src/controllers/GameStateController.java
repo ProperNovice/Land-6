@@ -6,6 +6,7 @@ import enums.GameStateEnum;
 import enums.TextOptionEnum;
 import gameState.ChooseSquareDice;
 import gameState.GameState;
+import gameState.SquareCityPressed;
 import gameState.StartGame;
 
 public class GameStateController {
@@ -13,6 +14,7 @@ public class GameStateController {
 	private GameState currentGameState = null;
 	private GameState startGame = new StartGame();
 	private GameState chooseSquareDice = new ChooseSquareDice();
+	private GameState squareCityPressed = new SquareCityPressed();
 
 	public GameStateController() {
 
@@ -29,6 +31,9 @@ public class GameStateController {
 		case CHOOSE_SQUARE_DICE:
 			this.currentGameState = this.chooseSquareDice;
 			break;
+			
+		case SQUARE_CITY_PRESSED:
+			this.currentGameState = this.squareCityPressed;
 
 		}
 
