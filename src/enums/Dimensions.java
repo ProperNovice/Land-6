@@ -7,7 +7,7 @@ public enum Dimensions {
 	GAP_BETWEEN_BORDERS(50, 50),
 	GAP_BETWEEN_DICE(2, 1),
 	TILE(300, 300),
-	DICE(TILE.x() / 4, TILE.y() / 4),
+	DICE(TILE.x() / 6, TILE.y() / 6),
 
 	;
 

@@ -40,6 +40,9 @@ public class Dice {
 		PanelGame panelGame = Instances.getPanelGameInstance();
 		this.imageView = new ImageView(this.blank, panelGame);
 		this.imageView.setWidth(Dimensions.DICE.x());
+		
+		rollDice();
+		System.out.println(this.sideNumberShowing);
 
 	}
 
