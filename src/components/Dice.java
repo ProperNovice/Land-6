@@ -17,7 +17,6 @@ public class Dice implements EventHandler<MouseEvent> {
 
 	private ImageView imageView = null;
 	private ArrayList<Image> sides = new ArrayList<>();
-	private Image blank = null;
 	protected int sideNumberShowing = -1;
 
 	public Dice() {
@@ -30,18 +29,18 @@ public class Dice implements EventHandler<MouseEvent> {
 		String pathStart = "/images/dice/";
 		String pathEnd = ".png";
 
+		this.sides.add(new Image(pathStart + "blank" + pathEnd));
+
 		for (int counter = 1; counter <= 6; counter++)
 			this.sides.add(new Image(pathStart + Integer.toString(counter)
 					+ pathEnd));
-
-		this.blank = new Image(pathStart + "blank" + pathEnd);
 
 	}
 
 	private void createDice() {
 
 		PanelGame panelGame = Instances.getPanelGameInstance();
-		this.imageView = new ImageView(this.blank, panelGame);
+		this.imageView = new ImageView(this.sides.get(0), panelGame);
 		this.imageView.setWidth(Dimensions.DICE.x());
 		this.imageView.setOnMousePressed(this);
 
@@ -67,7 +66,7 @@ public class Dice implements EventHandler<MouseEvent> {
 	}
 
 	protected void updateSideImage() {
-		this.imageView.setImage(this.sides.get(this.sideNumberShowing - 1));
+		this.imageView.setImage(this.sides.get(this.sideNumberShowing));
 	}
 
 	@Override
