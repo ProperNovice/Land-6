@@ -33,4 +33,10 @@ public class DiceArmy extends Dice {
 		super.updateSideImage();
 	}
 
+	public void addOnePoint() {
+
+		super.sideNumberShowing++;
+		super.updateSideImage();
+	}
+
 }

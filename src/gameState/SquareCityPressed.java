@@ -1,7 +1,5 @@
 package gameState;
 
-import components.Square;
-
 import utils.ArrayList;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
@@ -11,7 +9,7 @@ public class SquareCityPressed extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		createTextList();
+		showTextList();
 
 	}
 
@@ -27,12 +25,11 @@ public class SquareCityPressed extends GameState {
 			break;
 
 		case DEPLOY_AN_ARMY:
-			substractOnePointToDice();
 			setGameState(GameStateEnum.DEPLOY_ARMY);
 			break;
 
 		case MOVE_AN_ARMY:
-			substractOnePointToDice();
+			setGameState(GameStateEnum.MOVE_ARMY_ORIGIN);
 			break;
 
 		default:
@@ -42,10 +39,13 @@ public class SquareCityPressed extends GameState {
 
 	}
 
-	private void createTextList() {
+	private void showTextList() {
 
 		ArrayList<TextGameEnum> list = new ArrayList<>();
-		list.add(TextGameEnum.DEPLOY_AN_ARMY);
+
+		if (!armyDiceIsEmpty())
+			list.add(TextGameEnum.DEPLOY_AN_ARMY);
+
 		list.add(TextGameEnum.MOVE_AN_ARMY);
 		list.add(TextGameEnum.CANCEL);
 
@@ -53,11 +53,8 @@ public class SquareCityPressed extends GameState {
 
 	}
 
-	private void substractOnePointToDice() {
-
-		Square squarePressed = super.controller.credentialController()
-				.getSquarePressed();
-		squarePressed.substractOnePointToDice();
+	private boolean armyDiceIsEmpty() {
+		return super.controller.diceArmyController().isEmpty();
 	}
 
 	private void setGameState(GameStateEnum gameStateEnum) {

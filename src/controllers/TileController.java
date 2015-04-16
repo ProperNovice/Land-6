@@ -1,5 +1,6 @@
 package controllers;
 
+import instances.Instances;
 import utils.ArrayList;
 import components.DiceArmy;
 import components.Square;
@@ -153,6 +154,33 @@ public class TileController {
 
 	public void addStartingDice(DiceArmy dice) {
 		this.tiles.get(5).getSquareId(1).addDiceAnimateSynchronous(dice);
+	}
+
+	public void enableButtonSquaresForDeployArmy() {
+
+		ArrayList<Square> citiesAdjacencies = new ArrayList<>();
+		ArrayList<Square> citiesAdjacenciesTemp = new ArrayList<>();
+
+		for (Tile tile : this.tiles)
+			citiesAdjacenciesTemp.addAll(tile
+					.getAdjacenciesToCityThatContainDice());
+
+		for (Square square : citiesAdjacenciesTemp) {
+
+			if (citiesAdjacencies.contains(square))
+				continue;
+
+			if (square.containsDice())
+				continue;
+
+			citiesAdjacencies.add(square);
+			square.setVisibleButtonOption(true);
+
+		}
+
+		Instances.getControllerInstance().credentialController()
+				.setSquareButtons(citiesAdjacencies);
+
 	}
 
 }

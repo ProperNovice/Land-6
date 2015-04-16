@@ -7,6 +7,8 @@ public enum TextGameEnum {
 	MOVE_AN_ARMY("Move an army", TextGameType.OPTION),
 	CANCEL("Cancel", TextGameType.OPTION),
 	CHOOSE_SQUARE("Choose square", TextGameType.INDICATOR),
+	CHOOSE_ARMY_TO_MOVE("Choose army to move", TextGameType.INDICATOR),
+	CHOOSE_ARMY_DESTINATION("Choose destination", TextGameType.INDICATOR),
 
 	;
 

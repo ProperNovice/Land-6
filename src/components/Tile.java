@@ -91,4 +91,22 @@ public class Tile {
 		return this.squares.get(square);
 	}
 
+	public ArrayList<Square> getAdjacenciesToCityThatContainDice() {
+
+		ArrayList<Square> adjacencies = new ArrayList<>();
+
+		for (Square square : this.squares) {
+
+			if (!square.getSquareEnum().equals(SquareEnum.CITY))
+				continue;
+
+			if (!square.containsDice())
+				continue;
+
+			adjacencies.addAll(square.getAdjacenciesClone());
+		}
+
+		return adjacencies;
+	}
+
 }

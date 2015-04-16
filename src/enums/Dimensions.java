@@ -11,6 +11,7 @@ public enum Dimensions {
 	TILE(300, 300),
 	SQUARE(TILE.x() / 2, TILE.y() / 2),
 	DICE(TILE.x() / 6, TILE.y() / 6),
+	CUBE(TILE.x() / 6, TILE.y() / 6),
 	BUTTON_OPTION(DICE.x(), DICE.y()),
 	TEXT_OPTION(-1, 40),
 	TEXT_INDICATOR(-1, TEXT_OPTION.y()),

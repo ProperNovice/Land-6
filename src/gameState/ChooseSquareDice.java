@@ -11,8 +11,7 @@ public class ChooseSquareDice extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		super.controller.textController().setVisibleTrue(
-				TextGameEnum.CHOOSE_SQUARE_DIE);
+		showText();
 
 	}
 
@@ -38,6 +37,11 @@ public class ChooseSquareDice extends GameState {
 
 		}
 
+	}
+
+	private void showText() {
+		super.controller.textController().setVisibleTrue(
+				TextGameEnum.CHOOSE_SQUARE_DIE);
 	}
 
 	private void setGameState(GameStateEnum gameStateEnum) {

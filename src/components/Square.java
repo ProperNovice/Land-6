@@ -67,4 +67,12 @@ public class Square {
 		this.dice.substractOnePoint();
 	}
 
+	public void addOnePointToDice() {
+		this.dice.addOnePoint();
+	}
+
+	public void setVisibleButtonOption(boolean value) {
+		this.buttonOption.setVisible(value);
+	}
+
 }
