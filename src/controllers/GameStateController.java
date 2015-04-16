@@ -1,14 +1,15 @@
 package controllers;
 
-import utils.Logger;
-import components.Square;
 import enums.GameStateEnum;
-import enums.TextOptionEnum;
+import enums.TextGameEnum;
 import gameState.ChooseSquareDice;
 import gameState.DeployArmy;
 import gameState.GameState;
 import gameState.SquareCityPressed;
 import gameState.StartGame;
+import utils.Logger;
+
+import components.Square;
 
 public class GameStateController {
 
@@ -51,12 +52,16 @@ public class GameStateController {
 
 	}
 
-	public void handleSquarePressed(Square square) {
-		this.currentGameState.handleSquarePressed(square);
+	public void handleSquareDicePressed(Square square) {
+		this.currentGameState.handleSquareDicePressed(square);
 	}
 
-	public void handleTextOptionPressed(TextOptionEnum textOptionEnum) {
-		this.currentGameState.handleTextOptionPressed(textOptionEnum);
+	public void handleSquareButtonPressed(Square square) {
+		this.currentGameState.handleSquareButtonPressed(square);
+	}
+
+	public void handleTextPressed(TextGameEnum textOptionEnum) {
+		this.currentGameState.handleTextPressed(textOptionEnum);
 	}
 
 }

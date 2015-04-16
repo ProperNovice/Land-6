@@ -1,27 +1,24 @@
 package gameState;
 
+import components.Square;
+
 import utils.ArrayList;
 import enums.GameStateEnum;
-import enums.TextOptionEnum;
+import enums.TextGameEnum;
 
 public class SquareCityPressed extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
 
-		ArrayList<TextOptionEnum> list = new ArrayList<>();
-		list.add(TextOptionEnum.DEPLOY_AN_ARMY);
-		list.add(TextOptionEnum.MOVE_AN_ARMY);
-		list.add(TextOptionEnum.CANCEL);
-
-		super.controller.textOptionController().setVisibleTrue(list);
+		createTextList();
 
 	}
 
 	@Override
-	public void handleTextOptionPressed(TextOptionEnum textOptionEnum) {
+	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
-		super.controller.textOptionController().setVisibleFalse();
+		setTextOptionVisibleFalse();
 
 		switch (textOptionEnum) {
 
@@ -30,18 +27,45 @@ public class SquareCityPressed extends GameState {
 			break;
 
 		case DEPLOY_AN_ARMY:
+			substractOnePointToDice();
 			setGameState(GameStateEnum.DEPLOY_ARMY);
 			break;
 
 		case MOVE_AN_ARMY:
+			substractOnePointToDice();
+			break;
+
+		default:
 			break;
 
 		}
 
 	}
 
+	private void createTextList() {
+
+		ArrayList<TextGameEnum> list = new ArrayList<>();
+		list.add(TextGameEnum.DEPLOY_AN_ARMY);
+		list.add(TextGameEnum.MOVE_AN_ARMY);
+		list.add(TextGameEnum.CANCEL);
+
+		super.controller.textController().setVisibleTrue(list);
+
+	}
+
+	private void substractOnePointToDice() {
+
+		Square squarePressed = super.controller.credentialController()
+				.getSquarePressed();
+		squarePressed.substractOnePointToDice();
+	}
+
 	private void setGameState(GameStateEnum gameStateEnum) {
 		super.controller.gameStateController().setGameState(gameStateEnum);
+	}
+
+	private void setTextOptionVisibleFalse() {
+		super.controller.textController().setVisibleFalse();
 	}
 
 }

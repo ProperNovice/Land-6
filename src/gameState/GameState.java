@@ -1,9 +1,11 @@
 package gameState;
 
-import components.Square;
 import instances.Instances;
+
+import components.Square;
+
 import controllers.Controller;
-import enums.TextOptionEnum;
+import enums.TextGameEnum;
 
 public class GameState {
 
@@ -17,11 +19,15 @@ public class GameState {
 
 	}
 
-	public void handleSquarePressed(Square square) {
+	public void handleSquareDicePressed(Square square) {
 
 	}
 
-	public void handleTextOptionPressed(TextOptionEnum textOptionEnum) {
+	public void handleSquareButtonPressed(Square square) {
+
+	}
+
+	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
 	}
 

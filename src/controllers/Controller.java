@@ -10,8 +10,8 @@ public class Controller {
 	private TileController tileController = null;
 	private DiceArmyController diceArmyController = null;
 	private GameStateController gameStateController = null;
-	private TextOptionController textOptionController = null;
-	private TextIndicatorController textIndicatorController = null;
+	private TextController textController = null;
+	private CredentialController credentialController = null;
 
 	public Controller(PanelGame panelGame) {
 
@@ -27,8 +27,8 @@ public class Controller {
 		this.tileController = new TileController();
 		this.diceArmyController = new DiceArmyController();
 		this.gameStateController = new GameStateController();
-		this.textOptionController = new TextOptionController();
-		this.textIndicatorController = new TextIndicatorController();
+		this.textController = new TextController();
+		this.credentialController = new CredentialController();
 
 	}
 
@@ -44,12 +44,12 @@ public class Controller {
 		return this.gameStateController;
 	}
 
-	public TextOptionController textOptionController() {
-		return this.textOptionController;
+	public TextController textController() {
+		return this.textController;
 	}
 
-	public TextIndicatorController textIndicatorController() {
-		return this.textIndicatorController;
+	public CredentialController credentialController() {
+		return this.credentialController;
 	}
 
 }

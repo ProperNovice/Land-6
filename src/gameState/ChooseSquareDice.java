@@ -4,22 +4,23 @@ import components.Square;
 
 import enums.GameStateEnum;
 import enums.SquareEnum;
-import enums.TextIndicatorEnum;
+import enums.TextGameEnum;
 
 public class ChooseSquareDice extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
 
-		super.controller.textIndicatorController().setVisibleTrue(
-				TextIndicatorEnum.CHOOSE_SQUARE_DIE);
+		super.controller.textController().setVisibleTrue(
+				TextGameEnum.CHOOSE_SQUARE_DIE);
 
 	}
 
 	@Override
-	public void handleSquarePressed(Square square) {
+	public void handleSquareDicePressed(Square square) {
 
-		super.controller.textIndicatorController().setVisibleFalse();
+		setTextIndicatorsVisibilityFalse();
+		setCredentialSquarePressed(square);
 
 		SquareEnum squareEnumPressed = square.getSquareEnum();
 
@@ -41,6 +42,14 @@ public class ChooseSquareDice extends GameState {
 
 	private void setGameState(GameStateEnum gameStateEnum) {
 		super.controller.gameStateController().setGameState(gameStateEnum);
+	}
+
+	private void setTextIndicatorsVisibilityFalse() {
+		super.controller.textController().setVisibleFalse();
+	}
+
+	private void setCredentialSquarePressed(Square square) {
+		super.controller.credentialController().setSquarePressed(square);
 	}
 
 }

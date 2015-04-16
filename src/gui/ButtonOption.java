@@ -51,8 +51,8 @@ public class ButtonOption implements EventHandler<MouseEvent> {
 		if (!event.getButton().equals(MouseButton.PRIMARY))
 			return;
 
-		Executor.runLater(() -> this.square.handleSquarePressed());
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleSquareButtonPressed(this.square));
 
 	}
-
 }

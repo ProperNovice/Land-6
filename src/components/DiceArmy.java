@@ -1,8 +1,9 @@
 package components;
 
-import utils.Executor;
+import instances.Instances;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import utils.Executor;
 
 public class DiceArmy extends Dice {
 
@@ -21,8 +22,15 @@ public class DiceArmy extends Dice {
 		if (this.square == null)
 			return;
 
-		Executor.runLater(() -> this.square.handleSquarePressed());
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleSquareDicePressed(this.square));
 
+	}
+
+	public void substractOnePoint() {
+
+		super.sideNumberShowing--;
+		super.updateSideImage();
 	}
 
 }

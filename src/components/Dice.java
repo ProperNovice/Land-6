@@ -18,7 +18,7 @@ public class Dice implements EventHandler<MouseEvent> {
 	private ImageView imageView = null;
 	private ArrayList<Image> sides = new ArrayList<>();
 	private Image blank = null;
-	private int sideNumberShowing = -1;
+	protected int sideNumberShowing = -1;
 
 	public Dice() {
 		createSides();
@@ -58,15 +58,15 @@ public class Dice implements EventHandler<MouseEvent> {
 
 	public void setSide(int number) {
 		this.sideNumberShowing = number;
-		setSide();
+		updateSideImage();
 	}
 
 	public void rollDice() {
 		this.sideNumberShowing = Random.getRandomNumber(1, 6);
-		setSide();
+		updateSideImage();
 	}
 
-	private void setSide() {
+	protected void updateSideImage() {
 		this.imageView.setImage(this.sides.get(this.sideNumberShowing - 1));
 	}
 

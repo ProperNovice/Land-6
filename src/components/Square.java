@@ -1,10 +1,9 @@
 package components;
 
-import gui.ButtonOption;
-import instances.Instances;
 import utils.ArrayList;
 import enums.Dimensions;
 import enums.SquareEnum;
+import gui.ButtonOption;
 
 public class Square {
 
@@ -36,14 +35,14 @@ public class Square {
 	}
 
 	public void setTopLeftCoordinates(double topLeftX, double topLeftY) {
-		
+
 		this.topLeftX = topLeftX
 				+ (Dimensions.SQUARE.x() - Dimensions.DICE.x()) / 2;
 		this.topLeftY = topLeftY
 				+ (Dimensions.SQUARE.y() - Dimensions.DICE.y()) / 2;
-		
+
 		this.buttonOption.relocate(this.topLeftX, this.topLeftY);
-		
+
 	}
 
 	public void addDiceAnimateSynchronous(DiceArmy dice) {
@@ -52,9 +51,20 @@ public class Square {
 		this.dice.setSquare(this);
 	}
 
-	public void handleSquarePressed() {
-		Instances.getControllerInstance().gameStateController()
-				.handleSquarePressed(this);
+	public ArrayList<Square> getAdjacenciesClone() {
+		return this.adjacencies.clone();
+	}
+
+	public boolean containsDice() {
+
+		if (this.dice != null)
+			return true;
+		else
+			return false;
+	}
+
+	public void substractOnePointToDice() {
+		this.dice.substractOnePoint();
 	}
 
 }

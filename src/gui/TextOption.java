@@ -1,6 +1,5 @@
 package gui;
 
-import controllers.Controller;
 import instances.Instances;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
@@ -9,37 +8,34 @@ import javafx.scene.paint.Color;
 import utils.Executor;
 import utils.Polyline;
 import utils.Text;
+import controllers.Controller;
 import enums.Dimensions;
-import enums.TextOptionEnum;
+import enums.TextGameEnum;
 
-public class TextOption implements EventHandler<MouseEvent> {
+public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 
-	private Text text = null;
 	private Polyline border = null;
-	private TextOptionEnum textOptionEnum = null;
-	private OnMouseEntered onMouseEntered = new OnMouseEntered();
-	private OnMouseExited onMouseExited = new OnMouseExited();
 	private Controller controller = Instances.getControllerInstance();
 
-	public TextOption(TextOptionEnum textOptionEnum) {
+	public TextOption(TextGameEnum textGameEnum) {
 
-		this.textOptionEnum = textOptionEnum;
-		createText();
+		super(textGameEnum);
 		createBorder();
 
 		setVisible(false);
 	}
 
-	private void createText() {
+	@Override
+	protected void createText() {
 
 		PanelGame panelGame = Instances.getPanelGameInstance();
 
-		this.text = new Text(this.textOptionEnum.textOption(), panelGame);
+		super.text = new Text(this.textEnum.getText(), panelGame);
 
-		this.text.setHeight(Dimensions.TEXT_OPTION.y() - 4);
-		this.text.setOnMouseEntered(this.onMouseEntered);
-		this.text.setOnMouseExited(this.onMouseExited);
-		this.text.setOnMousePressed(this);
+		super.text.setHeight(Dimensions.TEXT_OPTION.y() - 4);
+		super.text.setOnMouseEntered(new OnMouseEntered());
+		super.text.setOnMouseExited(new OnMouseExited());
+		super.text.setOnMousePressed(this);
 
 	}
 
@@ -47,7 +43,7 @@ public class TextOption implements EventHandler<MouseEvent> {
 
 		PanelGame panelGame = Instances.getPanelGameInstance();
 
-		double textWidth = this.text.getWidth();
+		double textWidth = super.text.getWidth();
 
 		this.border = new Polyline(textWidth + 2
 				* Dimensions.GAP_BETWEEN_OPTION_TEXT_BORDER_AND_OPTION.x(),
@@ -55,23 +51,25 @@ public class TextOption implements EventHandler<MouseEvent> {
 
 		this.border.setStroke(null);
 		this.border.setFill(Color.WHEAT);
-		this.border.setOnMouseEntered(this.onMouseEntered);
-		this.border.setOnMouseExited(this.onMouseExited);
+		this.border.setOnMouseEntered(new OnMouseEntered());
+		this.border.setOnMouseExited(new OnMouseExited());
 		this.border.setOnMousePressed(this);
 		this.border.toBack();
 
 	}
 
+	@Override
 	public void relocate(double x, double y) {
 
 		this.border.relocate(x, y);
 		x += Dimensions.GAP_BETWEEN_OPTION_TEXT_BORDER_AND_OPTION.x();
-		this.text.relocate(x, y);
+		super.text.relocate(x, y);
 
 	}
 
+	@Override
 	public void setVisible(boolean value) {
-		this.text.setVisible(value);
+		super.text.setVisible(value);
 		this.border.setVisible(value);
 	}
 
@@ -82,7 +80,7 @@ public class TextOption implements EventHandler<MouseEvent> {
 			return;
 
 		Executor.runLater(() -> this.controller.gameStateController()
-				.handleTextOptionPressed(this.textOptionEnum));
+				.handleTextPressed(this.textEnum));
 
 	}
 
@@ -91,8 +89,8 @@ public class TextOption implements EventHandler<MouseEvent> {
 		@Override
 		public void handle(MouseEvent event) {
 
-			border.setFill(Color.BLACK);
-			text.setFill(Color.WHITE);
+			setFillBorder(Color.BLACK);
+			setFillText(Color.WHITE);
 
 		}
 
@@ -103,15 +101,19 @@ public class TextOption implements EventHandler<MouseEvent> {
 		@Override
 		public void handle(MouseEvent event) {
 
-			border.setFill(Color.WHEAT);
-			text.setFill(Color.BLACK);
+			setFillBorder(Color.WHEAT);
+			setFillText(Color.BLACK);
 
 		}
 
 	}
 
-	public TextOptionEnum getTextOptionEnum() {
-		return this.textOptionEnum;
+	private void setFillText(Color color) {
+		super.text.setFill(color);
+	}
+
+	private void setFillBorder(Color color) {
+		this.border.setFill(color);
 	}
 
 }
