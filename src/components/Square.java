@@ -75,4 +75,14 @@ public class Square {
 		this.buttonOption.setVisible(value);
 	}
 
+	public DiceArmy getDiceArmy() {
+
+		DiceArmy diceArmy = this.dice;
+		System.out.println(diceArmy);
+		this.dice = null;
+		System.out.println(diceArmy);
+		return diceArmy;
+
+	}
+
 }
