@@ -12,6 +12,7 @@ public class Controller {
 	private GameStateController gameStateController = null;
 	private TextController textController = null;
 	private CredentialController credentialController = null;
+	private CubeArmyController cubeArmyController = null;
 
 	public Controller(PanelGame panelGame) {
 
@@ -29,6 +30,7 @@ public class Controller {
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
 		this.credentialController = new CredentialController();
+		this.cubeArmyController = new CubeArmyController();
 
 	}
 
@@ -50,6 +52,10 @@ public class Controller {
 
 	public CredentialController credentialController() {
 		return this.credentialController;
+	}
+
+	public CubeArmyController cubeArmyController() {
+		return this.cubeArmyController;
 	}
 
 }

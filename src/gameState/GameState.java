@@ -17,7 +17,7 @@ public class GameState {
 
 	protected Controller controller = Instances.getControllerInstance();
 
-	public GameState() {
+	protected GameState() {
 
 	}
 
@@ -37,47 +37,47 @@ public class GameState {
 
 	}
 
-	public void setGameState(GameStateEnum gameStateEnum) {
+	protected void setGameState(GameStateEnum gameStateEnum) {
 		this.controller.gameStateController().setGameState(gameStateEnum);
 	}
 
-	public void addStartingDice(DiceArmy diceArmy) {
+	protected void addStartingDice(DiceArmy diceArmy) {
 		this.controller.tileController().addStartingDice(diceArmy);
 	}
 
-	public DiceArmy getDiceArmy() {
+	protected DiceArmy getDiceArmy() {
 		return this.controller.diceArmyController().getDice();
 	}
 
-	public void textShow(TextGameEnum textGameEnum) {
+	protected void textShow(TextGameEnum textGameEnum) {
 		this.controller.textController().setVisibleTrue(textGameEnum);
 	}
 
-	public void textShow(ArrayList<TextGameEnum> list) {
+	protected void textShow(ArrayList<TextGameEnum> list) {
 		this.controller.textController().setVisibleTrue(list);
 	}
 
-	public void textConceal() {
+	protected void textConceal() {
 		this.controller.textController().setVisibleFalse();
 	}
 
-	public void setCredentialSquarePressedCity(Square square) {
+	protected void setCredentialSquarePressedCity(Square square) {
 		this.controller.credentialController().setSquarePressedCity(square);
 	}
 
-	public void setCredentialSquarePressedNonCity(Square square) {
+	protected void setCredentialSquarePressedNonCity(Square square) {
 		this.controller.credentialController().setSquarePressedNonCity(square);
 	}
 
-	public boolean armyDiceIsEmpty() {
+	protected boolean armyDiceIsEmpty() {
 		return this.controller.diceArmyController().isEmpty();
 	}
 
-	public void enableSquareButtonsForDeployArmy() {
+	protected void enableSquareButtonsForDeployArmy() {
 		this.controller.tileController().enableButtonSquaresForDeployArmy();
 	}
 
-	public void setVisibleButtonOptionFalse() {
+	protected void setVisibleButtonOptionFalse() {
 
 		ArrayList<Square> squareButtons = this.controller
 				.credentialController().getSquareButtons();
@@ -87,14 +87,25 @@ public class GameState {
 
 	}
 
-	public void substractOnePointFromDiceCityHandleDiceIsMinLock() {
+	protected void substractPointsFromCityDiceHandleDiceIsMinLock(int points) {
 
 		Square squarePressedCity = this.controller.credentialController()
 				.getSquarePressedCity();
-		squarePressedCity.substractOnePointToDice();
+
+		for (int counter = 1; counter <= points; counter++) {
+
+			squarePressedCity.substractOnePointToDice();
+
+			if (!squarePressedCity.diceArmyIsMinValue())
+				continue;
+
+			break;
+		}
 
 		if (!squarePressedCity.diceArmyIsMinValue())
 			return;
+
+		setGameState(GameStateEnum.ANIMATING);
 
 		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
 
@@ -105,7 +116,36 @@ public class GameState {
 
 	}
 
-	public boolean squareDiceIsEligibleToMove(Square square) {
+	protected void substractPointsFromNonCityDiceHandleDiceIsMinLock(int points) {
+
+		Square squarePressedCity = this.controller.credentialController()
+				.getSquarePressedNonCity();
+
+		for (int counter = 1; counter <= points; counter++) {
+
+			squarePressedCity.substractOnePointToDice();
+
+			if (!squarePressedCity.diceArmyIsMinValue())
+				continue;
+
+			break;
+		}
+
+		if (!squarePressedCity.diceArmyIsMinValue())
+			return;
+
+		setGameState(GameStateEnum.ANIMATING);
+
+		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
+
+		Logger.log("adding dice to diceArmy");
+		this.controller.diceArmyController().addDice(diceArmy);
+
+		Lock.lock();
+
+	}
+
+	protected boolean squareDiceIsEligibleToMove(Square square) {
 
 		SquareEnum squareEnum = square.getSquareEnum();
 
@@ -115,7 +155,7 @@ public class GameState {
 		return true;
 	}
 
-	public void enableSquareButtonForMoveDestination() {
+	protected void enableSquareButtonForMoveDestination() {
 
 		Square squareToMoveFrom = this.controller.credentialController()
 				.getSquarePressedNonCity();
@@ -133,7 +173,7 @@ public class GameState {
 
 	}
 
-	public void executeDiceMove(Square square) {
+	protected void executeDiceMove(Square square) {
 
 		Square squareMoveArmyOrigin = this.controller.credentialController()
 				.getSquarePressedNonCity();
@@ -142,7 +182,7 @@ public class GameState {
 
 	}
 
-	public void squareAdjacenciesSetVisibleFalse() {
+	protected void squareAdjacenciesSetVisibleFalse() {
 
 		for (Square square : this.controller.credentialController()
 				.getSquareAdjacencies())
@@ -150,13 +190,28 @@ public class GameState {
 
 	}
 
-	public boolean atLeastOneSquareDiceIsMovable() {
+	protected boolean atLeastOneSquareDiceIsMovable() {
 		return this.controller.tileController().atLeastOneSquareDiceIsMovable();
 	}
 
-	public boolean atLeastOneSquareIsAvailableToDeployArmy() {
+	protected boolean atLeastOneSquareIsAvailableToDeployArmy() {
 		return this.controller.tileController()
 				.atLeastOneSquareIsAvailableToDeplyArmy();
+	}
+
+	protected boolean squareAdjacenciesIsEmpty() {
+		return this.controller.credentialController()
+				.squareAdjacenciesIsEmpty();
+	}
+
+	protected boolean moreThanOneCitiesContainDiceArmy() {
+		return this.controller.tileController()
+				.moreThanOneCitiesContainDiceArmy();
+	}
+
+	protected void addOneToDiceArmyInNonGrowingFieldSquare() {
+		this.controller.tileController()
+				.addOneToDiceArmyInNonGrowinfFieldSquare();
 	}
 
 }

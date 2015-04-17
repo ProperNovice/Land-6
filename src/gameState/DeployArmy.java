@@ -44,7 +44,7 @@ public class DeployArmy extends GameState {
 
 		diceArmy.setSide(6);
 
-		super.substractOnePointFromDiceCityHandleDiceIsMinLock();
+		super.substractPointsFromCityDiceHandleDiceIsMinLock(1);
 
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 

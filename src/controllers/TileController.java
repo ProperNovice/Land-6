@@ -198,7 +198,7 @@ public class TileController {
 			break;
 
 		}
-		
+
 		return availableToDeploy;
 	}
 
@@ -218,6 +218,38 @@ public class TileController {
 
 		return isMovable;
 
+	}
+
+	public boolean moreThanOneCitiesContainDiceArmy() {
+
+		int citiesThatContainDice = 0;
+
+		for (Tile tile : this.tiles) {
+
+			if (tile.cityContainsDiceArmy())
+				citiesThatContainDice++;
+
+			if (citiesThatContainDice < 2)
+				continue;
+
+			break;
+
+		}
+
+		if (citiesThatContainDice >= 2)
+			return true;
+		else
+			return false;
+
+	}
+	
+	public void addOneToDiceArmyInNonGrowinfFieldSquare() {
+		
+		System.out.println("a");
+		
+		for (Tile tile : this.tiles)
+			tile.addOneToDiceArmyInNonGrowinfFieldSquare();
+		
 	}
 
 }

@@ -48,4 +48,8 @@ public class CredentialController {
 
 	}
 
+	public boolean squareAdjacenciesIsEmpty() {
+		return this.squareAdjacencies.isEmpty();
+	}
+
 }

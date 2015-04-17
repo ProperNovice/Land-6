@@ -13,8 +13,8 @@ public class MoveArmyDestination extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
-		showText();
 		super.enableSquareButtonForMoveDestination();
+		showText();
 	}
 
 	@Override
@@ -27,7 +27,12 @@ public class MoveArmyDestination extends GameState {
 		super.executeDiceMove(square);
 		Lock.lock();
 
-		super.substractOnePointFromDiceCityHandleDiceIsMinLock();
+		int substractFromCityDiceArmy = 1;
+
+		if (super.moreThanOneCitiesContainDiceArmy())
+			substractFromCityDiceArmy = 2;
+
+		super.substractPointsFromCityDiceHandleDiceIsMinLock(substractFromCityDiceArmy);
 
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 
@@ -46,7 +51,9 @@ public class MoveArmyDestination extends GameState {
 
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 
-		list.add(TextGameEnum.CHOOSE_ARMY_DESTINATION);
+		if (!super.squareAdjacenciesIsEmpty())
+			list.add(TextGameEnum.CHOOSE_ARMY_DESTINATION);
+
 		list.add(TextGameEnum.CANCEL);
 
 		super.textShow(list);

@@ -157,10 +157,35 @@ public class Tile {
 
 		}
 
-		System.out.println(canDeployArmy);
-
 		return canDeployArmy;
 
+	}
+
+	public boolean cityContainsDiceArmy() {
+
+		boolean containsCityDiceArmy = false;
+
+		for (Square square : this.squares)
+			if (square.getSquareEnum().equals(SquareEnum.CITY))
+				if (square.containsDice())
+					containsCityDiceArmy = true;
+
+		return containsCityDiceArmy;
+
+	}
+
+	public void addOneToDiceArmyInNonGrowinfFieldSquare() {
+
+		for (Square square : this.squares)
+			if (!square.getSquareEnum().equals(SquareEnum.GROWING_FIELD))
+				if (square.containsDice())
+					if (!square.diceArmyIsMaxValue())
+						square.addOnePointToDice();
+
+	}
+
+	public int getTileNumber() {
+		return this.tileNumber;
 	}
 
 }
