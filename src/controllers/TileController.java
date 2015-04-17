@@ -2,11 +2,10 @@ package controllers;
 
 import instances.Instances;
 import utils.ArrayList;
-
+import components.CubeArmy;
 import components.DiceArmy;
 import components.Square;
 import components.Tile;
-
 import enums.Dimensions;
 import enums.SquareEnum;
 
@@ -242,14 +241,21 @@ public class TileController {
 			return false;
 
 	}
-	
+
 	public void addOneToDiceArmyInNonGrowinfFieldSquare() {
-		
-		System.out.println("a");
-		
+
 		for (Tile tile : this.tiles)
 			tile.addOneToDiceArmyInNonGrowinfFieldSquare();
-		
+
+	}
+
+	public void addCubeArmyAnimateSynchronous(CubeArmy cubeArmy,
+			int numberOfTile) {
+
+		for (Tile tile : this.tiles)
+			if (tile.getTileNumber() == numberOfTile)
+				tile.addCubeArmyAnimateSynchronous(cubeArmy);
+
 	}
 
 }

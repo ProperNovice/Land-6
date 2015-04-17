@@ -1,6 +1,7 @@
 package components;
 
 import instances.Instances;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import utils.Executor;
@@ -11,6 +12,20 @@ public class DiceArmy extends Dice {
 
 	public void setSquare(Square square) {
 		this.square = square;
+	}
+
+	@Override
+	protected void createSides() {
+
+		String pathStart = "/images/diceArmy/";
+		String pathEnd = ".png";
+
+		super.sides.add(new Image(pathStart + "blank" + pathEnd));
+
+		for (int counter = 1; counter <= 6; counter++)
+			super.sides.add(new Image(pathStart + Integer.toString(counter)
+					+ pathEnd));
+
 	}
 
 	@Override

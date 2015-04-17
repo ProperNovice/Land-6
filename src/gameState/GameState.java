@@ -4,10 +4,9 @@ import instances.Instances;
 import utils.ArrayList;
 import utils.Lock;
 import utils.Logger;
-
+import components.CubeArmy;
 import components.DiceArmy;
 import components.Square;
-
 import controllers.Controller;
 import enums.GameStateEnum;
 import enums.SquareEnum;
@@ -47,6 +46,10 @@ public class GameState {
 
 	protected DiceArmy getDiceArmy() {
 		return this.controller.diceArmyController().getDice();
+	}
+
+	protected CubeArmy getCubeArmy() {
+		return this.controller.cubeArmyController().getDice();
 	}
 
 	protected void textShow(TextGameEnum textGameEnum) {
@@ -212,6 +215,24 @@ public class GameState {
 	protected void addOneToDiceArmyInNonGrowingFieldSquare() {
 		this.controller.tileController()
 				.addOneToDiceArmyInNonGrowinfFieldSquare();
+	}
+
+	protected void rollDiceAction() {
+		this.controller.diceActionController().roll();
+	}
+
+	protected int getDiceActionNumberSideShowing() {
+		return this.controller.diceActionController().getNumberSideShowing();
+	}
+
+	protected void addCubeArmyToTileAnimateSynchronous(CubeArmy cubeArmy,
+			int numberOfTile) {
+		this.controller.tileController().addCubeArmyAnimateSynchronous(
+				cubeArmy, numberOfTile);
+	}
+
+	protected void resetDiceActionSide() {
+		this.controller.diceActionController().resetSide();
 	}
 
 }

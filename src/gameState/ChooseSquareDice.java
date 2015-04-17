@@ -16,9 +16,6 @@ public class ChooseSquareDice extends GameState {
 	@Override
 	public void handleSquareDicePressed(Square square) {
 
-		if (square.getSquareEnum().equals(SquareEnum.SEA))
-			return;
-
 		super.textConceal();
 
 		SquareEnum squareEnumPressed = square.getSquareEnum();

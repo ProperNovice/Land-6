@@ -16,7 +16,7 @@ import utils.Random;
 public class Dice implements EventHandler<MouseEvent> {
 
 	private ImageView imageView = null;
-	private ArrayList<Image> sides = new ArrayList<>();
+	protected ArrayList<Image> sides = new ArrayList<>();
 	protected int sideNumberShowing = -1;
 
 	public Dice() {
@@ -24,16 +24,7 @@ public class Dice implements EventHandler<MouseEvent> {
 		createDice();
 	}
 
-	private void createSides() {
-
-		String pathStart = "/images/dice/";
-		String pathEnd = ".png";
-
-		this.sides.add(new Image(pathStart + "blank" + pathEnd));
-
-		for (int counter = 1; counter <= 6; counter++)
-			this.sides.add(new Image(pathStart + Integer.toString(counter)
-					+ pathEnd));
+	protected void createSides() {
 
 	}
 
@@ -60,7 +51,11 @@ public class Dice implements EventHandler<MouseEvent> {
 		updateSideImage();
 	}
 
-	public void rollDice() {
+	public void resetSide() {
+		setSide(0);
+	}
+
+	public void roll() {
 		this.sideNumberShowing = Random.getRandomNumber(1, 6);
 		updateSideImage();
 	}
@@ -75,6 +70,10 @@ public class Dice implements EventHandler<MouseEvent> {
 		if (!event.getButton().equals(MouseButton.PRIMARY))
 			return;
 
+	}
+
+	public int getSideNumberShowing() {
+		return this.sideNumberShowing;
 	}
 
 }

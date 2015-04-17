@@ -201,6 +201,7 @@ public class Tile {
 	}
 
 	public void addCubeArmyAnimateSynchronous(CubeArmy cubeArmy) {
+
 		this.cubeArmy.add(cubeArmy);
 
 		double endingX = this.topLeftX
