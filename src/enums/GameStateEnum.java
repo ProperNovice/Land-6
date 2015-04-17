@@ -9,7 +9,8 @@ public enum GameStateEnum {
 	ANIMATING("animating"),
 	MOVE_ARMY_ORIGIN("move army origin"),
 	MOVE_ARMY_DESTINATION("move army destination"),
-	LORD_OF_THE_CUBES_ACTION("lord of the cubes action");
+	LORD_OF_THE_CUBES_ACTION("lord of the cubes action"),
+	REROLL_DICE("reroll dice");
 	
 	private String text = null;
 

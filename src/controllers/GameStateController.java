@@ -9,6 +9,7 @@ import gameState.GameState;
 import gameState.LordOfTheCubesAction;
 import gameState.MoveArmyDestination;
 import gameState.MoveArmyOrigin;
+import gameState.RerollDice;
 import gameState.SquareCityPressed;
 import gameState.StartGame;
 import utils.Logger;
@@ -25,6 +26,7 @@ public class GameStateController {
 	private GameState moveArmyOrigin = new MoveArmyOrigin();
 	private GameState moveArmyDestination = new MoveArmyDestination();
 	private GameState lordOfTheCubesAction = new LordOfTheCubesAction();
+	private GameState rerollDice = new RerollDice();
 
 	public GameStateController() {
 
@@ -64,6 +66,10 @@ public class GameStateController {
 
 		case LORD_OF_THE_CUBES_ACTION:
 			this.currentGameState = this.lordOfTheCubesAction;
+			break;
+			
+		case REROLL_DICE:
+			this.currentGameState = this.rerollDice;
 			break;
 
 		}

@@ -9,6 +9,7 @@ public enum TextGameEnum {
 	CHOOSE_SQUARE("Choose square", TextGameType.INDICATOR),
 	CHOOSE_ARMY_TO_MOVE("Choose army to move", TextGameType.INDICATOR),
 	CHOOSE_ARMY_DESTINATION("Choose destination", TextGameType.INDICATOR),
+	CHOOSE_DICE_TO_REROLL("Choose dice to reroll", TextGameType.INDICATOR),
 
 	;
 

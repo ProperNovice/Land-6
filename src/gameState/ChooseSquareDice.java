@@ -31,6 +31,7 @@ public class ChooseSquareDice extends GameState {
 			handleGrowingFieldPressed(square);
 			break;
 		case SEA:
+			handleSeaPressed(square);
 			break;
 
 		}
@@ -51,6 +52,11 @@ public class ChooseSquareDice extends GameState {
 		super.addOneToDiceArmyInNonGrowingFieldSquare();
 		super.substractPointsFromNonCityDiceHandleDiceIsMinLock(1);
 		super.setGameState(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
+	}
+
+	private void handleSeaPressed(Square square) {
+		super.setCredentialSquarePressedNonCity(square);
+		super.setGameState(GameStateEnum.REROLL_DICE);
 	}
 
 }

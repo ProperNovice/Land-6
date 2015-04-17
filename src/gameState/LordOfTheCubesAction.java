@@ -16,10 +16,12 @@ public class LordOfTheCubesAction extends GameState {
 
 		CubeArmy cubeArmy = super.getCubeArmy();
 
+		super.setGameState(GameStateEnum.ANIMATING);
+
 		super.addCubeArmyToTileAnimateSynchronous(cubeArmy,
 				diceActionNumberSideShowing);
 		Lock.lock();
-		
+
 		super.resetDiceActionSide();
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 

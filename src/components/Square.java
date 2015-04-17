@@ -87,4 +87,8 @@ public class Square {
 		return this.diceArmy.get(0).isMinValue();
 	}
 
+	public void rerollDiceArmy() {
+		this.diceArmy.get(0).roll();
+	}
+
 }
