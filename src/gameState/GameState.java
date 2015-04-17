@@ -150,4 +150,13 @@ public class GameState {
 
 	}
 
+	public boolean atLeastOneSquareDiceIsMovable() {
+		return this.controller.tileController().atLeastOneSquareDiceIsMovable();
+	}
+
+	public boolean atLeastOneSquareIsAvailableToDeployArmy() {
+		return this.controller.tileController()
+				.atLeastOneSquareIsAvailableToDeplyArmy();
+	}
+
 }

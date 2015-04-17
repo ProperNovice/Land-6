@@ -42,9 +42,12 @@ public class SquareCityPressed extends GameState {
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 
 		if (!super.armyDiceIsEmpty())
-			list.add(TextGameEnum.DEPLOY_AN_ARMY);
+			if (super.atLeastOneSquareIsAvailableToDeployArmy())
+				list.add(TextGameEnum.DEPLOY_AN_ARMY);
 
-		list.add(TextGameEnum.MOVE_AN_ARMY);
+		if (super.atLeastOneSquareDiceIsMovable())
+			list.add(TextGameEnum.MOVE_AN_ARMY);
+
 		list.add(TextGameEnum.CANCEL);
 
 		super.textShow(list);

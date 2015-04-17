@@ -109,4 +109,58 @@ public class Tile {
 		return adjacencies;
 	}
 
+	public boolean containsAtLeastOneSquareDiceMovable() {
+
+		boolean isMovable = false;
+
+		for (Square square : this.squares) {
+
+			if (square.getSquareEnum().equals(SquareEnum.CITY))
+				continue;
+
+			if (!square.containsDice())
+				continue;
+
+			isMovable = true;
+			break;
+
+		}
+
+		return isMovable;
+
+	}
+
+	public boolean containsAtLeastOneSquareThatCanDeployArmy() {
+
+		boolean canDeployArmy = false;
+
+		for (Square squareTemp : this.squares) {
+
+			if (!squareTemp.getSquareEnum().equals(SquareEnum.CITY))
+				continue;
+
+			if (!squareTemp.containsDice())
+				continue;
+
+			for (Square square : squareTemp.getAdjacenciesClone()) {
+
+				if (square.containsDice())
+					continue;
+
+				canDeployArmy = true;
+				break;
+
+			}
+
+			if (canDeployArmy)
+				break;
+
+		}
+
+		System.out.println(canDeployArmy);
+
+		return canDeployArmy;
+
+	}
+
 }

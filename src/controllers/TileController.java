@@ -2,9 +2,11 @@ package controllers;
 
 import instances.Instances;
 import utils.ArrayList;
+
 import components.DiceArmy;
 import components.Square;
 import components.Tile;
+
 import enums.Dimensions;
 import enums.SquareEnum;
 
@@ -180,6 +182,41 @@ public class TileController {
 
 		Instances.getControllerInstance().credentialController()
 				.setSquareButtons(citiesAdjacencies);
+
+	}
+
+	public boolean atLeastOneSquareIsAvailableToDeplyArmy() {
+
+		boolean availableToDeploy = false;
+
+		for (Tile tile : this.tiles) {
+
+			if (!tile.containsAtLeastOneSquareThatCanDeployArmy())
+				continue;
+
+			availableToDeploy = true;
+			break;
+
+		}
+		
+		return availableToDeploy;
+	}
+
+	public boolean atLeastOneSquareDiceIsMovable() {
+
+		boolean isMovable = false;
+
+		for (Tile tile : this.tiles) {
+
+			if (!tile.containsAtLeastOneSquareDiceMovable())
+				continue;
+
+			isMovable = true;
+			break;
+
+		}
+
+		return isMovable;
 
 	}
 

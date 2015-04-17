@@ -11,7 +11,7 @@ public class MoveArmyOrigin extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
-		showTextList();
+		showText();
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class MoveArmyOrigin extends GameState {
 
 	}
 
-	private void showTextList() {
+	private void showText() {
 
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 
