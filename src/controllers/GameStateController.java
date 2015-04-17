@@ -6,6 +6,7 @@ import gameState.Animating;
 import gameState.ChooseSquareDice;
 import gameState.DeployArmy;
 import gameState.GameState;
+import gameState.LordOfTheCubesAction;
 import gameState.MoveArmyDestination;
 import gameState.MoveArmyOrigin;
 import gameState.SquareCityPressed;
@@ -23,6 +24,7 @@ public class GameStateController {
 	private GameState animating = new Animating();
 	private GameState moveArmyOrigin = new MoveArmyOrigin();
 	private GameState moveArmyDestination = new MoveArmyDestination();
+	private GameState lordOfTheCubesAction = new LordOfTheCubesAction();
 
 	public GameStateController() {
 
@@ -55,9 +57,13 @@ public class GameStateController {
 		case MOVE_ARMY_ORIGIN:
 			this.currentGameState = this.moveArmyOrigin;
 			break;
-			
+
 		case MOVE_ARMY_DESTINATION:
 			this.currentGameState = this.moveArmyDestination;
+			break;
+
+		case LORD_OF_THE_CUBES_ACTION:
+			this.currentGameState = this.lordOfTheCubesAction;
 			break;
 
 		}

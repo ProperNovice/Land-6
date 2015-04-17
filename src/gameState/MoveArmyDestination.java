@@ -34,7 +34,7 @@ public class MoveArmyDestination extends GameState {
 
 		super.substractPointsFromCityDiceHandleDiceIsMinLock(substractFromCityDiceArmy);
 
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
 
 	}
 

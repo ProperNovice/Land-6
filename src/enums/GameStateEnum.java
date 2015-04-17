@@ -8,7 +8,8 @@ public enum GameStateEnum {
 	DEPLOY_ARMY("deploy army"),
 	ANIMATING("animating"),
 	MOVE_ARMY_ORIGIN("move army origin"),
-	MOVE_ARMY_DESTINATION("move army destination");
+	MOVE_ARMY_DESTINATION("move army destination"),
+	LORD_OF_THE_CUBES_ACTION("lord of the cubes action");
 	
 	private String text = null;
 

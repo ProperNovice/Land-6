@@ -13,6 +13,8 @@ public class Tile {
 	private int tileNumber = -1;
 	private ArrayList<Square> squares = new ArrayList<>();
 	private ImageView imageView = null;
+	private double topLeftX, topLeftY;
+	private ArrayList<CubeArmy> cubeArmy = new ArrayList<>();
 
 	public Tile(int tileNumber, SquareEnum... squareList) {
 
@@ -51,6 +53,9 @@ public class Tile {
 	}
 
 	public void relocate(double x, double y) {
+
+		this.topLeftX = x;
+		this.topLeftY = y;
 
 		this.imageView.relocate(x, y);
 
@@ -186,6 +191,25 @@ public class Tile {
 
 	public int getTileNumber() {
 		return this.tileNumber;
+	}
+
+	public boolean containsCubeArmy() {
+		if (this.cubeArmy.isEmpty())
+			return false;
+		else
+			return true;
+	}
+
+	public void addCubeArmyAnimateSynchronous(CubeArmy cubeArmy) {
+		this.cubeArmy.add(cubeArmy);
+
+		double endingX = this.topLeftX
+				+ (Dimensions.TILE.x() - Dimensions.CUBE.x()) / 2;
+		double endingY = this.topLeftY
+				+ (Dimensions.TILE.y() - Dimensions.CUBE.y()) / 2;
+
+		cubeArmy.animateSynchronous(endingX, endingY);
+
 	}
 
 }
