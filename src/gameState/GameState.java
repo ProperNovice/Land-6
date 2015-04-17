@@ -1,15 +1,15 @@
 package gameState;
 
 import instances.Instances;
+import model.Model;
 
 import components.Square;
 
-import controllers.Controller;
 import enums.TextGameEnum;
 
 public class GameState {
 
-	protected Controller controller = Instances.getControllerInstance();
+	protected Model model = Instances.getControllerInstance().model();
 
 	public GameState() {
 

@@ -22,7 +22,7 @@ public class MoveArmyOrigin extends GameState {
 			return;
 
 		setTextOptionVisibleFalse();
-		setSquarePessedCredential(square);
+		setSquarePessedCredentialNonCity(square);
 		setGameState(GameStateEnum.MOVE_ARMY_DESTINATION);
 
 	}
@@ -46,8 +46,9 @@ public class MoveArmyOrigin extends GameState {
 
 	}
 
-	private void setSquarePessedCredential(Square squarePressed) {
-		super.controller.credentialController().setSquarePressed(squarePressed);
+	private void setSquarePessedCredentialNonCity(Square squarePressed) {
+		super.controller.credentialController().setSquarePressedNonCity(
+				squarePressed);
 	}
 
 	private boolean squareDiceIsEligibleToMove(Square square) {

@@ -19,13 +19,13 @@ public class ChooseSquareDice extends GameState {
 	public void handleSquareDicePressed(Square square) {
 
 		setTextIndicatorsVisibilityFalse();
-		setCredentialSquarePressed(square);
 
 		SquareEnum squareEnumPressed = square.getSquareEnum();
 
 		switch (squareEnumPressed) {
 
 		case CITY:
+			setCredentialSquarePressedCity(square);
 			setGameState(GameStateEnum.SQUARE_CITY_PRESSED);
 			break;
 		case FOREST:
@@ -52,8 +52,8 @@ public class ChooseSquareDice extends GameState {
 		super.controller.textController().setVisibleFalse();
 	}
 
-	private void setCredentialSquarePressed(Square square) {
-		super.controller.credentialController().setSquarePressed(square);
+	private void setCredentialSquarePressedCity(Square square) {
+		super.controller.credentialController().setSquarePressedCity(square);
 	}
 
 }

@@ -28,15 +28,31 @@ public class DiceArmy extends Dice {
 	}
 
 	public void substractOnePoint() {
-
 		super.sideNumberShowing--;
 		super.updateSideImage();
 	}
 
 	public void addOnePoint() {
-
 		super.sideNumberShowing++;
 		super.updateSideImage();
+	}
+
+	public boolean isMaxValue() {
+
+		if (super.sideNumberShowing == 6)
+			return true;
+		else
+			return false;
+
+	}
+
+	public boolean isMinValue() {
+
+		if (super.sideNumberShowing == 0)
+			return true;
+		else
+			return false;
+
 	}
 
 }

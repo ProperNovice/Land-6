@@ -10,7 +10,7 @@ public class Square {
 	public SquareEnum squareEnum = null;
 	private ArrayList<Square> adjacencies = new ArrayList<>();
 	private double topLeftX, topLeftY;
-	private DiceArmy dice = null;
+	private ArrayList<DiceArmy> diceArmy = new ArrayList<>();
 	private ButtonOption buttonOption = new ButtonOption(this);
 
 	public Square(SquareEnum squareEnum) {
@@ -46,9 +46,9 @@ public class Square {
 	}
 
 	public void addDiceAnimateSynchronous(DiceArmy dice) {
-		this.dice = dice;
-		this.dice.animateSynchronous(this.topLeftX, this.topLeftY);
-		this.dice.setSquare(this);
+		this.diceArmy.add(dice);
+		dice.animateSynchronous(this.topLeftX, this.topLeftY);
+		dice.setSquare(this);
 	}
 
 	public ArrayList<Square> getAdjacenciesClone() {
@@ -57,32 +57,34 @@ public class Square {
 
 	public boolean containsDice() {
 
-		if (this.dice != null)
+		if (!this.diceArmy.isEmpty())
 			return true;
 		else
 			return false;
 	}
 
 	public void substractOnePointToDice() {
-		this.dice.substractOnePoint();
+		this.diceArmy.get(0).substractOnePoint();
 	}
 
 	public void addOnePointToDice() {
-		this.dice.addOnePoint();
+		this.diceArmy.get(0).addOnePoint();
 	}
 
 	public void setVisibleButtonOption(boolean value) {
 		this.buttonOption.setVisible(value);
 	}
 
-	public DiceArmy getDiceArmy() {
+	public DiceArmy removeDiceArmy() {
+		return this.diceArmy.remove(0);
+	}
 
-		DiceArmy diceArmy = this.dice;
-		System.out.println(diceArmy);
-		this.dice = null;
-		System.out.println(diceArmy);
-		return diceArmy;
+	public boolean diceArmyIsMaxValue() {
+		return this.diceArmy.get(0).isMaxValue();
+	}
 
+	public boolean diceArmyIsMinValue() {
+		return this.diceArmy.get(0).isMinValue();
 	}
 
 }

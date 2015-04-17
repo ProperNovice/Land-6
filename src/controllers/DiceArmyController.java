@@ -11,10 +11,16 @@ import enums.Dimensions;
 public class DiceArmyController {
 
 	private ArrayList<DiceArmy> diceArmy = new ArrayList<>();
+	private double topLeftX, topLeftY;
 
 	public DiceArmyController() {
+
+		this.topLeftX = Coordinates.DICE_ARMY_TOP_LEFT.x();
+		this.topLeftY = Coordinates.DICE_ARMY_TOP_LEFT.y();
+
 		createDice();
 		relocateDice();
+
 	}
 
 	private void createDice() {
@@ -25,9 +31,8 @@ public class DiceArmyController {
 	private void relocateDice() {
 
 		int diceInRow = 3, dicePlaced = 0;
-		double firstX = Coordinates.DICE_ARMY_TOP_LEFT.x();
-		double x = firstX;
-		double y = Coordinates.DICE_ARMY_TOP_LEFT.y();
+		double x = this.topLeftX;
+		double y = this.topLeftY;
 
 		for (Dice dice : this.diceArmy) {
 
@@ -42,7 +47,7 @@ public class DiceArmyController {
 			} else if (dicePlaced == diceInRow) {
 
 				dicePlaced = 0;
-				x = firstX;
+				x = this.topLeftX;
 				y += Dimensions.DICE.y();
 				y += Dimensions.GAP_BETWEEN_DICE.y();
 
@@ -58,6 +63,22 @@ public class DiceArmyController {
 
 	public boolean isEmpty() {
 		return this.diceArmy.isEmpty();
+	}
+
+	public void addDice(DiceArmy diceArmy) {
+
+		this.diceArmy.add(diceArmy);
+
+		int row = this.diceArmy.indexOf(diceArmy) / 3;
+		int column = this.diceArmy.indexOf(diceArmy) - row * 3;
+
+		double endingX = this.topLeftX + column
+				* (Dimensions.DICE.x() + Dimensions.GAP_BETWEEN_DICE.x());
+		double endingY = this.topLeftY + row
+				* (Dimensions.DICE.y() + Dimensions.GAP_BETWEEN_DICE.y());
+
+		diceArmy.animateSynchronous(endingX, endingY);
+
 	}
 
 }

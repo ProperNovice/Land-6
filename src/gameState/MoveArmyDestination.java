@@ -1,6 +1,8 @@
 package gameState;
 
 import utils.ArrayList;
+import utils.Lock;
+import utils.Logger;
 import components.DiceArmy;
 import components.Square;
 import enums.GameStateEnum;
@@ -22,12 +24,16 @@ public class MoveArmyDestination extends GameState {
 
 	@Override
 	public void handleSquareButtonPressed(Square square) {
-		
+
 		squareAdjacenciesSetVisibleFalse();
 		setTextOptionVisibleFalse();
-		
-		DiceArmy diceArmy = square.getDiceArmy();
-		System.out.println(diceArmy);
+		executeMove(square);
+		substractOnePointFromDiceCityHandleDiceIsMin();
+
+		Logger.logNewLine("moving dice");
+		Lock.lock();
+
+		setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 
 	}
 
@@ -40,10 +46,35 @@ public class MoveArmyDestination extends GameState {
 
 	}
 
+	private void substractOnePointFromDiceCityHandleDiceIsMin() {
+
+		Square squarePressedCity = super.controller.credentialController()
+				.getSquarePressedCity();
+		squarePressedCity.substractOnePointToDice();
+
+		if (!squarePressedCity.diceArmyIsMinValue())
+			return;
+
+		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
+
+		Logger.log("adding dice to diceArmy");
+		super.controller.diceArmyController().addDice(diceArmy);
+
+	}
+
+	private void executeMove(Square square) {
+
+		Square squareMoveArmyOrigin = super.controller.credentialController()
+				.getSquarePressedNonCity();
+		DiceArmy diceArmy = squareMoveArmyOrigin.removeDiceArmy();
+		square.addDiceAnimateSynchronous(diceArmy);
+
+	}
+
 	private void enableSquareButtonForMoveDestination() {
 
 		Square squareToMoveFrom = super.controller.credentialController()
-				.getSquarePressed();
+				.getSquarePressedNonCity();
 
 		this.squareAdjacencies.addAll(squareToMoveFrom.getAdjacenciesClone());
 
@@ -52,12 +83,12 @@ public class MoveArmyDestination extends GameState {
 				square.setVisibleButtonOption(true);
 
 	}
-	
+
 	private void squareAdjacenciesSetVisibleFalse() {
-		
+
 		for (Square square : this.squareAdjacencies)
-				square.setVisibleButtonOption(false);
-		
+			square.setVisibleButtonOption(false);
+
 	}
 
 	private void showTextList() {

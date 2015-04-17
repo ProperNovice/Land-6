@@ -24,7 +24,6 @@ public class DeployArmy extends GameState {
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
 		setTextOptionVisibleFalse();
-
 		handleCancel();
 
 	}
@@ -36,9 +35,10 @@ public class DeployArmy extends GameState {
 
 		setVisibleButtonOptionFalse();
 		setTextOptionVisibleFalse();
-		substractOnePointToDice();
 
 		DiceArmy diceArmy = getDiceArmy();
+
+		substractOnePointFromDiceCityHandleDiceIsMin();
 
 		square.addDiceAnimateSynchronous(diceArmy);
 		Logger.logNewLine("deploying army");
@@ -49,11 +49,20 @@ public class DeployArmy extends GameState {
 
 	}
 
-	private void substractOnePointToDice() {
+	private void substractOnePointFromDiceCityHandleDiceIsMin() {
 
-		Square squarePressed = super.controller.credentialController()
-				.getSquarePressed();
-		squarePressed.substractOnePointToDice();
+		Square squarePressedCity = super.controller.credentialController()
+				.getSquarePressedCity();
+		squarePressedCity.substractOnePointToDice();
+
+		if (!squarePressedCity.diceArmyIsMinValue())
+			return;
+
+		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
+
+		Logger.log("adding dice to diceArmy");
+		super.controller.diceArmyController().addDice(diceArmy);
+
 	}
 
 	private DiceArmy getDiceArmy() {
