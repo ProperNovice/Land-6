@@ -113,7 +113,6 @@ public class GameState {
 			return false;
 
 		return true;
-
 	}
 
 	public void enableSquareButtonForMoveDestination() {
