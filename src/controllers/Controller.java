@@ -1,6 +1,5 @@
 package controllers;
 
-import model.Model;
 import enums.GameStateEnum;
 import gui.PanelGame;
 import instances.Instances;
@@ -13,7 +12,6 @@ public class Controller {
 	private GameStateController gameStateController = null;
 	private TextController textController = null;
 	private CredentialController credentialController = null;
-	private Model model = null;
 
 	public Controller(PanelGame panelGame) {
 
@@ -31,7 +29,6 @@ public class Controller {
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
 		this.credentialController = new CredentialController();
-		this.model = new Model();
 
 	}
 
@@ -53,10 +50,6 @@ public class Controller {
 
 	public CredentialController credentialController() {
 		return this.credentialController;
-	}
-
-	public Model model() {
-		return this.model;
 	}
 
 }

@@ -11,17 +11,17 @@ public class StartGame extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		super.model.setGameState(GameStateEnum.ANIMATING);
+		super.setGameState(GameStateEnum.ANIMATING);
 
-		DiceArmy diceArmy = super.model.getDiceArmy();
+		DiceArmy diceArmy = super.getDiceArmy();
 
 		Logger.logNewLine("adding starting dice");
-		super.model.addStartingDice();
+		super.addStartingDice(diceArmy);
 		Lock.lock();
 
 		diceArmy.setSide(6);
 
-//		super.model.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 
 	}
 

@@ -8,6 +8,7 @@ public class CredentialController {
 	private Square squarePressedCity = null;
 	private Square squarePressedNonCity = null;
 	private ArrayList<Square> squareButtons = null;
+	private ArrayList<Square> squareAdjacencies = null;
 
 	public CredentialController() {
 
@@ -35,6 +36,15 @@ public class CredentialController {
 
 	public ArrayList<Square> getSquareButtons() {
 		return this.squareButtons;
+
+	}
+
+	public void setSquareAdjacencies(ArrayList<Square> squareAdjacencies) {
+		this.squareAdjacencies = squareAdjacencies;
+	}
+
+	public ArrayList<Square> getSquareAdjacencies() {
+		return this.squareAdjacencies;
 
 	}
 

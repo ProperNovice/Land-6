@@ -10,23 +10,21 @@ public class ChooseSquareDice extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
-
 		showText();
-
 	}
 
 	@Override
 	public void handleSquareDicePressed(Square square) {
 
-		setTextIndicatorsVisibilityFalse();
+		super.textConceal();
 
 		SquareEnum squareEnumPressed = square.getSquareEnum();
 
 		switch (squareEnumPressed) {
 
 		case CITY:
-			setCredentialSquarePressedCity(square);
-			setGameState(GameStateEnum.SQUARE_CITY_PRESSED);
+			super.setCredentialSquarePressedCity(square);
+			super.setGameState(GameStateEnum.SQUARE_CITY_PRESSED);
 			break;
 		case FOREST:
 			break;
@@ -40,20 +38,7 @@ public class ChooseSquareDice extends GameState {
 	}
 
 	private void showText() {
-		super.controller.textController().setVisibleTrue(
-				TextGameEnum.CHOOSE_SQUARE_DIE);
-	}
-
-	private void setGameState(GameStateEnum gameStateEnum) {
-		super.controller.gameStateController().setGameState(gameStateEnum);
-	}
-
-	private void setTextIndicatorsVisibilityFalse() {
-		super.controller.textController().setVisibleFalse();
-	}
-
-	private void setCredentialSquarePressedCity(Square square) {
-		super.controller.credentialController().setSquarePressedCity(square);
+		super.textShow(TextGameEnum.CHOOSE_SQUARE_DIE);
 	}
 
 }

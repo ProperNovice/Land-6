@@ -15,15 +15,15 @@ public class DeployArmy extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		showTextList();
-		enableButtonSquaresForDeployArmy();
+		showText();
+		super.enableSquareButtonsForDeployArmy();
 
 	}
 
 	@Override
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
-		setTextOptionVisibleFalse();
+		super.textConceal();
 		handleCancel();
 
 	}
@@ -31,81 +31,40 @@ public class DeployArmy extends GameState {
 	@Override
 	public void handleSquareButtonPressed(Square square) {
 
-		setGameState(GameStateEnum.ANIMATING);
+		super.setGameState(GameStateEnum.ANIMATING);
 
-		setVisibleButtonOptionFalse();
-		setTextOptionVisibleFalse();
+		super.setVisibleButtonOptionFalse();
+		super.textConceal();
 
-		DiceArmy diceArmy = getDiceArmy();
-
-		substractOnePointFromDiceCityHandleDiceIsMin();
+		DiceArmy diceArmy = super.getDiceArmy();
 
 		square.addDiceAnimateSynchronous(diceArmy);
 		Logger.logNewLine("deploying army");
 		Lock.lock();
 
 		diceArmy.setSide(6);
-		setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 
-	}
+		super.substractOnePointFromDiceCityHandleDiceIsMinLock();
 
-	private void substractOnePointFromDiceCityHandleDiceIsMin() {
-
-		Square squarePressedCity = super.controller.credentialController()
-				.getSquarePressedCity();
-		squarePressedCity.substractOnePointToDice();
-
-		if (!squarePressedCity.diceArmyIsMinValue())
-			return;
-
-		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
-
-		Logger.log("adding dice to diceArmy");
-		super.controller.diceArmyController().addDice(diceArmy);
-
-	}
-
-	private DiceArmy getDiceArmy() {
-		return super.controller.diceArmyController().getDice();
-	}
-
-	private void setTextOptionVisibleFalse() {
-		super.controller.textController().setVisibleFalse();
-	}
-
-	private void setVisibleButtonOptionFalse() {
-
-		ArrayList<Square> squareButtons = super.controller
-				.credentialController().getSquareButtons();
-
-		for (Square square : squareButtons)
-			square.setVisibleButtonOption(false);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 
 	}
 
 	private void handleCancel() {
 
-		setVisibleButtonOptionFalse();
-		setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setVisibleButtonOptionFalse();
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 
 	}
 
-	private void setGameState(GameStateEnum gameStateEnum) {
-		super.controller.gameStateController().setGameState(gameStateEnum);
-	}
-
-	private void showTextList() {
+	private void showText() {
 
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 		list.add(TextGameEnum.CHOOSE_SQUARE);
 		list.add(TextGameEnum.CANCEL);
 
-		super.controller.textController().setVisibleTrue(list);
+		super.textShow(list);
 
-	}
-
-	private void enableButtonSquaresForDeployArmy() {
-		super.controller.tileController().enableButtonSquaresForDeployArmy();
 	}
 
 }

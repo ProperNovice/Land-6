@@ -8,28 +8,26 @@ public class SquareCityPressed extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
-
-		showTextList();
-
+		showText();
 	}
 
 	@Override
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
-		setTextOptionVisibleFalse();
+		super.textConceal();
 
 		switch (textOptionEnum) {
 
 		case CANCEL:
-			setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+			super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
 			break;
 
 		case DEPLOY_AN_ARMY:
-			setGameState(GameStateEnum.DEPLOY_ARMY);
+			super.setGameState(GameStateEnum.DEPLOY_ARMY);
 			break;
 
 		case MOVE_AN_ARMY:
-			setGameState(GameStateEnum.MOVE_ARMY_ORIGIN);
+			super.setGameState(GameStateEnum.MOVE_ARMY_ORIGIN);
 			break;
 
 		default:
@@ -39,30 +37,18 @@ public class SquareCityPressed extends GameState {
 
 	}
 
-	private void showTextList() {
+	private void showText() {
 
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 
-		if (!armyDiceIsEmpty())
+		if (!super.armyDiceIsEmpty())
 			list.add(TextGameEnum.DEPLOY_AN_ARMY);
 
 		list.add(TextGameEnum.MOVE_AN_ARMY);
 		list.add(TextGameEnum.CANCEL);
 
-		super.controller.textController().setVisibleTrue(list);
+		super.textShow(list);
 
-	}
-
-	private boolean armyDiceIsEmpty() {
-		return super.controller.diceArmyController().isEmpty();
-	}
-
-	private void setGameState(GameStateEnum gameStateEnum) {
-		super.controller.gameStateController().setGameState(gameStateEnum);
-	}
-
-	private void setTextOptionVisibleFalse() {
-		super.controller.textController().setVisibleFalse();
 	}
 
 }
