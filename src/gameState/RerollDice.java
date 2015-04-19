@@ -1,8 +1,9 @@
 package gameState;
 
-import components.Square;
 import utils.ArrayList;
-import enums.GameStateEnum;
+
+import components.Square;
+
 import enums.SquareEnum;
 import enums.TextGameEnum;
 
@@ -24,7 +25,17 @@ public class RerollDice extends GameState {
 		super.textConceal();
 		square.rerollDiceArmy();
 		super.substractPointsFromNonCityDiceHandleDiceIsMinLock(1);
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(super.getGameStatePrevious());
+
+	}
+
+	@Override
+	public void handleDiceActionPressed() {
+
+		super.textConceal();
+		super.rollDiceAction();
+		super.substractPointsFromNonCityDiceHandleDiceIsMinLock(1);
+		super.setGameState(super.getGameStatePrevious());
 
 	}
 
@@ -32,7 +43,7 @@ public class RerollDice extends GameState {
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
 		super.textConceal();
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(super.getGameStatePrevious());
 
 	}
 

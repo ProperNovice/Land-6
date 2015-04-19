@@ -2,6 +2,7 @@ package controllers;
 
 import instances.Instances;
 import utils.ArrayList;
+import utils.Logger;
 import components.CubeArmy;
 import components.DiceArmy;
 import components.Square;
@@ -256,6 +257,26 @@ public class TileController {
 			if (tile.getTileNumber() == numberOfTile)
 				tile.addCubeArmyAnimateSynchronous(cubeArmy);
 
+	}
+
+	public boolean tileContainsCubeArmy(int tileNumber) {
+
+		for (Tile tile : this.tiles)
+			if (tile.getTileNumber() == tileNumber)
+				return tile.containsCubeArmy();
+
+		Logger.logNewLine("should not be here - tileContainsCubeArmy");
+
+		return false;
+	}
+
+	public boolean atLeastOneSeaSquareHasDice() {
+
+		for (Tile tile : this.tiles)
+			if (tile.seaSquareHasDice())
+				return true;
+
+		return false;
 	}
 
 }

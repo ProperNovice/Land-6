@@ -3,6 +3,7 @@ package components;
 import instances.Instances;
 import utils.ArrayList;
 import utils.ImageView;
+import utils.Logger;
 import utils.Random;
 import enums.Dimensions;
 import enums.SquareEnum;
@@ -211,6 +212,16 @@ public class Tile {
 
 		cubeArmy.animateSynchronous(endingX, endingY);
 
+	}
+
+	public boolean seaSquareHasDice() {
+
+		for (Square square : this.squares)
+			if (square.getSquareEnum().equals(SquareEnum.SEA))
+				return square.containsDice();
+
+		Logger.logNewLine("should not be here - seaSquareHasDice");
+		return false;
 	}
 
 }

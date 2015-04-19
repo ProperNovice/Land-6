@@ -80,4 +80,8 @@ public class CubeArmyController {
 
 	}
 
+	public int size() {
+		return this.cubeArmy.size();
+	}
+
 }

@@ -42,7 +42,8 @@ public class DeployArmy extends GameState {
 		Logger.logNewLine("deploying army");
 		Lock.lock();
 
-		diceArmy.setSide(6);
+		int cubeArmyControllerSize = super.getCubeArmyControllerSize();
+		diceArmy.setSide(cubeArmyControllerSize);
 
 		super.substractPointsFromCityDiceHandleDiceIsMinLock(1);
 

@@ -56,6 +56,7 @@ public class ChooseSquareDice extends GameState {
 
 	private void handleSeaPressed(Square square) {
 		super.setCredentialSquarePressedNonCity(square);
+		super.setGameStatePrevious(GameStateEnum.CHOOSE_SQUARE_DICE);
 		super.setGameState(GameStateEnum.REROLL_DICE);
 	}
 

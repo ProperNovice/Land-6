@@ -3,6 +3,7 @@ package controllers;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
 import gameState.Animating;
+import gameState.ChooseSeaSquareDice;
 import gameState.ChooseSquareDice;
 import gameState.DeployArmy;
 import gameState.GameState;
@@ -27,6 +28,7 @@ public class GameStateController {
 	private GameState moveArmyDestination = new MoveArmyDestination();
 	private GameState lordOfTheCubesAction = new LordOfTheCubesAction();
 	private GameState rerollDice = new RerollDice();
+	private GameState chooseSeaSquareDice = new ChooseSeaSquareDice();
 
 	public GameStateController() {
 
@@ -67,9 +69,13 @@ public class GameStateController {
 		case LORD_OF_THE_CUBES_ACTION:
 			this.currentGameState = this.lordOfTheCubesAction;
 			break;
-			
+
 		case REROLL_DICE:
 			this.currentGameState = this.rerollDice;
+			break;
+
+		case CHOOSE_SEA_SQUARE_DICE:
+			this.currentGameState = this.chooseSeaSquareDice;
 			break;
 
 		}
@@ -91,6 +97,10 @@ public class GameStateController {
 
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 		this.currentGameState.handleTextPressed(textOptionEnum);
+	}
+
+	public void handleDiceActionPressed() {
+		this.currentGameState.handleDiceActionPressed();
 	}
 
 }

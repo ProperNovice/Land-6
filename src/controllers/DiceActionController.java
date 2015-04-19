@@ -1,11 +1,13 @@
 package controllers;
 
 import components.DiceAction;
+
 import enums.Coordinates;
 
 public class DiceActionController {
 
 	private DiceAction diceAction = null;
+	private boolean isRolled = false;
 
 	public DiceActionController() {
 		createDiceSea();
@@ -20,6 +22,7 @@ public class DiceActionController {
 	}
 
 	public void roll() {
+		this.isRolled = true;
 		this.diceAction.roll();
 	}
 
@@ -28,7 +31,12 @@ public class DiceActionController {
 	}
 
 	public void resetSide() {
+		this.isRolled = false;
 		this.diceAction.resetSide();
+	}
+
+	public boolean isRolled() {
+		return this.isRolled;
 	}
 
 }

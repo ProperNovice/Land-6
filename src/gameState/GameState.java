@@ -36,6 +36,10 @@ public class GameState {
 
 	}
 
+	public void handleDiceActionPressed() {
+
+	}
+
 	protected void setGameState(GameStateEnum gameStateEnum) {
 		this.controller.gameStateController().setGameState(gameStateEnum);
 	}
@@ -233,6 +237,32 @@ public class GameState {
 
 	protected void resetDiceActionSide() {
 		this.controller.diceActionController().resetSide();
+	}
+
+	protected int getCubeArmyControllerSize() {
+		return this.controller.cubeArmyController().size();
+	}
+
+	protected boolean tileContainsCubeArmy(int tileNumber) {
+		return this.controller.tileController()
+				.tileContainsCubeArmy(tileNumber);
+	}
+
+	protected boolean diceActionIsRolled() {
+		return this.controller.diceActionController().isRolled();
+	}
+
+	protected boolean atLeastOneSeaSquareHasDice() {
+		return this.controller.tileController().atLeastOneSeaSquareHasDice();
+	}
+
+	protected void setGameStatePrevious(GameStateEnum gameStateEnum) {
+		this.controller.credentialController().setGameStatePrevious(
+				gameStateEnum);
+	}
+
+	protected GameStateEnum getGameStatePrevious() {
+		return this.controller.credentialController().getGameStatePrevious();
 	}
 
 }
