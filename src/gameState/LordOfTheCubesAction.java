@@ -52,7 +52,7 @@ public class LordOfTheCubesAction extends GameState {
 				.getDiceActionNumberSideShowing();
 
 		if (!super.tileContainsCubeArmy(diceActionNumberSideShowing)) {
-			addCubeArmyToTileAnimateSynchronous(diceActionNumberSideShowing);
+			executeAddCubeArmyToEmptyTileAnimateSynchronous(diceActionNumberSideShowing);
 			return;
 		}
 
@@ -70,7 +70,7 @@ public class LordOfTheCubesAction extends GameState {
 		super.textShow(list);
 	}
 
-	private void addCubeArmyToTileAnimateSynchronous(
+	private void executeAddCubeArmyToEmptyTileAnimateSynchronous(
 			int diceActionNumberSideShowing) {
 
 		CubeArmy cubeArmy = super.getCubeArmy();
