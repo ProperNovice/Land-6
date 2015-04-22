@@ -48,9 +48,8 @@ public class ChooseSquareDice extends GameState {
 	}
 
 	private void handleGrowingFieldPressed(Square square) {
-		super.setCredentialSquarePressedNonCity(square);
 		super.addOneToDiceArmyInNonGrowingFieldSquare();
-		super.substractPointsFromNonCityDiceHandleDiceIsMinLock(1);
+		super.substractPointsFromSquareDiceHandleIfMinLock(square, 1);
 		super.setGameState(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
 	}
 

@@ -106,7 +106,7 @@ public class Tile {
 			if (!square.getSquareEnum().equals(SquareEnum.CITY))
 				continue;
 
-			if (!square.containsDice())
+			if (!square.containsDiceArmy())
 				continue;
 
 			adjacencies.addAll(square.getAdjacenciesClone());
@@ -124,7 +124,7 @@ public class Tile {
 			if (square.getSquareEnum().equals(SquareEnum.CITY))
 				continue;
 
-			if (!square.containsDice())
+			if (!square.containsDiceArmy())
 				continue;
 
 			isMovable = true;
@@ -145,12 +145,12 @@ public class Tile {
 			if (!squareTemp.getSquareEnum().equals(SquareEnum.CITY))
 				continue;
 
-			if (!squareTemp.containsDice())
+			if (!squareTemp.containsDiceArmy())
 				continue;
 
 			for (Square square : squareTemp.getAdjacenciesClone()) {
 
-				if (square.containsDice())
+				if (square.containsDiceArmy())
 					continue;
 
 				canDeployArmy = true;
@@ -173,7 +173,7 @@ public class Tile {
 
 		for (Square square : this.squares)
 			if (square.getSquareEnum().equals(SquareEnum.CITY))
-				if (square.containsDice())
+				if (square.containsDiceArmy())
 					containsCityDiceArmy = true;
 
 		return containsCityDiceArmy;
@@ -184,7 +184,7 @@ public class Tile {
 
 		for (Square square : this.squares)
 			if (!square.getSquareEnum().equals(SquareEnum.GROWING_FIELD))
-				if (square.containsDice())
+				if (square.containsDiceArmy())
 					if (!square.diceArmyIsMaxValue())
 						square.addOnePointToDice();
 
@@ -199,6 +199,15 @@ public class Tile {
 			return false;
 		else
 			return true;
+	}
+
+	public boolean containsDiceArmy() {
+
+		for (Square square : this.squares)
+			if (square.containsDiceArmy())
+				return true;
+
+		return false;
 	}
 
 	public void addCubeArmyAnimateSynchronous(CubeArmy cubeArmy) {
@@ -218,10 +227,23 @@ public class Tile {
 
 		for (Square square : this.squares)
 			if (square.getSquareEnum().equals(SquareEnum.SEA))
-				return square.containsDice();
+				return square.containsDiceArmy();
 
 		Logger.logNewLine("should not be here - seaSquareHasDice");
 		return false;
+
+	}
+
+	public ArrayList<Square> getSquaresWithDiceArmy() {
+
+		ArrayList<Square> list = new ArrayList<>();
+
+		for (Square square : this.squares)
+			if (square.containsDiceArmy())
+				list.add(square);
+
+		return list;
+
 	}
 
 }

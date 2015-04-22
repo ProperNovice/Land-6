@@ -32,7 +32,9 @@ public class MoveArmyDestination extends GameState {
 		if (super.moreThanOneCitiesContainDiceArmy())
 			substractFromCityDiceArmy = 2;
 
-		super.substractPointsFromCityDiceHandleDiceIsMinLock(substractFromCityDiceArmy);
+		Square squareCity = super.getSquarePressedCity();
+		super.substractPointsFromSquareDiceHandleIfMinLock(squareCity,
+				substractFromCityDiceArmy);
 
 		super.setGameState(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
 

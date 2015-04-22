@@ -24,7 +24,10 @@ public class RerollDice extends GameState {
 
 		super.textConceal();
 		square.rerollDiceArmy();
-		super.substractPointsFromNonCityDiceHandleDiceIsMinLock(1);
+
+		Square squareCity = super.getSquarePressedNonCity();
+		super.substractPointsFromSquareDiceHandleIfMinLock(squareCity, 1);
+
 		super.setGameState(super.getGameStatePrevious());
 
 	}
@@ -34,7 +37,10 @@ public class RerollDice extends GameState {
 
 		super.textConceal();
 		super.rollDiceAction();
-		super.substractPointsFromNonCityDiceHandleDiceIsMinLock(1);
+
+		Square squareCity = super.getSquarePressedNonCity();
+		super.substractPointsFromSquareDiceHandleIfMinLock(squareCity, 1);
+
 		super.setGameState(super.getGameStatePrevious());
 
 	}

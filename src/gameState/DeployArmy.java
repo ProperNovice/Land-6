@@ -45,7 +45,8 @@ public class DeployArmy extends GameState {
 		int cubeArmyControllerSize = super.getCubeArmyControllerSize();
 		diceArmy.setSide(cubeArmyControllerSize);
 
-		super.substractPointsFromCityDiceHandleDiceIsMinLock(1);
+		Square squareCity = super.getSquarePressedCity();
+		super.substractPointsFromSquareDiceHandleIfMinLock(squareCity, 1);
 
 		super.setGameState(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
 

@@ -4,9 +4,11 @@ import instances.Instances;
 import utils.ArrayList;
 import utils.Lock;
 import utils.Logger;
+
 import components.CubeArmy;
 import components.DiceArmy;
 import components.Square;
+
 import controllers.Controller;
 import enums.GameStateEnum;
 import enums.SquareEnum;
@@ -94,59 +96,40 @@ public class GameState {
 
 	}
 
-	protected void substractPointsFromCityDiceHandleDiceIsMinLock(int points) {
+	protected void substractPointsFromSquareDiceHandleIfMinLock(Square square,
+			int points) {
 
-		Square squarePressedCity = this.controller.credentialController()
-				.getSquarePressedCity();
-
-		for (int counter = 1; counter <= points; counter++) {
-
-			squarePressedCity.substractOnePointToDice();
-
-			if (!squarePressedCity.diceArmyIsMinValue())
-				continue;
-
-			break;
-		}
-
-		if (!squarePressedCity.diceArmyIsMinValue())
-			return;
-
-		setGameState(GameStateEnum.ANIMATING);
-
-		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
-
-		Logger.log("adding dice to diceArmy");
-		this.controller.diceArmyController().addDice(diceArmy);
-
-		Lock.lock();
+		ArrayList<Square> list = new ArrayList<>();
+		list.add(square);
+		substractPointsFromSquareDiceHandleIfMinLock(list, points);
 
 	}
 
-	protected void substractPointsFromNonCityDiceHandleDiceIsMinLock(int points) {
+	protected void substractPointsFromSquareDiceHandleIfMinLock(
+			ArrayList<Square> squares, int points) {
 
-		Square squarePressedCity = this.controller.credentialController()
-				.getSquarePressedNonCity();
+		ArrayList<DiceArmy> diceArmyMinValue = new ArrayList<>();
 
-		for (int counter = 1; counter <= points; counter++) {
+		for (Square square : squares)
+			for (int counter = 1; counter <= points; counter++) {
 
-			squarePressedCity.substractOnePointToDice();
+				square.substractOnePointToDice();
 
-			if (!squarePressedCity.diceArmyIsMinValue())
-				continue;
+				if (!square.diceArmyIsMinValue())
+					continue;
 
-			break;
-		}
+				diceArmyMinValue.add(square.removeDiceArmy());
+				break;
 
-		if (!squarePressedCity.diceArmyIsMinValue())
+			}
+
+		if (diceArmyMinValue.isEmpty())
 			return;
 
 		setGameState(GameStateEnum.ANIMATING);
 
-		DiceArmy diceArmy = squarePressedCity.removeDiceArmy();
-
 		Logger.log("adding dice to diceArmy");
-		this.controller.diceArmyController().addDice(diceArmy);
+		this.controller.diceArmyController().addDice(diceArmyMinValue);
 
 		Lock.lock();
 
@@ -170,7 +153,7 @@ public class GameState {
 		ArrayList<Square> squareAdjacencies = new ArrayList<>();
 
 		for (Square square : squareToMoveFrom.getAdjacenciesClone())
-			if (!square.containsDice()) {
+			if (!square.containsDiceArmy()) {
 				squareAdjacencies.add(square);
 				square.setVisibleButtonOption(true);
 			}
@@ -248,6 +231,11 @@ public class GameState {
 				.tileContainsCubeArmy(tileNumber);
 	}
 
+	protected boolean tileContainsDiceArmy(int tileNumber) {
+		return this.controller.tileController()
+				.tileContainsDiceArmy(tileNumber);
+	}
+
 	protected boolean diceActionIsRolled() {
 		return this.controller.diceActionController().isRolled();
 	}
@@ -263,6 +251,20 @@ public class GameState {
 
 	protected GameStateEnum getGameStatePrevious() {
 		return this.controller.credentialController().getGameStatePrevious();
+	}
+
+	protected ArrayList<Square> getSquaresThatContainDiceOnTileNumber(
+			int tileNumber) {
+		return this.controller.tileController()
+				.getSquaresThatContainDiceOnTileNumber(tileNumber);
+	}
+
+	protected Square getSquarePressedCity() {
+		return this.controller.credentialController().getSquarePressedCity();
+	}
+
+	protected Square getSquarePressedNonCity() {
+		return this.controller.credentialController().getSquarePressedNonCity();
 	}
 
 }

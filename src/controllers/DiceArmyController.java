@@ -65,19 +65,23 @@ public class DiceArmyController {
 		return this.diceArmy.isEmpty();
 	}
 
-	public void addDice(DiceArmy diceArmy) {
+	public void addDice(ArrayList<DiceArmy> diceArmyList) {
 
-		this.diceArmy.add(diceArmy);
+		this.diceArmy.addAll(diceArmyList);
 
-		int row = this.diceArmy.indexOf(diceArmy) / 3;
-		int column = this.diceArmy.indexOf(diceArmy) - row * 3;
+		for (DiceArmy diceArmyTemp : diceArmyList) {
 
-		double endingX = this.topLeftX + column
-				* (Dimensions.DICE.x() + Dimensions.GAP_BETWEEN_DICE.x());
-		double endingY = this.topLeftY + row
-				* (Dimensions.DICE.y() + Dimensions.GAP_BETWEEN_DICE.y());
+			int row = this.diceArmy.indexOf(diceArmyTemp) / 3;
+			int column = this.diceArmy.indexOf(diceArmyTemp) - row * 3;
 
-		diceArmy.animateSynchronous(endingX, endingY);
+			double endingX = this.topLeftX + column
+					* (Dimensions.DICE.x() + Dimensions.GAP_BETWEEN_DICE.x());
+			double endingY = this.topLeftY + row
+					* (Dimensions.DICE.y() + Dimensions.GAP_BETWEEN_DICE.y());
+
+			diceArmyTemp.animateSynchronous(endingX, endingY);
+
+		}
 
 	}
 

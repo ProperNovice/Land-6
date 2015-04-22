@@ -55,7 +55,7 @@ public class Square {
 		return this.adjacencies.clone();
 	}
 
-	public boolean containsDice() {
+	public boolean containsDiceArmy() {
 
 		if (!this.diceArmy.isEmpty())
 			return true;

@@ -172,7 +172,7 @@ public class TileController {
 			if (citiesAdjacencies.contains(square))
 				continue;
 
-			if (square.containsDice())
+			if (square.containsDiceArmy())
 				continue;
 
 			citiesAdjacencies.add(square);
@@ -270,6 +270,15 @@ public class TileController {
 		return false;
 	}
 
+	public boolean tileContainsDiceArmy(int tileNumber) {
+
+		for (Tile tile : this.tiles)
+			if (tile.containsDiceArmy())
+				return true;
+
+		return false;
+	}
+
 	public boolean atLeastOneSeaSquareHasDice() {
 
 		for (Tile tile : this.tiles)
@@ -277,6 +286,20 @@ public class TileController {
 				return true;
 
 		return false;
+
+	}
+
+	public ArrayList<Square> getSquaresThatContainDiceOnTileNumber(
+			int tileNumber) {
+
+		for (Tile tile : this.tiles)
+			if (tile.getTileNumber() == tileNumber)
+				return tile.getSquaresWithDiceArmy();
+
+		Logger.logNewLine("should not be here - getSquaresThatContainDiceOnTileNumber");
+
+		return null;
+
 	}
 
 }

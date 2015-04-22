@@ -51,10 +51,10 @@ public class LordOfTheCubesAction extends GameState {
 		int diceActionNumberSideShowing = super
 				.getDiceActionNumberSideShowing();
 
-		if (!super.tileContainsCubeArmy(diceActionNumberSideShowing)) {
+		if (!super.tileContainsCubeArmy(diceActionNumberSideShowing))
 			executeAddCubeArmyToEmptyTileAnimateSynchronous(diceActionNumberSideShowing);
-			return;
-		}
+		else if (super.tileContainsDiceArmy(diceActionNumberSideShowing))
+			executeTileContainsDiceArmy(diceActionNumberSideShowing);
 
 	}
 
@@ -82,6 +82,12 @@ public class LordOfTheCubesAction extends GameState {
 
 		super.resetDiceActionSide();
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+	}
+
+	private void executeTileContainsDiceArmy(int diceActionNumberSideShowing) {
+		
+		System.out.println("yay");
+
 	}
 
 }
