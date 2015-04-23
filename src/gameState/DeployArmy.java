@@ -55,7 +55,7 @@ public class DeployArmy extends GameState {
 	private void handleCancel() {
 
 		super.setVisibleButtonOptionFalse();
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 

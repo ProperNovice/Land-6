@@ -45,7 +45,7 @@ public class MoveArmyDestination extends GameState {
 
 		super.squareAdjacenciesSetVisibleFalse();
 		super.textConceal();
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 

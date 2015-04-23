@@ -5,42 +5,36 @@ import utils.ArrayList;
 import components.Square;
 
 import enums.GameStateEnum;
+import enums.SquareEnum;
 import enums.TextGameEnum;
 
-public class MoveArmyOrigin extends GameState {
+public class ChooseCitySquareSubstractOnePoint extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
-		showText();
+		setText();
 	}
 
 	@Override
 	public void handleSquareDicePressed(Square square) {
 
-		if (!super.squareDiceIsEligibleToMove(square))
+		if (!square.getSquareEnum().equals(SquareEnum.CITY))
 			return;
 
 		super.textConceal();
-		super.setCredentialSquarePressedNonCity(square);
-		super.setGameState(GameStateEnum.MOVE_ARMY_DESTINATION);
+		super.resetDiceActionSide();
 
-	}
+		super.substractPointsFromSquareDiceHandleIfMinLock(square, 1);
 
-	@Override
-	public void handleTextPressed(TextGameEnum textOptionEnum) {
-
-		super.textConceal();
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 
-	private void showText() {
+	private void setText() {
 
 		ArrayList<TextGameEnum> list = new ArrayList<>();
-
-		list.add(TextGameEnum.CHOOSE_ARMY_TO_MOVE);
-		list.add(TextGameEnum.CANCEL);
-
+		list.add(TextGameEnum.CHOOSE_CITY_SQUARE);
+		list.add(TextGameEnum.TO_SUBSTRACT_ONE_POINT);
 		super.textShow(list);
 
 	}

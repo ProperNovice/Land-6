@@ -13,6 +13,13 @@ public enum TextGameEnum {
 	REROLL_DICE("Reroll dice", TextGameType.OPTION),
 	EXECUTE_DICE_ACTION("Execute dice action", TextGameType.OPTION),
 	CHOOSE_SEA_SQUARE("Choose sea square", TextGameType.INDICATOR),
+	CONTINUE_TILE_CONTAINS_DICE_ARMY("Continue", TextGameType.OPTION),
+	ADDING_ARMY_CUBE_ON_TILE("Adding army cube", TextGameType.INDICATOR),
+	CONTINUE_ADDDING_ARMY_CUBE_ON_TILE("Continue", TextGameType.OPTION),
+	SUBSTRACT_ONE_POINT("Substract one point", TextGameType.INDICATOR),
+	TO_EACH_DIE("to each die", TextGameType.INDICATOR),
+	CHOOSE_CITY_SQUARE("Choose city square", TextGameType.INDICATOR),
+	TO_SUBSTRACT_ONE_POINT("to substract one point", TextGameType.INDICATOR),
 
 	;
 

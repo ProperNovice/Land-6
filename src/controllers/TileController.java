@@ -273,8 +273,10 @@ public class TileController {
 	public boolean tileContainsDiceArmy(int tileNumber) {
 
 		for (Tile tile : this.tiles)
-			if (tile.containsDiceArmy())
-				return true;
+			if (tile.getTileNumber() == tileNumber)
+				return tile.containsDiceArmy();
+
+		Logger.logNewLine("should not be here - tileContainsDiceArmy");
 
 		return false;
 	}

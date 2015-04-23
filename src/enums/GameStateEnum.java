@@ -3,7 +3,7 @@ package enums;
 public enum GameStateEnum {
 
 	START_GAME("start game"),
-	CHOOSE_SQUARE_DICE("choose square dice"),
+	CHOOSE_SQUARE_DICE_ACTION("choose square dice"),
 	SQUARE_CITY_PRESSED("square city pressed"),
 	DEPLOY_ARMY("deploy army"),
 	ANIMATING("animating"),
@@ -11,7 +11,8 @@ public enum GameStateEnum {
 	MOVE_ARMY_DESTINATION("move army destination"),
 	LORD_OF_THE_CUBES_ACTION("lord of the cubes action"),
 	REROLL_DICE("reroll dice"),
-	CHOOSE_SEA_SQUARE_DICE("choose sea square dice");
+	CHOOSE_SEA_SQUARE_DICE("choose sea square dice"),
+	CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT("choose city square substract one point");
 	
 	private String text = null;
 

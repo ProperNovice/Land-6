@@ -19,7 +19,7 @@ public class SquareCityPressed extends GameState {
 		switch (textOptionEnum) {
 
 		case CANCEL:
-			super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+			super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 			break;
 
 		case DEPLOY_AN_ARMY:

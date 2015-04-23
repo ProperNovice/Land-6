@@ -6,7 +6,7 @@ import enums.GameStateEnum;
 import enums.SquareEnum;
 import enums.TextGameEnum;
 
-public class ChooseSquareDice extends GameState {
+public class ChooseSquareDiceAction extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
@@ -55,7 +55,7 @@ public class ChooseSquareDice extends GameState {
 
 	private void handleSeaPressed(Square square) {
 		super.setCredentialSquarePressedNonCity(square);
-		super.setGameStatePrevious(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameStatePrevious(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 		super.setGameState(GameStateEnum.REROLL_DICE);
 	}
 

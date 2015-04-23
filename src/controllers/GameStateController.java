@@ -3,8 +3,9 @@ package controllers;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
 import gameState.Animating;
+import gameState.ChooseCitySquareSubstractOnePoint;
 import gameState.ChooseSeaSquareDice;
-import gameState.ChooseSquareDice;
+import gameState.ChooseSquareDiceAction;
 import gameState.DeployArmy;
 import gameState.GameState;
 import gameState.LordOfTheCubesAction;
@@ -20,7 +21,7 @@ public class GameStateController {
 
 	private GameState currentGameState = null;
 	private GameState startGame = new StartGame();
-	private GameState chooseSquareDice = new ChooseSquareDice();
+	private GameState chooseSquareDiceAction = new ChooseSquareDiceAction();
 	private GameState squareCityPressed = new SquareCityPressed();
 	private GameState deployArmy = new DeployArmy();
 	private GameState animating = new Animating();
@@ -29,6 +30,7 @@ public class GameStateController {
 	private GameState lordOfTheCubesAction = new LordOfTheCubesAction();
 	private GameState rerollDice = new RerollDice();
 	private GameState chooseSeaSquareDice = new ChooseSeaSquareDice();
+	private GameState chooseCitySquareSubstractOnePoint = new ChooseCitySquareSubstractOnePoint();
 
 	public GameStateController() {
 
@@ -42,8 +44,8 @@ public class GameStateController {
 			this.currentGameState = this.startGame;
 			break;
 
-		case CHOOSE_SQUARE_DICE:
-			this.currentGameState = this.chooseSquareDice;
+		case CHOOSE_SQUARE_DICE_ACTION:
+			this.currentGameState = this.chooseSquareDiceAction;
 			break;
 
 		case SQUARE_CITY_PRESSED:
@@ -76,6 +78,10 @@ public class GameStateController {
 
 		case CHOOSE_SEA_SQUARE_DICE:
 			this.currentGameState = this.chooseSeaSquareDice;
+			break;
+			
+		case CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT:
+			this.currentGameState = this.chooseCitySquareSubstractOnePoint;
 			break;
 
 		}

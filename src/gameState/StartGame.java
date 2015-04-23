@@ -21,7 +21,7 @@ public class StartGame extends GameState {
 
 		diceArmy.setSide(6);
 
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 

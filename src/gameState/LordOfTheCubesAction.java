@@ -4,6 +4,7 @@ import utils.ArrayList;
 import utils.Lock;
 import utils.Logger;
 import components.CubeArmy;
+import components.Square;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
 
@@ -20,7 +21,7 @@ public class LordOfTheCubesAction extends GameState {
 			return;
 		}
 
-		executeDiceAction();
+		handleDiceAction();
 
 	}
 
@@ -36,8 +37,15 @@ public class LordOfTheCubesAction extends GameState {
 			break;
 
 		case EXECUTE_DICE_ACTION:
-			executeDiceAction();
+			handleDiceAction();
 			break;
+
+		case CONTINUE_TILE_CONTAINS_DICE_ARMY:
+			executeTileContainsDiceArmy(super.getDiceActionNumberSideShowing());
+			break;
+
+		case CONTINUE_ADDDING_ARMY_CUBE_ON_TILE:
+			executeAddCubeArmyToEmptyTileAnimateSynchronous();
 
 		default:
 			break;
@@ -46,15 +54,27 @@ public class LordOfTheCubesAction extends GameState {
 
 	}
 
-	private void executeDiceAction() {
+	private void handleDiceAction() {
 
 		int diceActionNumberSideShowing = super
 				.getDiceActionNumberSideShowing();
 
 		if (!super.tileContainsCubeArmy(diceActionNumberSideShowing))
-			executeAddCubeArmyToEmptyTileAnimateSynchronous(diceActionNumberSideShowing);
+			setTextAddCubeArmyToEmptyTileAnimateSynchronous(diceActionNumberSideShowing);
 		else if (super.tileContainsDiceArmy(diceActionNumberSideShowing))
-			executeTileContainsDiceArmy(diceActionNumberSideShowing);
+			setTextTileContainsDiceArmy();
+		else
+			super.setGameState(GameStateEnum.CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT);
+
+	}
+
+	private void setTextTileContainsDiceArmy() {
+
+		ArrayList<TextGameEnum> list = new ArrayList<>();
+		list.add(TextGameEnum.SUBSTRACT_ONE_POINT);
+		list.add(TextGameEnum.TO_EACH_DIE);
+		list.add(TextGameEnum.CONTINUE_TILE_CONTAINS_DICE_ARMY);
+		super.textShow(list);
 
 	}
 
@@ -64,14 +84,28 @@ public class LordOfTheCubesAction extends GameState {
 	}
 
 	private void handleAtLeastOneSeaSquareHasDice() {
+
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 		list.add(TextGameEnum.EXECUTE_DICE_ACTION);
 		list.add(TextGameEnum.REROLL_DICE);
 		super.textShow(list);
+
 	}
 
-	private void executeAddCubeArmyToEmptyTileAnimateSynchronous(
+	private void setTextAddCubeArmyToEmptyTileAnimateSynchronous(
 			int diceActionNumberSideShowing) {
+
+		ArrayList<TextGameEnum> list = new ArrayList<>();
+		list.add(TextGameEnum.ADDING_ARMY_CUBE_ON_TILE);
+		list.add(TextGameEnum.CONTINUE_ADDDING_ARMY_CUBE_ON_TILE);
+		super.textShow(list);
+
+	}
+
+	private void executeAddCubeArmyToEmptyTileAnimateSynchronous() {
+
+		int diceActionNumberSideShowing = super
+				.getDiceActionNumberSideShowing();
 
 		CubeArmy cubeArmy = super.getCubeArmy();
 
@@ -81,12 +115,17 @@ public class LordOfTheCubesAction extends GameState {
 		Lock.lock();
 
 		super.resetDiceActionSide();
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 	}
 
 	private void executeTileContainsDiceArmy(int diceActionNumberSideShowing) {
-		
-		System.out.println("yay");
+
+		ArrayList<Square> list = super
+				.getSquaresThatContainDiceOnTileNumber(diceActionNumberSideShowing);
+
+		super.substractPointsFromSquareDiceHandleIfMinLock(list, 1);
+		super.resetDiceActionSide();
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 

@@ -56,7 +56,7 @@ public class Dice implements EventHandler<MouseEvent> {
 	}
 
 	public void roll() {
-		this.sideNumberShowing = Random.getRandomNumber(1, 6);
+		this.sideNumberShowing = Random.getRandomNumber(4, 4);
 		updateSideImage();
 	}
 
