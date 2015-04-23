@@ -26,6 +26,7 @@ public class ChooseSquareDiceAction extends GameState {
 			handleCityPressed(square);
 			break;
 		case FOREST:
+			handleForestPressed(square);
 			break;
 		case GROWING_FIELD:
 			handleGrowingFieldPressed(square);
@@ -57,6 +58,19 @@ public class ChooseSquareDiceAction extends GameState {
 		super.setCredentialSquarePressedNonCity(square);
 		super.setGameStatePrevious(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 		super.setGameState(GameStateEnum.REROLL_DICE);
+	}
+
+	private void handleForestPressed(Square square) {
+
+		if (!super.anyTileContainsCubeArmy()) {
+			showText();
+			return;
+		}
+
+		super.setCredentialSquarePressedNonCity(square);
+		super.setGameStatePrevious(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+		super.setGameState(GameStateEnum.FIGHT_LORD_OF_THE_CUBES);
+
 	}
 
 }

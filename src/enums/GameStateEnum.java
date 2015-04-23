@@ -12,8 +12,11 @@ public enum GameStateEnum {
 	LORD_OF_THE_CUBES_ACTION("lord of the cubes action"),
 	REROLL_DICE("reroll dice"),
 	CHOOSE_SEA_SQUARE_DICE("choose sea square dice"),
-	CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT("choose city square substract one point");
+	CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT("choose city square substract one point"),
+	FIGHT_LORD_OF_THE_CUBES("fight lord of the cubes"),
 	
+	;
+
 	private String text = null;
 
 	private GameStateEnum(String text) {

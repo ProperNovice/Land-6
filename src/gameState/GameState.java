@@ -267,4 +267,8 @@ public class GameState {
 		return this.controller.credentialController().getSquarePressedNonCity();
 	}
 
+	protected boolean anyTileContainsCubeArmy() {
+		return this.controller.tileController().anyTileContainsCubeArmy();
+	}
+
 }

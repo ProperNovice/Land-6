@@ -7,6 +7,7 @@ import gameState.ChooseCitySquareSubstractOnePoint;
 import gameState.ChooseSeaSquareDice;
 import gameState.ChooseSquareDiceAction;
 import gameState.DeployArmy;
+import gameState.FightLordOfTheCubes;
 import gameState.GameState;
 import gameState.LordOfTheCubesAction;
 import gameState.MoveArmyDestination;
@@ -31,6 +32,7 @@ public class GameStateController {
 	private GameState rerollDice = new RerollDice();
 	private GameState chooseSeaSquareDice = new ChooseSeaSquareDice();
 	private GameState chooseCitySquareSubstractOnePoint = new ChooseCitySquareSubstractOnePoint();
+	private GameState fightLordOfTheCubes = new FightLordOfTheCubes();
 
 	public GameStateController() {
 
@@ -79,9 +81,13 @@ public class GameStateController {
 		case CHOOSE_SEA_SQUARE_DICE:
 			this.currentGameState = this.chooseSeaSquareDice;
 			break;
-			
+
 		case CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT:
 			this.currentGameState = this.chooseCitySquareSubstractOnePoint;
+			break;
+
+		case FIGHT_LORD_OF_THE_CUBES:
+			this.currentGameState = this.fightLordOfTheCubes;
 			break;
 
 		}

@@ -304,4 +304,14 @@ public class TileController {
 
 	}
 
+	public boolean anyTileContainsCubeArmy() {
+
+		for (Tile tile : this.tiles)
+			if (tile.containsCubeArmy())
+				return true;
+
+		return false;
+
+	}
+
 }
