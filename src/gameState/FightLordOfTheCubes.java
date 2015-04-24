@@ -1,7 +1,8 @@
 package gameState;
 
+import utils.ArrayList;
 import components.CubeArmy;
-
+import enums.GameStateEnum;
 import enums.TextGameEnum;
 
 public class FightLordOfTheCubes extends GameState {
@@ -47,6 +48,18 @@ public class FightLordOfTheCubes extends GameState {
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
 		super.textConceal();
+		super.resetDiceActionSide();
+
+		switch (textOptionEnum) {
+
+		case CONTINUE:
+			handleTextContinue();
+			break;
+
+		default:
+			break;
+
+		}
 
 	}
 
@@ -61,23 +74,32 @@ public class FightLordOfTheCubes extends GameState {
 	}
 
 	private void handle1() {
-
+		handle23();
 	}
 
 	private void handle23() {
-
+		setTextNothingHappens();
 	}
 
 	private void handle4() {
-
+		handle23();
 	}
 
 	private void handle56() {
+		handle23();
+	}
+
+	private void setTextNothingHappens() {
+
+		ArrayList<TextGameEnum> list = new ArrayList<>();
+		list.add(TextGameEnum.NOTHING_HAPPENS);
+		list.add(TextGameEnum.CONTINUE);
+		super.textShow(list);
 
 	}
-	
-	private void setTextContinue() {
-		super.textShow(TextGameEnum.CONTINUE);
+
+	private void handleTextContinue() {
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 	}
 
 }

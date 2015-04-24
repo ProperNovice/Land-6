@@ -2,6 +2,8 @@ package enums;
 
 public enum TextGameEnum {
 
+
+
 	CHOOSE_SQUARE_DIE("Choose square die", TextGameType.INDICATOR),
 	DEPLOY_AN_ARMY("Deploy an army", TextGameType.OPTION),
 	MOVE_AN_ARMY("Move an army", TextGameType.OPTION),
@@ -21,8 +23,13 @@ public enum TextGameEnum {
 	CHOOSE_CITY_SQUARE_TO_SUBSTRACT("Choose city die\nto substract", TextGameType.INDICATOR),
 	CHOOSE_CUBE_ARMY("Choose cube army", TextGameType.INDICATOR),
 	CONTINUE("Continue", TextGameType.OPTION),
+	NOTHING_HAPPENS("Nothing happens", TextGameType.INDICATOR),
 
 	;
+
+	public enum TextGameType {
+		INDICATOR, OPTION
+	}
 
 	private String text = null;
 	private TextGameType textGameType = null;
@@ -39,5 +46,7 @@ public enum TextGameEnum {
 	public TextGameType getTextGameType() {
 		return this.textGameType;
 	}
+
+
 
 }
