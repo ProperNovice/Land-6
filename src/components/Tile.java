@@ -213,6 +213,7 @@ public class Tile {
 	public void addCubeArmyAnimateSynchronous(CubeArmy cubeArmy) {
 
 		this.cubeArmy.add(cubeArmy);
+		cubeArmy.setTile(this);
 
 		double endingX = this.topLeftX
 				+ (Dimensions.TILE.x() - Dimensions.CUBE.x()) / 2;
@@ -243,6 +244,22 @@ public class Tile {
 				list.add(square);
 
 		return list;
+
+	}
+
+	public CubeArmy removeCubeArmy() {
+		this.cubeArmy.get(0).setTile(null);
+		return this.cubeArmy.remove(0);
+	}
+
+	public boolean containsForestSquareWithDiceAction() {
+
+		for (Square square : this.squares)
+			if (square.getSquareEnum().equals(SquareEnum.FOREST))
+				return square.containsDiceArmy();
+
+		Logger.logNewLine("should not be here - containsForestSquareWithDiceAction");
+		return false;
 
 	}
 

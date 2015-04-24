@@ -5,6 +5,7 @@ import enums.TextGameEnum;
 import gameState.Animating;
 import gameState.ChooseCitySquareSubstractOnePoint;
 import gameState.ChooseForestSquareToSubstractOnePoint;
+import gameState.ChooseLordOfTheCubesArmyToRemove;
 import gameState.ChooseSeaSquareDice;
 import gameState.ChooseSquareDiceAction;
 import gameState.DeployArmy;
@@ -17,8 +18,9 @@ import gameState.RerollDice;
 import gameState.SquareCityPressed;
 import gameState.StartGame;
 import utils.Logger;
-import components.CubeArmy;
+
 import components.Square;
+import components.Tile;
 
 public class GameStateController {
 
@@ -36,6 +38,7 @@ public class GameStateController {
 	private GameState chooseCitySquareSubstractOnePoint = new ChooseCitySquareSubstractOnePoint();
 	private GameState fightLordOfTheCubes = new FightLordOfTheCubes();
 	private GameState chooseForestSquareToSubstractOnePoint = new ChooseForestSquareToSubstractOnePoint();
+	private GameState chooseLordOfTheCubesArmyToRemove = new ChooseLordOfTheCubesArmyToRemove();
 
 	public GameStateController() {
 
@@ -97,6 +100,10 @@ public class GameStateController {
 			this.currentGameState = this.chooseForestSquareToSubstractOnePoint;
 			break;
 
+		case CHOOSE_LORD_OF_THE_CUBES_ARMY_TO_REMOVE:
+			this.currentGameState = this.chooseLordOfTheCubesArmyToRemove;
+			break;
+
 		}
 
 		Logger.log("changing gameState");
@@ -122,8 +129,8 @@ public class GameStateController {
 		this.currentGameState.handleDiceActionPressed();
 	}
 
-	public void handleCubeArmyPressed(CubeArmy cubeArmy) {
-		this.currentGameState.handleCubeArmyPressed(cubeArmy);
+	public void handleCubeArmyPressed(Tile tile) {
+		this.currentGameState.handleCubeArmyPressed(tile);
 	}
 
 }

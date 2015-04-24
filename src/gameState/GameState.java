@@ -4,11 +4,10 @@ import instances.Instances;
 import utils.ArrayList;
 import utils.Lock;
 import utils.Logger;
-
 import components.CubeArmy;
 import components.DiceArmy;
 import components.Square;
-
+import components.Tile;
 import controllers.Controller;
 import enums.GameStateEnum;
 import enums.SquareEnum;
@@ -42,7 +41,7 @@ public class GameState {
 
 	}
 
-	public void handleCubeArmyPressed(CubeArmy cubeArmy) {
+	public void handleCubeArmyPressed(Tile tile) {
 
 	}
 
@@ -257,6 +256,14 @@ public class GameState {
 		return this.controller.credentialController().getGameStatePrevious();
 	}
 
+	protected void setGameStateNext(GameStateEnum gameStateEnum) {
+		this.controller.credentialController().setGameStateNext(gameStateEnum);
+	}
+
+	protected GameStateEnum getGameStateNext() {
+		return this.controller.credentialController().getGameStateNext();
+	}
+
 	protected ArrayList<Square> getSquaresThatContainDiceOnTileNumber(
 			int tileNumber) {
 		return this.controller.tileController()
@@ -277,6 +284,16 @@ public class GameState {
 
 	protected boolean cubeArmyControllerContainsCubeArmy(CubeArmy cubeArmy) {
 		return this.controller.cubeArmyController().contains(cubeArmy);
+	}
+
+	protected void addCubeArmyToControllerAnimateSynchronous(CubeArmy cubeArmy) {
+		this.controller.cubeArmyController()
+				.addCubeAnimateSynchronous(cubeArmy);
+	}
+
+	protected boolean tileControllerContainsAtLeastOneForestSquareWithDiceAction() {
+		return this.controller.tileController()
+				.containsAtLeastOneForestSquareWithDiceAction();
 	}
 
 }

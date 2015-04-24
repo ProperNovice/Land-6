@@ -64,7 +64,7 @@ public class CubeArmyController {
 		return this.cubeArmy.isEmpty();
 	}
 
-	public void addCube(CubeArmy cubeArmy) {
+	public void addCubeAnimateSynchronous(CubeArmy cubeArmy) {
 
 		this.cubeArmy.add(cubeArmy);
 

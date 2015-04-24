@@ -14,6 +14,7 @@ import utils.ImageView;
 public class CubeArmy implements EventHandler<MouseEvent> {
 
 	private ImageView cube = null;
+	private Tile tile = null;
 
 	public CubeArmy() {
 		createCube();
@@ -30,6 +31,10 @@ public class CubeArmy implements EventHandler<MouseEvent> {
 
 	}
 
+	public void setTile(Tile tile) {
+		this.tile = tile;
+	}
+
 	public void relocate(double x, double y) {
 		this.cube.relocate(x, y);
 	}
@@ -44,9 +49,12 @@ public class CubeArmy implements EventHandler<MouseEvent> {
 
 		if (!event.getButton().equals(MouseButton.PRIMARY))
 			return;
-		
+
+		if (this.tile == null)
+			return;
+
 		Executor.runLater(() -> Instances.getControllerInstance()
-				.gameStateController().handleCubeArmyPressed(this));
-		
+				.gameStateController().handleCubeArmyPressed(this.tile));
+
 	}
 }

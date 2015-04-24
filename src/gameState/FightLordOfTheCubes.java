@@ -1,7 +1,6 @@
 package gameState;
 
 import utils.ArrayList;
-import components.CubeArmy;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
 
@@ -17,27 +16,27 @@ public class FightLordOfTheCubes extends GameState {
 		switch (diceActionRoll) {
 
 		case 1:
-			handle1();
+			handleDiceActionRoll1();
 			break;
 
 		case 2:
-			handle23();
+			handleDiceActionRoll23();
 			break;
 
 		case 3:
-			handle23();
+			handleDiceActionRoll23();
 			break;
 
 		case 4:
-			handle4();
+			handleDiceActionRoll4();
 			break;
 
 		case 5:
-			handle56();
+			handleDiceActionRoll56();
 			break;
 
 		case 6:
-			handle56();
+			handleDiceActionRoll56();
 			break;
 
 		}
@@ -63,33 +62,27 @@ public class FightLordOfTheCubes extends GameState {
 
 	}
 
-	@Override
-	public void handleCubeArmyPressed(CubeArmy cubeArmy) {
+	private void handleDiceActionRoll1() {
 
-		if (super.cubeArmyControllerContainsCubeArmy(cubeArmy))
-			return;
-
-		super.textConceal();
+		if (super.tileControllerContainsAtLeastOneForestSquareWithDiceAction())
+			handleChooseForestSquareToSubstractOnePoint();
+		else
+			handleDiceActionRoll23();
 
 	}
 
-	private void handle1() {
-		//TODO check if there are not forest squares
-//		handle23();
-		handleChooseForestSquareToSubstractOnePoint();
+	private void handleDiceActionRoll23() {
+		setTextNothingHappens();
 	}
 
-	private void handle23() {
-//		setTextNothingHappens();
-		handle1();
+	private void handleDiceActionRoll4() {
+		setGameStateNext(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
+		setGameState(GameStateEnum.CHOOSE_LORD_OF_THE_CUBES_ARMY_TO_REMOVE);
 	}
 
-	private void handle4() {
-		handle1();
-	}
-
-	private void handle56() {
-		handle1();
+	private void handleDiceActionRoll56() {
+		setGameStateNext(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+		setGameState(GameStateEnum.CHOOSE_LORD_OF_THE_CUBES_ARMY_TO_REMOVE);
 	}
 
 	private void setTextNothingHappens() {

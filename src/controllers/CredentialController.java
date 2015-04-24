@@ -11,6 +11,7 @@ public class CredentialController {
 	private ArrayList<Square> squareButtons = null;
 	private ArrayList<Square> squareAdjacencies = null;
 	private GameStateEnum gameStatePrevious = null;
+	private GameStateEnum gameStateNext = null;
 
 	public CredentialController() {
 
@@ -60,6 +61,14 @@ public class CredentialController {
 
 	public GameStateEnum getGameStatePrevious() {
 		return this.gameStatePrevious;
+	}
+
+	public void setGameStateNext(GameStateEnum gameStateEnum) {
+		this.gameStateNext = gameStateEnum;
+	}
+
+	public GameStateEnum getGameStateNext() {
+		return this.gameStateNext;
 	}
 
 }

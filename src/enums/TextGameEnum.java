@@ -25,6 +25,7 @@ public enum TextGameEnum {
 	CONTINUE("Continue", TextGameType.OPTION),
 	NOTHING_HAPPENS("Nothing happens", TextGameType.INDICATOR),
 	CHOOSE_FOREST_SQUARE_TO_SUBSTRACT("Choose forest die\nto substract", TextGameType.INDICATOR),
+	CHOOSE_ARMY_CUBE("Choose army cube", TextGameType.INDICATOR),
 
 	;
 

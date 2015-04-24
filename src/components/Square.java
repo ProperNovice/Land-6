@@ -76,6 +76,7 @@ public class Square {
 	}
 
 	public DiceArmy removeDiceArmy() {
+		this.diceArmy.get(0).setSquare(null);
 		return this.diceArmy.remove(0);
 	}
 

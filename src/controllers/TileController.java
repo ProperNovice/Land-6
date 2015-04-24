@@ -314,4 +314,14 @@ public class TileController {
 
 	}
 
+	public boolean containsAtLeastOneForestSquareWithDiceAction() {
+
+		for (Tile tile : this.tiles)
+			if (tile.containsForestSquareWithDiceAction())
+				return true;
+
+		return false;
+
+	}
+
 }
