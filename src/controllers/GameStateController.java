@@ -4,6 +4,7 @@ import enums.GameStateEnum;
 import enums.TextGameEnum;
 import gameState.Animating;
 import gameState.ChooseCitySquareSubstractOnePoint;
+import gameState.ChooseForestSquareToSubstractOnePoint;
 import gameState.ChooseSeaSquareDice;
 import gameState.ChooseSquareDiceAction;
 import gameState.DeployArmy;
@@ -34,6 +35,7 @@ public class GameStateController {
 	private GameState chooseSeaSquareDice = new ChooseSeaSquareDice();
 	private GameState chooseCitySquareSubstractOnePoint = new ChooseCitySquareSubstractOnePoint();
 	private GameState fightLordOfTheCubes = new FightLordOfTheCubes();
+	private GameState chooseForestSquareToSubstractOnePoint = new ChooseForestSquareToSubstractOnePoint();
 
 	public GameStateController() {
 
@@ -89,6 +91,10 @@ public class GameStateController {
 
 		case FIGHT_LORD_OF_THE_CUBES:
 			this.currentGameState = this.fightLordOfTheCubes;
+			break;
+
+		case CHOOSE_FOREST_SQUARE_SUBSTRACT_ONE_POINT:
+			this.currentGameState = this.chooseForestSquareToSubstractOnePoint;
 			break;
 
 		}

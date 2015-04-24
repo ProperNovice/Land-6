@@ -53,7 +53,7 @@ public class FightLordOfTheCubes extends GameState {
 		switch (textOptionEnum) {
 
 		case CONTINUE:
-			handleTextContinue();
+			handleTextNothingHappens();
 			break;
 
 		default:
@@ -74,19 +74,22 @@ public class FightLordOfTheCubes extends GameState {
 	}
 
 	private void handle1() {
-		handle23();
+		//TODO check if there are not forest squares
+//		handle23();
+		handleChooseForestSquareToSubstractOnePoint();
 	}
 
 	private void handle23() {
-		setTextNothingHappens();
+//		setTextNothingHappens();
+		handle1();
 	}
 
 	private void handle4() {
-		handle23();
+		handle1();
 	}
 
 	private void handle56() {
-		handle23();
+		handle1();
 	}
 
 	private void setTextNothingHappens() {
@@ -98,8 +101,12 @@ public class FightLordOfTheCubes extends GameState {
 
 	}
 
-	private void handleTextContinue() {
+	private void handleTextNothingHappens() {
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+	}
+
+	private void handleChooseForestSquareToSubstractOnePoint() {
+		super.setGameState(GameStateEnum.CHOOSE_FOREST_SQUARE_SUBSTRACT_ONE_POINT);
 	}
 
 }

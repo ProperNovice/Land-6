@@ -14,6 +14,7 @@ public enum GameStateEnum {
 	CHOOSE_SEA_SQUARE_DICE("choose sea square dice"),
 	CHOOSE_CITY_SQUARE_SUBSTRACT_ONE_POINT("choose city square substract one point"),
 	FIGHT_LORD_OF_THE_CUBES("fight lord of the cubes"),
+	CHOOSE_FOREST_SQUARE_SUBSTRACT_ONE_POINT("choose forest square substract one point"),
 	
 	;
 
