@@ -263,4 +263,12 @@ public class Tile {
 
 	}
 
+	public void flashCubeArmy() {
+		this.cubeArmy.get(0).flash();
+	}
+
+	public boolean isFlashing() {
+		return this.cubeArmy.get(0).isFlashing();
+	}
+
 }

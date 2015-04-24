@@ -18,12 +18,10 @@ public class LordOfTheCubesAction extends GameState {
 		if (!super.diceActionIsRolled())
 			super.rollDiceAction();
 
-		if (super.atLeastOneSeaSquareHasDice()) {
+		if (super.atLeastOneSeaSquareHasDice())
 			handleAtLeastOneSeaSquareHasDice();
-			return;
-		}
-
-		handleDiceAction();
+		else
+			handleDiceAction();
 
 	}
 
@@ -48,6 +46,12 @@ public class LordOfTheCubesAction extends GameState {
 
 		case CONTINUE_ADDDING_ARMY_CUBE_ON_TILE:
 			executeAddCubeArmyToEmptyTileAnimateSynchronous();
+			break;
+
+		case SHOW_TILE_NUMBERS:
+			super.flashCubeArmies();
+			handleGameStateChange();
+			break;
 
 		default:
 			break;
@@ -90,6 +94,10 @@ public class LordOfTheCubesAction extends GameState {
 		ArrayList<TextGameEnum> list = new ArrayList<>();
 		list.add(TextGameEnum.EXECUTE_DICE_ACTION);
 		list.add(TextGameEnum.REROLL_DICE);
+
+		if (super.anyTileContainsCubeArmy())
+			list.add(TextGameEnum.SHOW_TILE_NUMBERS);
+
 		super.textShow(list);
 
 	}

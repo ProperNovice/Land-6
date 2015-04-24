@@ -324,4 +324,20 @@ public class TileController {
 
 	}
 
+	public void flashCubeArmies() {
+
+		for (Tile tile : this.tiles) {
+
+			if (!tile.containsCubeArmy())
+				continue;
+
+			if (tile.isFlashing())
+				return;
+
+			tile.flashCubeArmy();
+
+		}
+
+	}
+
 }

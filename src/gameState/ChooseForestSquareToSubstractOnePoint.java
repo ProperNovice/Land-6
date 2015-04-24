@@ -19,8 +19,10 @@ public class ChooseForestSquareToSubstractOnePoint extends GameState {
 			return;
 
 		super.textConceal();
+		super.resetDiceActionSide();
 		super.substractPointsFromSquareDiceHandleIfMinLock(square, 1);
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+
+		super.setGameState(GameStateEnum.FIGHT_LORD_OF_THE_CUBES);
 
 	}
 

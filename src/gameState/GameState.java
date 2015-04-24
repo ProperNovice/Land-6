@@ -296,4 +296,8 @@ public class GameState {
 				.containsAtLeastOneForestSquareWithDiceAction();
 	}
 
+	protected void flashCubeArmies() {
+		this.controller.tileController().flashCubeArmies();
+	}
+
 }

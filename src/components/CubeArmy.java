@@ -1,20 +1,23 @@
 package components;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import enums.Dimensions;
 import gui.PanelGame;
 import instances.Instances;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import utils.Animation;
-import utils.Executor;
 import utils.Animation.AnimationSynch;
+import utils.Executor;
 import utils.ImageView;
 
 public class CubeArmy implements EventHandler<MouseEvent> {
 
 	private ImageView cube = null;
 	private Tile tile = null;
+	private AtomicBoolean isFlashing = new AtomicBoolean(false);
 
 	public CubeArmy() {
 		createCube();
@@ -57,4 +60,21 @@ public class CubeArmy implements EventHandler<MouseEvent> {
 				.gameStateController().handleCubeArmyPressed(this.tile));
 
 	}
+	
+	public boolean isFlashing() {
+		return this.isFlashing.get();
+	}
+
+	public void flash() {
+
+		Executor.runLater(() -> {
+			this.isFlashing.set(true);
+			this.cube.setVisible(false);
+			Executor.sleep(1000);
+			this.isFlashing.set(false);
+			this.cube.setVisible(true);
+		});
+
+	}
+
 }

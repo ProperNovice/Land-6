@@ -22,10 +22,12 @@ public enum TextGameEnum {
 	TO_EACH_DIE("to each die", TextGameType.INDICATOR),
 	CHOOSE_CITY_SQUARE_TO_SUBSTRACT("Choose city die\nto substract", TextGameType.INDICATOR),
 	CHOOSE_CUBE_ARMY("Choose cube army", TextGameType.INDICATOR),
-	CONTINUE("Continue", TextGameType.OPTION),
+	CONTINUE_NOTHING_HAPPENS("Continue", TextGameType.OPTION),
 	NOTHING_HAPPENS("Nothing happens", TextGameType.INDICATOR),
 	CHOOSE_FOREST_SQUARE_TO_SUBSTRACT("Choose forest die\nto substract", TextGameType.INDICATOR),
 	CHOOSE_ARMY_CUBE("Choose army cube", TextGameType.INDICATOR),
+	RESOLVE_FIGHT("Resolve fight", TextGameType.OPTION),
+	SHOW_TILE_NUMBERS("Show tile numbers", TextGameType.OPTION),
 
 	;
 
