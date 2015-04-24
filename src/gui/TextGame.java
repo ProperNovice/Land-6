@@ -5,11 +5,12 @@ import enums.TextGameEnum;
 
 public class TextGame {
 
-	protected TextGameEnum textEnum = null;
+	protected TextGameEnum textGameEnum = null;
 	protected Text text = null;
+	protected double height = -1;
 
-	public TextGame(TextGameEnum textEnum) {
-		this.textEnum = textEnum;
+	public TextGame(TextGameEnum textGameEnum) {
+		this.textGameEnum = textGameEnum;
 		createText();
 	}
 
@@ -26,7 +27,11 @@ public class TextGame {
 	}
 
 	public TextGameEnum getTextIndicatorEnum() {
-		return this.textEnum;
+		return this.textGameEnum;
+	}
+
+	public double getHeight() {
+		return this.height;
 	}
 
 }

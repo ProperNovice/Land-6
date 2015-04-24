@@ -68,7 +68,7 @@ public class ChooseSquareDiceAction extends GameState {
 		}
 
 		super.setCredentialSquarePressedNonCity(square);
-		super.setGameStatePrevious(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+		super.substractPointsFromSquareDiceHandleIfMinLock(square, 1);
 		super.setGameState(GameStateEnum.FIGHT_LORD_OF_THE_CUBES);
 
 	}

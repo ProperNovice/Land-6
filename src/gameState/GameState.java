@@ -42,6 +42,10 @@ public class GameState {
 
 	}
 
+	public void handleCubeArmyPressed(CubeArmy cubeArmy) {
+
+	}
+
 	protected void setGameState(GameStateEnum gameStateEnum) {
 		this.controller.gameStateController().setGameState(gameStateEnum);
 	}
@@ -269,6 +273,10 @@ public class GameState {
 
 	protected boolean anyTileContainsCubeArmy() {
 		return this.controller.tileController().anyTileContainsCubeArmy();
+	}
+
+	protected boolean cubeArmyControllerContainsCubeArmy(CubeArmy cubeArmy) {
+		return this.controller.cubeArmyController().contains(cubeArmy);
 	}
 
 }

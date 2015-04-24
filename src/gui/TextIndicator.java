@@ -16,8 +16,14 @@ public class TextIndicator extends TextGame {
 
 		PanelGame panelGame = Instances.getPanelGameInstance();
 
-		super.text = new Text(this.textEnum.getText(), panelGame);
-		super.text.setHeight(Dimensions.TEXT_INDICATOR.y());
+		super.text = new Text(super.textGameEnum.getText(), panelGame);
+
+		super.height = Dimensions.TEXT_INDICATOR.y();
+
+		if (super.textGameEnum.getText().contains("\n"))
+			super.height += super.height;
+
+		super.text.setHeight(super.height);
 		super.text.setVisible(false);
 
 	}

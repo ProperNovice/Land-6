@@ -18,8 +18,9 @@ public enum TextGameEnum {
 	CONTINUE_ADDDING_ARMY_CUBE_ON_TILE("Continue", TextGameType.OPTION),
 	SUBSTRACT_ONE_POINT("Substract one point", TextGameType.INDICATOR),
 	TO_EACH_DIE("to each die", TextGameType.INDICATOR),
-	CHOOSE_CITY_SQUARE("Choose city square", TextGameType.INDICATOR),
-	TO_SUBSTRACT_ONE_POINT("to substract one point", TextGameType.INDICATOR),
+	CHOOSE_CITY_SQUARE_TO_SUBSTRACT("Choose city die\nto substract", TextGameType.INDICATOR),
+	CHOOSE_CUBE_ARMY("Choose cube army", TextGameType.INDICATOR),
+	CONTINUE("Continue", TextGameType.OPTION),
 
 	;
 

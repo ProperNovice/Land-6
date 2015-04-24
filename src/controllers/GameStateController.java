@@ -16,6 +16,7 @@ import gameState.RerollDice;
 import gameState.SquareCityPressed;
 import gameState.StartGame;
 import utils.Logger;
+import components.CubeArmy;
 import components.Square;
 
 public class GameStateController {
@@ -113,6 +114,10 @@ public class GameStateController {
 
 	public void handleDiceActionPressed() {
 		this.currentGameState.handleDiceActionPressed();
+	}
+
+	public void handleCubeArmyPressed(CubeArmy cubeArmy) {
+		this.currentGameState.handleCubeArmyPressed(cubeArmy);
 	}
 
 }

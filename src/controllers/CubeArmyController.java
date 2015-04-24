@@ -83,5 +83,9 @@ public class CubeArmyController {
 	public int size() {
 		return this.cubeArmy.size();
 	}
+	
+	public boolean contains(CubeArmy cubeArmy) {
+		return this.cubeArmy.contains(cubeArmy);
+	}
 
 }

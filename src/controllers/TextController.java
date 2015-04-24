@@ -52,8 +52,7 @@ public class TextController {
 				textGame.relocate(x, y);
 				textGame.setVisible(true);
 
-				y += Dimensions.TEXT_INDICATOR.y()
-						+ Dimensions.GAP_BETWEEN_TEXTS.y();
+				y += textGame.getHeight() + Dimensions.GAP_BETWEEN_TEXTS.y();
 
 			}
 	}

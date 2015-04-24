@@ -1,7 +1,5 @@
 package gameState;
 
-import utils.ArrayList;
-
 import components.Square;
 
 import enums.GameStateEnum;
@@ -31,12 +29,7 @@ public class ChooseCitySquareSubstractOnePoint extends GameState {
 	}
 
 	private void setText() {
-
-		ArrayList<TextGameEnum> list = new ArrayList<>();
-		list.add(TextGameEnum.CHOOSE_CITY_SQUARE);
-		list.add(TextGameEnum.TO_SUBSTRACT_ONE_POINT);
-		super.textShow(list);
-
+		super.textShow(TextGameEnum.CHOOSE_CITY_SQUARE_TO_SUBSTRACT);
 	}
 
 }

@@ -30,8 +30,9 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 
 		PanelGame panelGame = Instances.getPanelGameInstance();
 
-		super.text = new Text(this.textEnum.getText(), panelGame);
+		super.text = new Text(this.textGameEnum.getText(), panelGame);
 
+		super.height = Dimensions.TEXT_OPTION.y();
 		super.text.setHeight(Dimensions.TEXT_OPTION.y() - 4);
 		super.text.setOnMouseEntered(new OnMouseEntered());
 		super.text.setOnMouseExited(new OnMouseExited());
@@ -80,7 +81,7 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 			return;
 
 		Executor.runLater(() -> this.controller.gameStateController()
-				.handleTextPressed(this.textEnum));
+				.handleTextPressed(this.textGameEnum));
 
 	}
 

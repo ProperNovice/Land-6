@@ -1,13 +1,17 @@
 package components;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import enums.Dimensions;
 import gui.PanelGame;
 import instances.Instances;
 import utils.Animation;
+import utils.Executor;
 import utils.Animation.AnimationSynch;
 import utils.ImageView;
 
-public class CubeArmy {
+public class CubeArmy implements EventHandler<MouseEvent> {
 
 	private ImageView cube = null;
 
@@ -22,6 +26,7 @@ public class CubeArmy {
 		String path = "cube.png";
 		this.cube = new ImageView(path, panelGame);
 		this.cube.setWidth(Dimensions.CUBE.x());
+		this.cube.setOnMousePressed(this);
 
 	}
 
@@ -34,4 +39,14 @@ public class CubeArmy {
 				AnimationSynch.SYNCHRONOUS);
 	}
 
+	@Override
+	public void handle(MouseEvent event) {
+
+		if (!event.getButton().equals(MouseButton.PRIMARY))
+			return;
+		
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleCubeArmyPressed(this));
+		
+	}
 }
