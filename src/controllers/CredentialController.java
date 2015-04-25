@@ -2,6 +2,7 @@ package controllers;
 
 import utils.ArrayList;
 import components.Square;
+import enums.GameResult;
 import enums.GameStateEnum;
 
 public class CredentialController {
@@ -12,6 +13,7 @@ public class CredentialController {
 	private ArrayList<Square> squareAdjacencies = null;
 	private GameStateEnum gameStatePrevious = null;
 	private GameStateEnum gameStateNext = null;
+	private GameResult gameResult = null;
 
 	public CredentialController() {
 
@@ -69,6 +71,14 @@ public class CredentialController {
 
 	public GameStateEnum getGameStateNext() {
 		return this.gameStateNext;
+	}
+
+	public void setGameResult(GameResult gameResult) {
+		this.gameResult = gameResult;
+	}
+
+	public GameResult getGameResult() {
+		return this.gameResult;
 	}
 
 }

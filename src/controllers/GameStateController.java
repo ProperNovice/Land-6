@@ -10,6 +10,7 @@ import gameState.ChooseSeaSquareDice;
 import gameState.ChooseSquareDiceAction;
 import gameState.DeployArmy;
 import gameState.FightLordOfTheCubes;
+import gameState.GameEnded;
 import gameState.GameState;
 import gameState.LordOfTheCubesAction;
 import gameState.MoveArmyDestination;
@@ -18,7 +19,6 @@ import gameState.RerollDice;
 import gameState.SquareCityPressed;
 import gameState.StartGame;
 import utils.Logger;
-
 import components.Square;
 import components.Tile;
 
@@ -39,6 +39,7 @@ public class GameStateController {
 	private GameState fightLordOfTheCubes = new FightLordOfTheCubes();
 	private GameState chooseForestSquareToSubstractOnePoint = new ChooseForestSquareToSubstractOnePoint();
 	private GameState chooseLordOfTheCubesArmyToRemove = new ChooseLordOfTheCubesArmyToRemove();
+	private GameState gameEnded = new GameEnded();
 
 	public GameStateController() {
 
@@ -104,6 +105,10 @@ public class GameStateController {
 			this.currentGameState = this.chooseLordOfTheCubesArmyToRemove;
 			break;
 
+		case GAME_ENDED:
+			this.currentGameState = this.gameEnded;
+			break;
+			
 		}
 
 		Logger.log("changing gameState");

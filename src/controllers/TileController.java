@@ -340,4 +340,8 @@ public class TileController {
 
 	}
 
+	public boolean gameIsWon() {
+		return this.tiles.get(0).gameIsWon();
+	}
+
 }

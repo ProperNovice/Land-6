@@ -271,4 +271,26 @@ public class Tile {
 		return this.cubeArmy.get(0).isFlashing();
 	}
 
+	public boolean gameIsWon() {
+
+		if (!this.cubeArmy.isEmpty())
+			return false;
+
+		Square citySquare = null;
+
+		for (Square square : this.squares)
+			if (square.getSquareEnum().equals(SquareEnum.CITY)) {
+				citySquare = square;
+				break;
+			}
+
+		if (!citySquare.containsDiceArmy())
+			return false;
+
+		if (!citySquare.diceArmyIsShowingAtLeast3())
+			return false;
+
+		return true;
+	}
+
 }

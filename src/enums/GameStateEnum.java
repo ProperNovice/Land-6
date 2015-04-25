@@ -16,6 +16,7 @@ public enum GameStateEnum {
 	FIGHT_LORD_OF_THE_CUBES("fight lord of the cubes"),
 	CHOOSE_FOREST_SQUARE_SUBSTRACT_ONE_POINT("choose forest square substract one point"),
 	CHOOSE_LORD_OF_THE_CUBES_ARMY_TO_REMOVE("choose lord of the cubes army to remove"),
+	GAME_ENDED("game ended"),
 	
 	;
 

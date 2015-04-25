@@ -70,4 +70,13 @@ public class DiceArmy extends Dice {
 
 	}
 
+	public boolean isShowingAtLeast3() {
+
+		if (super.sideNumberShowing >= 3)
+			return true;
+		else
+			return false;
+
+	}
+
 }

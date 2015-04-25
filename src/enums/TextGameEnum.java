@@ -28,6 +28,10 @@ public enum TextGameEnum {
 	CHOOSE_ARMY_CUBE("Choose army cube", TextGameType.INDICATOR),
 	RESOLVE_FIGHT("Resolve fight", TextGameType.OPTION),
 	SHOW_TILE_NUMBERS("Show tile numbers", TextGameType.OPTION),
+	YOU_WON("You won", TextGameType.INDICATOR),
+	YOU_LOST("You lost", TextGameType.INDICATOR),
+	RESTART_GAME("Restart game", TextGameType.OPTION),
+	FOR_YOUR_ACTION("for your action", TextGameType.INDICATOR),
 
 	;
 

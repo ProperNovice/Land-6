@@ -3,10 +3,9 @@ package gameState;
 import utils.ArrayList;
 import utils.Lock;
 import utils.Logger;
-
 import components.CubeArmy;
 import components.Square;
-
+import enums.GameResult;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
 
@@ -14,6 +13,11 @@ public class LordOfTheCubesAction extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
+
+		if (super.gameIsWon()) {
+			handleGameIsWon();
+			return;
+		}
 
 		if (!super.diceActionIsRolled())
 			super.rollDiceAction();
@@ -125,7 +129,15 @@ public class LordOfTheCubesAction extends GameState {
 		Lock.lock();
 
 		super.resetDiceActionSide();
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+
+		if (super.cubeArmyControllerIsEmpty()) {
+
+			super.setGameResult(GameResult.LOSE);
+			super.setGameState(GameStateEnum.GAME_ENDED);
+
+		} else
+			super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+
 	}
 
 	private void executeTileContainsDiceArmy(int diceActionNumberSideShowing) {
@@ -137,6 +149,11 @@ public class LordOfTheCubesAction extends GameState {
 		super.resetDiceActionSide();
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
+	}
+
+	private void handleGameIsWon() {
+		super.setGameResult(GameResult.WIN);
+		super.setGameState(GameStateEnum.GAME_ENDED);
 	}
 
 }

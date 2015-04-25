@@ -4,11 +4,14 @@ import instances.Instances;
 import utils.ArrayList;
 import utils.Lock;
 import utils.Logger;
+
 import components.CubeArmy;
 import components.DiceArmy;
 import components.Square;
 import components.Tile;
+
 import controllers.Controller;
+import enums.GameResult;
 import enums.GameStateEnum;
 import enums.SquareEnum;
 import enums.TextGameEnum;
@@ -298,6 +301,22 @@ public class GameState {
 
 	protected void flashCubeArmies() {
 		this.controller.tileController().flashCubeArmies();
+	}
+
+	protected boolean gameIsWon() {
+		return this.controller.tileController().gameIsWon();
+	}
+
+	protected void setGameResult(GameResult gameResult) {
+		this.controller.credentialController().setGameResult(gameResult);
+	}
+
+	protected GameResult getGameResult() {
+		return this.controller.credentialController().getGameResult();
+	}
+
+	protected boolean cubeArmyControllerIsEmpty() {
+		return this.controller.cubeArmyController().isEmpty();
 	}
 
 }

@@ -1,7 +1,7 @@
 package gameState;
 
+import utils.ArrayList;
 import components.Square;
-
 import enums.GameStateEnum;
 import enums.SquareEnum;
 import enums.TextGameEnum;
@@ -40,7 +40,10 @@ public class ChooseSquareDiceAction extends GameState {
 	}
 
 	private void showText() {
-		super.textShow(TextGameEnum.CHOOSE_SQUARE_DIE);
+		ArrayList<TextGameEnum> list = new ArrayList<>();
+		list.add(TextGameEnum.CHOOSE_SQUARE_DIE);
+		list.add(TextGameEnum.FOR_YOUR_ACTION);
+		super.textShow(list);
 	}
 
 	private void handleCityPressed(Square square) {

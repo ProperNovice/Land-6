@@ -92,4 +92,8 @@ public class Square {
 		this.diceArmy.get(0).roll();
 	}
 
+	public boolean diceArmyIsShowingAtLeast3() {
+		return this.diceArmy.get(0).isShowingAtLeast3();
+	}
+
 }
