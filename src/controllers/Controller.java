@@ -2,7 +2,7 @@ package controllers;
 
 import enums.GameStateEnum;
 import gameDifficulty.GameDifficultyController;
-import gameDifficulty.GameDifficultyHard;
+import gameDifficulty.GameDifficultyEasy;
 import gui.PanelGame;
 import instances.Instances;
 import utils.Executor;
@@ -36,7 +36,7 @@ public class Controller {
 		this.credentialController = new CredentialController();
 		this.cubeArmyController = new CubeArmyController();
 		this.diceActionController = new DiceActionController();
-		this.gameDifficultyController = new GameDifficultyHard();
+		this.gameDifficultyController = new GameDifficultyEasy();
 
 	}
 
