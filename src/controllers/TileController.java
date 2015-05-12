@@ -344,4 +344,13 @@ public class TileController {
 		return this.tiles.get(0).gameIsWon();
 	}
 
+	public boolean atLeastOneCitySquareContainsDice() {
+
+		for (Tile tile : this.tiles)
+			if (tile.cityContainsDiceArmy())
+				return true;
+
+		return false;
+	}
+
 }

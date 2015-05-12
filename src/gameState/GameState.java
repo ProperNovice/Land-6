@@ -13,7 +13,6 @@ import components.Tile;
 import controllers.Controller;
 import enums.GameResult;
 import enums.GameStateEnum;
-import enums.SquareEnum;
 import enums.TextGameEnum;
 
 public class GameState {
@@ -143,9 +142,8 @@ public class GameState {
 
 	protected boolean squareDiceIsEligibleToMove(Square square) {
 
-		SquareEnum squareEnum = square.getSquareEnum();
-
-		if (squareEnum.equals(SquareEnum.CITY))
+		if (square.equals(this.controller.credentialController()
+				.getSquarePressedCity()))
 			return false;
 
 		return true;
@@ -318,6 +316,11 @@ public class GameState {
 
 	protected boolean cubeArmyControllerIsEmpty() {
 		return this.controller.cubeArmyController().isEmpty();
+	}
+
+	protected boolean atLeastOneCitySquareContainsDice() {
+		return this.controller.tileController()
+				.atLeastOneCitySquareContainsDice();
 	}
 
 }

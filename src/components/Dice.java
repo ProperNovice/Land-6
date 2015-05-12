@@ -12,6 +12,7 @@ import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.ImageView;
 import utils.Lock;
+import utils.Logger;
 import utils.Random;
 
 public class Dice implements EventHandler<MouseEvent> {
@@ -65,6 +66,8 @@ public class Dice implements EventHandler<MouseEvent> {
 
 	public void roll() {
 
+		Logger.logNewLine("rolling dice started");
+
 		resetSide();
 		int step = 10;
 
@@ -74,6 +77,8 @@ public class Dice implements EventHandler<MouseEvent> {
 		Lock.lock();
 		animateSynchronous(this.x + step, this.y);
 		Lock.lock();
+
+		Logger.logNewLine("rolling dice ended");
 
 		this.sideNumberShowing = Random.getRandomNumber(1, 6);
 		updateSideImage();
