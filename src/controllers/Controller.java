@@ -1,6 +1,8 @@
 package controllers;
 
 import enums.GameStateEnum;
+import gameDifficulty.GameDifficulty;
+import gameDifficulty.GameDifficultyHard;
 import gui.PanelGame;
 import instances.Instances;
 import utils.Executor;
@@ -14,6 +16,7 @@ public class Controller {
 	private CredentialController credentialController = null;
 	private CubeArmyController cubeArmyController = null;
 	private DiceActionController diceActionController = null;
+	private GameDifficulty gameDifficulty = null;
 
 	public Controller(PanelGame panelGame) {
 
@@ -33,6 +36,7 @@ public class Controller {
 		this.credentialController = new CredentialController();
 		this.cubeArmyController = new CubeArmyController();
 		this.diceActionController = new DiceActionController();
+		this.gameDifficulty = new GameDifficultyHard();
 
 	}
 
@@ -62,6 +66,10 @@ public class Controller {
 
 	public DiceActionController diceActionController() {
 		return this.diceActionController;
+	}
+
+	public GameDifficulty gameDifficulty() {
+		return this.gameDifficulty;
 	}
 
 }

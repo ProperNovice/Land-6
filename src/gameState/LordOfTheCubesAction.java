@@ -20,7 +20,7 @@ public class LordOfTheCubesAction extends GameState {
 		}
 
 		if (!super.atLeastOneCitySquareContainsDice()) {
-			handleGameIsLost();
+			super.handleGameIsLost();
 			return;
 		}
 
@@ -152,17 +152,18 @@ public class LordOfTheCubesAction extends GameState {
 
 		super.substractPointsFromSquareDiceHandleIfMinLock(list, 1);
 		super.resetDiceActionSide();
+
+		if (!super.atLeastOneCitySquareContainsDice()) {
+			super.handleGameIsLost();
+			return;
+		}
+
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 
 	private void handleGameIsWon() {
 		super.setGameResult(GameResult.WIN);
-		super.setGameState(GameStateEnum.GAME_ENDED);
-	}
-
-	private void handleGameIsLost() {
-		super.setGameResult(GameResult.LOSE);
 		super.setGameState(GameStateEnum.GAME_ENDED);
 	}
 

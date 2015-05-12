@@ -51,8 +51,8 @@ public class GameState {
 		this.controller.gameStateController().setGameState(gameStateEnum);
 	}
 
-	protected void addStartingDice(DiceArmy diceArmy) {
-		this.controller.tileController().addStartingDice(diceArmy);
+	protected void addStartingDiceArmy(DiceArmy diceArmy) {
+		this.controller.tileController().addStartingDiceArmy(diceArmy);
 	}
 
 	protected DiceArmy getDiceArmy() {
@@ -60,7 +60,7 @@ public class GameState {
 	}
 
 	protected CubeArmy getCubeArmy() {
-		return this.controller.cubeArmyController().getDice();
+		return this.controller.cubeArmyController().getCubeArmy();
 	}
 
 	protected void textShow(TextGameEnum textGameEnum) {
@@ -321,6 +321,24 @@ public class GameState {
 	protected boolean atLeastOneCitySquareContainsDice() {
 		return this.controller.tileController()
 				.atLeastOneCitySquareContainsDice();
+	}
+
+	protected void handleGameIsLost() {
+		setGameResult(GameResult.LOSE);
+		setGameState(GameStateEnum.GAME_ENDED);
+	}
+
+	protected boolean gameDifficultyGameBeginsWithCubeArmy() {
+		return this.controller.gameDifficulty().gameBeginsWithCubeArmy();
+	}
+
+	protected void addStartingCubeArmy() {
+
+		Logger.log("adding starting cube");
+
+		CubeArmy cubeArmy = getCubeArmy();
+		this.controller.tileController().addStartingCubeArmy(cubeArmy);
+
 	}
 
 }

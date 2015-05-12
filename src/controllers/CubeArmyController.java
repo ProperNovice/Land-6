@@ -56,7 +56,7 @@ public class CubeArmyController {
 
 	}
 
-	public CubeArmy getDice() {
+	public CubeArmy getCubeArmy() {
 		return this.cubeArmy.removeLast();
 	}
 

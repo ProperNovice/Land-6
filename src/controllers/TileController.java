@@ -154,8 +154,12 @@ public class TileController {
 		squareTwo.addAdjacent(squareOne);
 	}
 
-	public void addStartingDice(DiceArmy dice) {
+	public void addStartingDiceArmy(DiceArmy dice) {
 		this.tiles.get(5).getSquareId(1).addDiceAnimateSynchronous(dice);
+	}
+	
+	public void addStartingCubeArmy(CubeArmy cubeArmy) {
+		this.tiles.get(0).addCubeArmyAnimateSynchronous(cubeArmy);
 	}
 
 	public void enableButtonSquaresForDeployArmy() {

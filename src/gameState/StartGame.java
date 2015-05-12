@@ -15,8 +15,14 @@ public class StartGame extends GameState {
 
 		DiceArmy diceArmy = super.getDiceArmy();
 
-		Logger.logNewLine("adding starting dice");
-		super.addStartingDice(diceArmy);
+		Logger.log("adding starting dice");
+		super.addStartingDiceArmy(diceArmy);
+
+		if (super.gameDifficultyGameBeginsWithCubeArmy())
+			super.addStartingCubeArmy();
+
+		Logger.newLine();
+		
 		Lock.lock();
 
 		diceArmy.setSide(6);

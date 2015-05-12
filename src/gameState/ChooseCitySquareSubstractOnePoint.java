@@ -24,6 +24,11 @@ public class ChooseCitySquareSubstractOnePoint extends GameState {
 
 		super.substractPointsFromSquareDiceHandleIfMinLock(square, 1);
 
+		if (!super.atLeastOneCitySquareContainsDice()) {
+			super.handleGameIsLost();
+			return;
+		}
+
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
