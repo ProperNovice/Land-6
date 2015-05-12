@@ -11,6 +11,7 @@ import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.ImageView;
+import utils.Lock;
 import utils.Random;
 
 public class Dice implements EventHandler<MouseEvent> {
@@ -18,6 +19,7 @@ public class Dice implements EventHandler<MouseEvent> {
 	private ImageView imageView = null;
 	protected ArrayList<Image> sides = new ArrayList<>();
 	protected int sideNumberShowing = -1;
+	private double x, y;
 
 	public Dice() {
 		createSides();
@@ -38,10 +40,16 @@ public class Dice implements EventHandler<MouseEvent> {
 	}
 
 	public void relocate(double x, double y) {
-		this.imageView.relocate(x, y);
+		this.x = x;
+		this.y = y;
+		this.imageView.relocate(this.x, this.y);
 	}
 
 	public void animateSynchronous(double endingX, double endingY) {
+
+		this.x = endingX;
+		this.y = endingY;
+
 		Animation.animate(this.imageView, endingX, endingY,
 				AnimationSynch.SYNCHRONOUS);
 	}
@@ -56,8 +64,20 @@ public class Dice implements EventHandler<MouseEvent> {
 	}
 
 	public void roll() {
+
+		resetSide();
+		int step = 10;
+
+		animateSynchronous(this.x + step, this.y);
+		Lock.lock();
+		animateSynchronous(this.x - step * 2, this.y);
+		Lock.lock();
+		animateSynchronous(this.x + step, this.y);
+		Lock.lock();
+
 		this.sideNumberShowing = Random.getRandomNumber(1, 6);
 		updateSideImage();
+
 	}
 
 	protected void updateSideImage() {
