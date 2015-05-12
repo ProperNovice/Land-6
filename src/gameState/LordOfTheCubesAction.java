@@ -19,6 +19,11 @@ public class LordOfTheCubesAction extends GameState {
 			return;
 		}
 
+		if (!super.atLeastOneCitySquareContainsDice()) {
+			handleGameIsLost();
+			return;
+		}
+
 		if (!super.diceActionIsRolled())
 			super.rollDiceAction();
 
@@ -153,6 +158,11 @@ public class LordOfTheCubesAction extends GameState {
 
 	private void handleGameIsWon() {
 		super.setGameResult(GameResult.WIN);
+		super.setGameState(GameStateEnum.GAME_ENDED);
+	}
+
+	private void handleGameIsLost() {
+		super.setGameResult(GameResult.LOSE);
 		super.setGameState(GameStateEnum.GAME_ENDED);
 	}
 
