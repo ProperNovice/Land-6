@@ -17,6 +17,7 @@ public class ChooseLordOfTheCubesArmyToRemove extends GameState {
 	public void handleCubeArmyPressed(Tile tile) {
 
 		super.textConceal();
+		super.resetDiceActionSide();
 
 		super.setGameState(GameStateEnum.ANIMATING);
 

@@ -93,13 +93,11 @@ public class FightLordOfTheCubes extends GameState {
 	}
 
 	private void handleDiceActionRoll4() {
-		super.resetDiceActionSide();
 		setGameStateNext(GameStateEnum.LORD_OF_THE_CUBES_ACTION);
 		setGameState(GameStateEnum.CHOOSE_LORD_OF_THE_CUBES_ARMY_TO_REMOVE);
 	}
 
 	private void handleDiceActionRoll56() {
-		super.resetDiceActionSide();
 		setGameStateNext(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 		setGameState(GameStateEnum.CHOOSE_LORD_OF_THE_CUBES_ARMY_TO_REMOVE);
 	}
