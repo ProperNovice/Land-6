@@ -115,13 +115,14 @@ public class Tile {
 		return adjacencies;
 	}
 
-	public boolean containsAtLeastOneSquareDiceMovable() {
+	public boolean containsAtLeastOneSquareDiceMovable(
+			Square cityMoveOriginOrigin) {
 
 		boolean isMovable = false;
 
 		for (Square square : this.squares) {
 
-			if (square.getSquareEnum().equals(SquareEnum.CITY))
+			if (square.equals(cityMoveOriginOrigin))
 				continue;
 
 			if (!square.containsDiceArmy())

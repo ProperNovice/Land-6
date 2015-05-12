@@ -202,13 +202,13 @@ public class TileController {
 		return availableToDeploy;
 	}
 
-	public boolean atLeastOneSquareDiceIsMovable() {
+	public boolean atLeastOneSquareDiceIsMovable(Square cityMoveOriginOrigin) {
 
 		boolean isMovable = false;
 
 		for (Tile tile : this.tiles) {
 
-			if (!tile.containsAtLeastOneSquareDiceMovable())
+			if (!tile.containsAtLeastOneSquareDiceMovable(cityMoveOriginOrigin))
 				continue;
 
 			isMovable = true;

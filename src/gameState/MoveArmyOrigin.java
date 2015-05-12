@@ -17,8 +17,8 @@ public class MoveArmyOrigin extends GameState {
 	@Override
 	public void handleSquareDicePressed(Square square) {
 
-		if (!super.squareDiceIsEligibleToMove(square))
-			return;
+//		if (!super.squareDiceIsEligibleToMove(square))
+//			return;
 
 		super.textConceal();
 		super.setCredentialSquarePressedNonCity(square);

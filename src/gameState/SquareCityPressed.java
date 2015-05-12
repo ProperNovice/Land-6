@@ -1,5 +1,7 @@
 package gameState;
 
+import components.Square;
+
 import utils.ArrayList;
 import enums.GameStateEnum;
 import enums.TextGameEnum;
@@ -45,7 +47,9 @@ public class SquareCityPressed extends GameState {
 			if (super.atLeastOneSquareIsAvailableToDeployArmy())
 				list.add(TextGameEnum.DEPLOY_AN_ARMY);
 
-		if (super.atLeastOneSquareDiceIsMovable())
+		Square cityMoveOriginOrigin = super.getSquarePressedCity();
+
+		if (super.atLeastOneSquareDiceIsMovable(cityMoveOriginOrigin))
 			list.add(TextGameEnum.MOVE_AN_ARMY);
 
 		list.add(TextGameEnum.CANCEL);

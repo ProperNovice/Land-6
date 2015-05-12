@@ -186,8 +186,9 @@ public class GameState {
 
 	}
 
-	protected boolean atLeastOneSquareDiceIsMovable() {
-		return this.controller.tileController().atLeastOneSquareDiceIsMovable();
+	protected boolean atLeastOneSquareDiceIsMovable(Square cityMoveOriginOrigin) {
+		return this.controller.tileController().atLeastOneSquareDiceIsMovable(
+				cityMoveOriginOrigin);
 	}
 
 	protected boolean atLeastOneSquareIsAvailableToDeployArmy() {
