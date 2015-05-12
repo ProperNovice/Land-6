@@ -1,5 +1,5 @@
 package gameDifficulty;
 
-public class GameDifficultyEasy extends GameDifficulty {
+public class GameDifficultyEasy extends GameDifficultyController {
 
 }

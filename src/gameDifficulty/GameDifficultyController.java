@@ -1,15 +1,13 @@
 package gameDifficulty;
 
-public class GameDifficultyHard extends GameDifficultyController {
+public class GameDifficultyController {
 
-	@Override
 	public boolean gameBeginsWithCubeArmy() {
-		return true;
+		return false;
 	}
 
-	@Override
 	public boolean restrictionOnGrowingFieldSquare() {
-		return true;
+		return false;
 	}
 
 }

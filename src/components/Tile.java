@@ -294,4 +294,13 @@ public class Tile {
 		return true;
 	}
 
+	public boolean containsSquare(Square square) {
+
+		for (Square squareTemp : this.squares)
+			if (squareTemp.equals(square))
+				return true;
+
+		return false;
+	}
+
 }

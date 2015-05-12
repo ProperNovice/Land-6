@@ -29,7 +29,13 @@ public class ChooseSquareDiceAction extends GameState {
 			handleForestPressed(square);
 			break;
 		case GROWING_FIELD:
-			handleGrowingFieldPressed(square);
+
+			if (super.growingFieldCanBePressed(square))
+				handleGrowingFieldPressed(square);
+
+			else
+				handleGameStateChange();
+
 			break;
 		case SEA:
 			handleSeaPressed(square);

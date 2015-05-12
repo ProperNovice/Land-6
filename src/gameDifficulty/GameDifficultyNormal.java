@@ -1,6 +1,6 @@
 package gameDifficulty;
 
-public class GameDifficultyNormal extends GameDifficulty {
+public class GameDifficultyNormal extends GameDifficultyController {
 
 	@Override
 	public boolean gameBeginsWithCubeArmy() {

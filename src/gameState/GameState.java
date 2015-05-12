@@ -329,7 +329,8 @@ public class GameState {
 	}
 
 	protected boolean gameDifficultyGameBeginsWithCubeArmy() {
-		return this.controller.gameDifficulty().gameBeginsWithCubeArmy();
+		return this.controller.gameDifficultyController()
+				.gameBeginsWithCubeArmy();
 	}
 
 	protected void addStartingCubeArmy() {
@@ -339,6 +340,16 @@ public class GameState {
 		CubeArmy cubeArmy = getCubeArmy();
 		this.controller.tileController().addStartingCubeArmy(cubeArmy);
 
+	}
+
+	protected boolean growingFieldCanBePressed(Square square) {
+
+		if (!this.controller.gameDifficultyController()
+				.restrictionOnGrowingFieldSquare())
+			return true;
+
+		return this.controller.tileController()
+				.growingFieldCanBePressed(square);
 	}
 
 }

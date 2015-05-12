@@ -47,9 +47,9 @@ public class SquareCityPressed extends GameState {
 			if (super.atLeastOneSquareIsAvailableToDeployArmy())
 				list.add(TextGameEnum.DEPLOY_AN_ARMY);
 
-		Square cityMoveOriginOrigin = super.getSquarePressedCity();
+		Square cityMoveOrigin = super.getSquarePressedCity();
 
-		if (super.atLeastOneSquareDiceIsMovable(cityMoveOriginOrigin))
+		if (super.atLeastOneSquareDiceIsMovable(cityMoveOrigin))
 			list.add(TextGameEnum.MOVE_AN_ARMY);
 
 		list.add(TextGameEnum.CANCEL);

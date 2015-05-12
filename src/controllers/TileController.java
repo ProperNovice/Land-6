@@ -157,7 +157,7 @@ public class TileController {
 	public void addStartingDiceArmy(DiceArmy dice) {
 		this.tiles.get(5).getSquareId(1).addDiceAnimateSynchronous(dice);
 	}
-	
+
 	public void addStartingCubeArmy(CubeArmy cubeArmy) {
 		this.tiles.get(0).addCubeArmyAnimateSynchronous(cubeArmy);
 	}
@@ -355,6 +355,26 @@ public class TileController {
 				return true;
 
 		return false;
+	}
+
+	public boolean growingFieldCanBePressed(Square square) {
+
+		for (Tile tile : this.tiles) {
+
+			if (!tile.containsSquare(square))
+				continue;
+
+			if (tile.containsCubeArmy())
+				return false;
+			else
+				return true;
+
+		}
+
+		Logger.logNewLine("growingFieldCanBePressed");
+
+		return false;
+
 	}
 
 }
