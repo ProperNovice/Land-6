@@ -6,7 +6,7 @@ import gameDifficulty.GameDifficultyController;
 import gameDifficulty.GameDifficultyEasy;
 import gameDifficulty.GameDifficultyHard;
 import gameDifficulty.GameDifficultyNormal;
-import gui.PanelGame;
+import gui.Panel;
 import instances.Instances;
 import utils.Executor;
 
@@ -20,9 +20,11 @@ public class Controller {
 	private CubeArmyController cubeArmyController = null;
 	private DiceActionController diceActionController = null;
 	private GameDifficultyController gameDifficultyController = null;
+	private Panel panel = null;
 
-	public Controller(GameDifficultyEnum gameDifficultyEnum, PanelGame panelGame) {
+	public Controller(GameDifficultyEnum gameDifficultyEnum, Panel panel) {
 
+		this.panel = panel;
 		createInstances(gameDifficultyEnum);
 		Executor.runLater(() -> this.gameStateController
 				.setGameState(GameStateEnum.START_GAME));
@@ -88,6 +90,10 @@ public class Controller {
 
 	public GameDifficultyController gameDifficultyController() {
 		return this.gameDifficultyController;
+	}
+
+	public Panel panel() {
+		return this.panel;
 	}
 
 }

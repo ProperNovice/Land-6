@@ -16,7 +16,7 @@ public class GameEnded extends GameState {
 	@Override
 	public void handleTextPressed(TextGameEnum textOptionEnum) {
 
-		System.out.println("restarting");
+		super.restartGame();
 
 	}
 

@@ -350,6 +350,11 @@ public class GameState {
 
 		return this.controller.tileController()
 				.growingFieldCanBePressed(square);
+
+	}
+
+	protected void restartGame() {
+		this.controller.panel().createOptionScreen();
 	}
 
 }
