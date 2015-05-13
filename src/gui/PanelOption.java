@@ -38,9 +38,9 @@ public class PanelOption extends Parent {
 		this.texts.get(0).relocate(x, y);
 		y += height;
 		this.texts.get(1).relocate(x, y);
-		y += height;
+		y += height + 5;
 		this.texts.get(2).relocate(x, y);
-		y += height;
+		y += height + 5;
 		this.texts.get(3).relocate(x, y);
 
 	}
