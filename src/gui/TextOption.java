@@ -14,7 +14,7 @@ import enums.TextGameEnum;
 
 public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 
-	private Polyline border = null;
+	protected Polyline border = null;
 	private Controller controller = Instances.getControllerInstance();
 
 	public TextOption(TextGameEnum textGameEnum) {
@@ -22,7 +22,6 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 		super(textGameEnum);
 		createBorder();
 
-		setVisible(false);
 	}
 
 	@Override
@@ -40,7 +39,7 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 
 	}
 
-	private void createBorder() {
+	protected void createBorder() {
 
 		PanelGame panelGame = Instances.getPanelGameInstance();
 
@@ -57,6 +56,7 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 		this.border.setOnMousePressed(this);
 		this.border.toBack();
 
+		setVisible(false);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 
 	}
 
-	private class OnMouseEntered implements EventHandler<MouseEvent> {
+	protected class OnMouseEntered implements EventHandler<MouseEvent> {
 
 		@Override
 		public void handle(MouseEvent event) {
@@ -97,7 +97,7 @@ public class TextOption extends TextGame implements EventHandler<MouseEvent> {
 
 	}
 
-	private class OnMouseExited implements EventHandler<MouseEvent> {
+	protected class OnMouseExited implements EventHandler<MouseEvent> {
 
 		@Override
 		public void handle(MouseEvent event) {

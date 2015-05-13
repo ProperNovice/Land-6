@@ -1,8 +1,11 @@
 package controllers;
 
+import enums.GameDifficultyEnum;
 import enums.GameStateEnum;
 import gameDifficulty.GameDifficultyController;
 import gameDifficulty.GameDifficultyEasy;
+import gameDifficulty.GameDifficultyHard;
+import gameDifficulty.GameDifficultyNormal;
 import gui.PanelGame;
 import instances.Instances;
 import utils.Executor;
@@ -18,15 +21,15 @@ public class Controller {
 	private DiceActionController diceActionController = null;
 	private GameDifficultyController gameDifficultyController = null;
 
-	public Controller(PanelGame panelGame) {
+	public Controller(GameDifficultyEnum gameDifficultyEnum, PanelGame panelGame) {
 
-		createInstances();
+		createInstances(gameDifficultyEnum);
 		Executor.runLater(() -> this.gameStateController
 				.setGameState(GameStateEnum.START_GAME));
 
 	}
 
-	private void createInstances() {
+	private void createInstances(GameDifficultyEnum gameDifficultyEnum) {
 
 		Instances.createController(this);
 		this.tileController = new TileController();
@@ -36,7 +39,22 @@ public class Controller {
 		this.credentialController = new CredentialController();
 		this.cubeArmyController = new CubeArmyController();
 		this.diceActionController = new DiceActionController();
-		this.gameDifficultyController = new GameDifficultyEasy();
+
+		switch (gameDifficultyEnum) {
+
+		case EASY:
+			this.gameDifficultyController = new GameDifficultyEasy();
+			break;
+
+		case NORMAL:
+			this.gameDifficultyController = new GameDifficultyNormal();
+			break;
+
+		case HARD:
+			this.gameDifficultyController = new GameDifficultyHard();
+			break;
+
+		}
 
 	}
 

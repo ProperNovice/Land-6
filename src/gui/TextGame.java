@@ -34,4 +34,8 @@ public class TextGame {
 		return this.height;
 	}
 
+	public double getWidth() {
+		return this.text.getWidth();
+	}
+
 }

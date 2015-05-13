@@ -32,6 +32,10 @@ public enum TextGameEnum {
 	YOU_LOST("You lost", TextGameType.INDICATOR),
 	RESTART_GAME("Restart game", TextGameType.OPTION),
 	FOR_YOUR_ACTION("for your action", TextGameType.INDICATOR),
+	CHOOSE_DIFFICULTY_LEVEL("Choose difficulty level", TextGameType.INDICATOR),
+	EASY("Easy", TextGameType.OPTION),
+	NORMAL("Normal", TextGameType.OPTION),
+	HARD("Hard", TextGameType.OPTION),
 
 	;
 
