@@ -357,4 +357,9 @@ public class GameState {
 		this.controller.panel().createOptionScreen();
 	}
 
+	protected void handleGameIsWon() {
+		setGameResult(GameResult.WIN);
+		setGameState(GameStateEnum.GAME_ENDED);
+	}
+
 }

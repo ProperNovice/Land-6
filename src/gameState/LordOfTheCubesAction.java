@@ -15,7 +15,7 @@ public class LordOfTheCubesAction extends GameState {
 	public void handleGameStateChange() {
 
 		if (super.gameIsWon()) {
-			handleGameIsWon();
+			super.handleGameIsWon();
 			return;
 		}
 
@@ -160,11 +160,6 @@ public class LordOfTheCubesAction extends GameState {
 
 		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
-	}
-
-	private void handleGameIsWon() {
-		super.setGameResult(GameResult.WIN);
-		super.setGameState(GameStateEnum.GAME_ENDED);
 	}
 
 }

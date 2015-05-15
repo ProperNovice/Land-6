@@ -10,6 +10,12 @@ public class ChooseSquareDiceAction extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
+
+		if (super.gameIsWon()) {
+			super.handleGameIsWon();
+			return;
+		}
+
 		showText();
 	}
 
