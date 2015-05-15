@@ -1,9 +1,10 @@
 package gameState;
 
-import components.DiceArmy;
 import utils.Lock;
 import utils.Logger;
-import enums.GameResult;
+
+import components.DiceArmy;
+
 import enums.GameStateEnum;
 
 public class StartGame extends GameState {
@@ -22,14 +23,12 @@ public class StartGame extends GameState {
 			super.addStartingCubeArmy();
 
 		Logger.newLine();
-		
+
 		Lock.lock();
 
 		diceArmy.setSide(6);
 
-//		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
-		super.setGameResult(GameResult.LOSE);
-		super.setGameState(GameStateEnum.GAME_ENDED);
+		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
 
 	}
 
