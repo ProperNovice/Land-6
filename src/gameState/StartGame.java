@@ -1,9 +1,9 @@
 package gameState;
 
 import components.DiceArmy;
-
 import utils.Lock;
 import utils.Logger;
+import enums.GameResult;
 import enums.GameStateEnum;
 
 public class StartGame extends GameState {
@@ -27,7 +27,9 @@ public class StartGame extends GameState {
 
 		diceArmy.setSide(6);
 
-		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+//		super.setGameState(GameStateEnum.CHOOSE_SQUARE_DICE_ACTION);
+		super.setGameResult(GameResult.LOSE);
+		super.setGameState(GameStateEnum.GAME_ENDED);
 
 	}
 
