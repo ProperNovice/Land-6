@@ -36,6 +36,7 @@ public enum TextGameEnum {
 	EASY("Easy", TextGameType.OPTION),
 	NORMAL("Normal", TextGameType.OPTION),
 	HARD("Hard", TextGameType.OPTION),
+	VERY_HARD("Very hard", TextGameType.OPTION),
 
 	;
 

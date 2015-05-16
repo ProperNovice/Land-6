@@ -47,6 +47,10 @@ public class GameState {
 
 	}
 
+	public void handleRestartPressed() {
+		restartGame();
+	}
+
 	protected void setGameState(GameStateEnum gameStateEnum) {
 		this.controller.gameStateController().setGameState(gameStateEnum);
 	}
@@ -360,6 +364,10 @@ public class GameState {
 	protected void handleGameIsWon() {
 		setGameResult(GameResult.WIN);
 		setGameState(GameStateEnum.GAME_ENDED);
+	}
+
+	protected void restartSetVisible(boolean value) {
+		this.controller.restart().setVisible(value);
 	}
 
 }

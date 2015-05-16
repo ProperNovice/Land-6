@@ -108,7 +108,7 @@ public class GameStateController {
 		case GAME_ENDED:
 			this.currentGameState = this.gameEnded;
 			break;
-			
+
 		}
 
 		Logger.log("changing gameState");
@@ -136,6 +136,10 @@ public class GameStateController {
 
 	public void handleCubeArmyPressed(Tile tile) {
 		this.currentGameState.handleCubeArmyPressed(tile);
+	}
+
+	public void handleRestartPressed() {
+		this.currentGameState.handleRestartPressed();
 	}
 
 }

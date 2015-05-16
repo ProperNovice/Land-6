@@ -6,7 +6,9 @@ import gameDifficulty.GameDifficultyController;
 import gameDifficulty.GameDifficultyEasy;
 import gameDifficulty.GameDifficultyHard;
 import gameDifficulty.GameDifficultyNormal;
+import gameDifficulty.GameDifficultyVeryHard;
 import gui.Panel;
+import gui.Restart;
 import instances.Instances;
 import utils.Executor;
 
@@ -21,6 +23,7 @@ public class Controller {
 	private DiceActionController diceActionController = null;
 	private GameDifficultyController gameDifficultyController = null;
 	private Panel panel = null;
+	private Restart restart = null;
 
 	public Controller(GameDifficultyEnum gameDifficultyEnum, Panel panel) {
 
@@ -41,6 +44,7 @@ public class Controller {
 		this.credentialController = new CredentialController();
 		this.cubeArmyController = new CubeArmyController();
 		this.diceActionController = new DiceActionController();
+		this.restart = new Restart();
 
 		switch (gameDifficultyEnum) {
 
@@ -54,6 +58,10 @@ public class Controller {
 
 		case HARD:
 			this.gameDifficultyController = new GameDifficultyHard();
+			break;
+
+		case VERY_HARD:
+			this.gameDifficultyController = new GameDifficultyVeryHard();
 			break;
 
 		}
@@ -94,6 +102,10 @@ public class Controller {
 
 	public Panel panel() {
 		return this.panel;
+	}
+
+	public Restart restart() {
+		return this.restart;
 	}
 
 }

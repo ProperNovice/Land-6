@@ -2,6 +2,6 @@ package enums;
 
 public enum GameDifficultyEnum {
 
-	EASY, NORMAL, HARD
+	EASY, NORMAL, HARD, VERY_HARD
 
 }

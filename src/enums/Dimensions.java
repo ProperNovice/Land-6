@@ -16,6 +16,7 @@ public enum Dimensions {
 	TEXT_OPTION(-1, TILE.y() * 0.15),
 	TEXT_INDICATOR(-1, TEXT_OPTION.y()),
 	FRAME(4 * TILE.x() + 2 * GAP_BETWEEN_BORDERS.x(), 2 * (TILE.y() + GAP_BETWEEN_BORDERS.y())),
+	RESTART(40, 40),
 
 
 	;

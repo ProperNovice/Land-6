@@ -30,9 +30,11 @@ public class PanelOption extends Parent {
 		this.texts.add(new OptionTextOption(TextGameEnum.EASY));
 		this.texts.add(new OptionTextOption(TextGameEnum.NORMAL));
 		this.texts.add(new OptionTextOption(TextGameEnum.HARD));
+		this.texts.add(new OptionTextOption(TextGameEnum.VERY_HARD));
 
 		double x = (Dimensions.FRAME.x() - this.texts.get(0).getWidth()) / 2;
-		double y = (Dimensions.FRAME.y() - 4 * Dimensions.TEXT_OPTION.y() - 100) / 2;
+		double y = (Dimensions.FRAME.y() - this.texts.size()
+				* Dimensions.TEXT_OPTION.y() - 120) / 2;
 		double height = Dimensions.TEXT_OPTION.y();
 
 		this.texts.get(0).relocate(x, y);
@@ -42,6 +44,8 @@ public class PanelOption extends Parent {
 		this.texts.get(2).relocate(x, y);
 		y += height + 5;
 		this.texts.get(3).relocate(x, y);
+		y += height + 5;
+		this.texts.get(4).relocate(x, y);
 
 	}
 
@@ -125,6 +129,10 @@ public class PanelOption extends Parent {
 
 			case NORMAL:
 				gameDifficultyEnum = GameDifficultyEnum.NORMAL;
+				break;
+
+			case VERY_HARD:
+				gameDifficultyEnum = GameDifficultyEnum.VERY_HARD;
 				break;
 
 			default:

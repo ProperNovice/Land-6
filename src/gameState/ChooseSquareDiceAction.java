@@ -11,6 +11,8 @@ public class ChooseSquareDiceAction extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
+		super.restartSetVisible(true);
+
 		if (super.gameIsWon()) {
 			super.handleGameIsWon();
 			return;
@@ -23,6 +25,7 @@ public class ChooseSquareDiceAction extends GameState {
 	public void handleSquareDicePressed(Square square) {
 
 		super.textConceal();
+		super.restartSetVisible(false);
 
 		SquareEnum squareEnumPressed = square.getSquareEnum();
 
