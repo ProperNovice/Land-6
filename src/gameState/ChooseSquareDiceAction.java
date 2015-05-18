@@ -25,7 +25,7 @@ public class ChooseSquareDiceAction extends GameState {
 	public void handleSquareDicePressed(Square square) {
 
 		super.textConceal();
-		super.restartSetVisible(false);
+//		super.restartSetVisible(false);
 
 		SquareEnum squareEnumPressed = square.getSquareEnum();
 
