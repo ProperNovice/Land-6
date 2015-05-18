@@ -28,7 +28,6 @@ public class Restart implements EventHandlerAble {
 		this.imageView.setWidth(Dimensions.RESTART.x());
 		this.imageView.relocate(Coordinates.RESTART.x(),
 				Coordinates.RESTART.y());
-		this.imageView.setVisible(false);
 
 	}
 

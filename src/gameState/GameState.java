@@ -366,8 +366,4 @@ public class GameState {
 		setGameState(GameStateEnum.GAME_ENDED);
 	}
 
-	protected void restartSetVisible(boolean value) {
-		this.controller.restart().setVisible(value);
-	}
-
 }
