@@ -1,8 +1,8 @@
-/gameState/
 /components/
 /controllers/
-/gui/
-/gameDifficulty/
 /enums/
-/images/
+/gameDifficulty/
+/gameState/
+/gui/
+/instances/
 /utils/
