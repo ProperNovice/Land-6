@@ -37,15 +37,12 @@ public class PanelOption extends Parent {
 				* Dimensions.TEXT_OPTION.y() - 120) / 2;
 		double height = Dimensions.TEXT_OPTION.y();
 
-		this.texts.get(0).relocate(x, y);
-		y += height;
-		this.texts.get(1).relocate(x, y);
-		y += height + 5;
-		this.texts.get(2).relocate(x, y);
-		y += height + 5;
-		this.texts.get(3).relocate(x, y);
-		y += height + 5;
-		this.texts.get(4).relocate(x, y);
+		for (TextGame textGame : this.texts) {
+
+			textGame.relocate(x, y);
+			y += height;
+
+		}
 
 	}
 
